@@ -12,6 +12,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
   functionScript: any;
   jsSrvScript: any;
+  stylesEl: any;
 
   constructor() {}
 
@@ -28,12 +29,30 @@ export class HeaderComponent implements OnInit, AfterViewInit {
       );
     }`;
 
+    this.stylesEl = document.createElement('style');
+    this.stylesEl.innerHTML = `
+    #goog-gt-vt{
+      display: none;
+    }
+    #goog-gt-tt{
+      display: none;
+    }
+    body{
+      top: 0 !important;
+      position: relative;
+    }
+    .skiptranslate{
+      position: absolute;
+      z-index:1
+    }`;
+
     this.jsSrvScript = document.createElement('script');
     this.jsSrvScript.type = 'text/javascript';
     this.jsSrvScript.src = `//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit`;
 
     document.body.appendChild(this.functionScript);
     document.body.appendChild(this.jsSrvScript);
+    document.body.appendChild(this.stylesEl);
   }
 
   openTrans(): void {
