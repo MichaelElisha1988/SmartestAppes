@@ -1,11 +1,7 @@
 <section class="header">
   <div class="right">
     <div class="translate">
-      <span
-        class="material-symbols-outlined"
-        [ngClass]="isOpenTrans ? 'open' : ''"
-        (click)="openTrans()"
-      >
+      <span class="material-symbols-outlined" (click)="openTrans()">
         g_translate
       </span>
     </div>
@@ -31,12 +27,9 @@
       <div class="line"></div>
       <div class="line"></div>
     </div>
-    <div class="g-trans">
-      <div id="google_translate_element"></div>
-    </div>
   </div>
 </section>
 
-<div class="g-trans">
+<div class="g-trans" [ngClass]="isOpenTrans ? 'open' : ''">
   <div id="google_translate_element"></div>
 </div>

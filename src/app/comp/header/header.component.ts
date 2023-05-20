@@ -30,8 +30,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
     this.jsSrvScript = document.createElement('script');
     this.jsSrvScript.type = 'text/javascript';
-    this.jsSrvScript.src = `https://translate.google.com/translate_a/element.js?
-    cb=googleTranslateElementInit`;
+    this.jsSrvScript.src = `//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit`;
 
     document.body.appendChild(this.functionScript);
     document.body.appendChild(this.jsSrvScript);

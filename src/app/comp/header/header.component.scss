@@ -1,4 +1,8 @@
 .header {
+  position: sticky;
+  top: 0px;
+  z-index: 999999;
+
   background-color: var(--c-grey);
   color: var(--c-dark-blue);
 
@@ -49,5 +53,27 @@
   .right {
     display: flex;
     gap: 5vw;
+  }
+}
+.g-trans {
+  position: absolute;
+  top: -150px;
+  width: 100%;
+
+  background-color: var(--c-silver);
+  box-shadow: 0em 0 1em var(--c-blue);
+  height: 60px;
+  transition: 0.5s top;
+
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  &.open {
+    top: 60px;
+  }
+  #google_translate_element {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
   }
 }
