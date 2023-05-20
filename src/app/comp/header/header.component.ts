@@ -14,6 +14,9 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   jsSrvScript: any;
   stylesEl: any;
 
+  accessible_forward: string = 'accessible_forward';
+  g_translate: string = 'g_translate';
+
   constructor() {}
 
   ngOnInit(): void {}

@@ -2,7 +2,7 @@
   <div class="right">
     <div class="translate">
       <span class="material-symbols-outlined" (click)="openTrans()">
-        g_translate
+        {{ g_translate }}
       </span>
     </div>
     <div class="acc">
@@ -11,7 +11,7 @@
         [ngClass]="isOpenAcc ? 'open' : ''"
         (click)="openAcc()"
       >
-        accessible_forward
+        {{ accessible_forward }}
       </span>
     </div>
   </div>

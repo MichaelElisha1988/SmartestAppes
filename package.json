@@ -9,7 +9,6 @@
     "test": "ng test"
   },
   "private": true,
-  "homepage": "https://michaelelisha1988.github.io/SmartestAppes",
   "dependencies": {
     "@angular/animations": "^14.2.0",
     "@angular/cdk": "^13.0.0",
