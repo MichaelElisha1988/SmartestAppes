@@ -1,0 +1,53 @@
+.header {
+  background-color: var(--c-grey);
+  color: var(--c-dark-blue);
+
+  padding: 18px 35px;
+  font-size: 28px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  box-shadow: 0em 0 1em var(--c-blue);
+
+  .left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 10vw;
+
+    .burger {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5vh;
+
+      .line {
+        height: 1px;
+        width: 15px;
+        background-color: var(--c-dark-blue);
+        transition: 0.5s all;
+      }
+      &.open {
+        :nth-last-child(1) {
+          width: 0;
+          position: absolute;
+        }
+        :nth-last-child(2) {
+          transform: rotate(-45deg);
+          margin-top: -5.6px;
+          height: 2px;
+        }
+        :nth-last-child(3) {
+          transform: rotate(45deg);
+          height: 2px;
+        }
+      }
+    }
+  }
+  .right {
+    display: flex;
+    gap: 5vw;
+  }
+}

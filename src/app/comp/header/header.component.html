@@ -1,0 +1,35 @@
+<section class="header">
+  <div class="right">
+    <div class="translate">
+      <span
+        class="material-symbols-outlined"
+        [ngClass]="isOpenTrans ? 'open' : ''"
+        (click)="openTrans()"
+      >
+        g_translate
+      </span>
+    </div>
+    <div class="acc">
+      <span
+        class="material-symbols-outlined"
+        [ngClass]="isOpenAcc ? 'open' : ''"
+        (click)="openAcc()"
+      >
+        accessible_forward
+      </span>
+    </div>
+  </div>
+  <div class="left">
+    <div class="logo">Logo</div>
+
+    <div
+      class="burger"
+      [ngClass]="isOpenMenu ? 'open' : ''"
+      (click)="openMenu()"
+    >
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,32 @@
+<section class="home">
+  <div class="wrap">
+    <div class="title">
+      <h1>Login</h1>
+    </div>
+    <form class="login" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <input
+        class="i-name"
+        id="userName"
+        type="text"
+        formControlName="userName"
+        placeholder=" "
+      />
+      <label class="l-name" for="userName">User Name: </label>
+
+      <input
+        class="i-pass"
+        id="password"
+        type="password"
+        formControlName="password"
+        placeholder=" "
+      />
+      <label class="l-pass" for="password">Password: </label>
+
+      <button type="submit">Enter</button>
+    </form>
+
+    <div class="coming-soon">
+      Login is now free for triel, just click on "Enter"
+    </div>
+  </div>
+</section>

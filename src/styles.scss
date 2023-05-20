@@ -1,3 +1,38 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$SmartestAppes-primary: mat.define-palette(mat.$indigo-palette);
+$SmartestAppes-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$SmartestAppes-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$SmartestAppes-theme: mat.define-light-theme((
+  color: (
+    primary: $SmartestAppes-primary,
+    accent: $SmartestAppes-accent,
+    warn: $SmartestAppes-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($SmartestAppes-theme);
+
 /* You can add global styles to this file, and also import other style files */
 html,
 body,
@@ -124,10 +159,19 @@ table {
   border-spacing: 0;
 }
 
-:host {
+:root {
   --c-dark: #0b0c10;
   --c-grey: #1f2833;
   --c-silver: #c5c6c7;
   --c-blue: #66fcf1;
   --c-dark-blue: #45a29e;
 }
+
+body {
+  background-color: var(--c-silver);
+  height: 100vh;
+  width: 100vw;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
