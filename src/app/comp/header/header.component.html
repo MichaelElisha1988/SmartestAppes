@@ -1,19 +1,15 @@
 <section class="header">
   <div class="right">
-    <div class="translate">
-      <span class="material-symbols-outlined" (click)="openTrans()">
-        {{ g_translate }}
-      </span>
-    </div>
-    <div class="acc">
-      <span
-        class="material-symbols-outlined"
-        [ngClass]="isOpenAcc ? 'open' : ''"
-        (click)="openAcc()"
-      >
-        {{ accessible_forward }}
-      </span>
-    </div>
+    <div
+      class="translate"
+      (click)="openTrans()"
+      [ngClass]="isOpenTrans ? 'open' : ''"
+    ></div>
+    <div
+      class="acc"
+      [ngClass]="isOpenAcc ? 'open' : ''"
+      (click)="openAcc()"
+    ></div>
   </div>
   <div class="left">
     <div class="logo">Logo</div>

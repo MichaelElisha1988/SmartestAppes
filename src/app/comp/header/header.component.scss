@@ -53,6 +53,25 @@
   .right {
     display: flex;
     gap: 5vw;
+
+    .translate {
+      -webkit-mask-image: url("../../../assets/g_translate.svg");
+      mask-image: url("../../../assets/g_translate.svg");
+      width: 30px;
+      height: 30px;
+      mask-size: contain;
+
+      background-color: var(--c-dark-blue);
+    }
+    .acc {
+      -webkit-mask-image: url("../../../assets/accessible.svg");
+      mask-image: url("../../../assets/accessible.svg");
+      width: 30px;
+      height: 30px;
+      mask-size: contain;
+
+      background-color: var(--c-dark-blue);
+    }
   }
 }
 .g-trans {
