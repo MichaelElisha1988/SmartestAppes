@@ -22,6 +22,13 @@
 
     gap: 10vw;
 
+    .logo{
+      height: 30px;
+
+      img{
+        height: inherit;
+      }
+    } 
     .burger {
       display: flex;
       flex-direction: column;
@@ -55,8 +62,8 @@
     gap: 5vw;
 
     .translate {
-      -webkit-mask-image: url("../../../assets/g_translate.svg");
-      mask-image: url("../../../assets/g_translate.svg");
+      -webkit-mask-image: var(--gtransIcon);
+      mask-image: var(--gtransIcon);
       width: 30px;
       height: 30px;
       mask-size: contain;
@@ -64,8 +71,8 @@
       background-color: var(--c-dark-blue);
     }
     .acc {
-      -webkit-mask-image: url("../../../assets/accessible.svg");
-      mask-image: url("../../../assets/accessible.svg");
+      -webkit-mask-image: var(--accIcon);
+      mask-image: var(--accIcon);
       width: 30px;
       height: 30px;
       mask-size: contain;

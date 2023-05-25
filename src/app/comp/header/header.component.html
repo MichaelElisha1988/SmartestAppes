@@ -1,4 +1,6 @@
-<section class="header">
+ <section class="header" 
+ [style.--gtransIcon]="innerHeaderData?.gtransIcon"
+  [style.--accIcon]="innerHeaderData?.accIcon" >
   <div class="right">
     <div
       class="translate"
@@ -12,7 +14,9 @@
     ></div>
   </div>
   <div class="left">
-    <div class="logo">Logo</div>
+    <div class="logo">
+      <img src="{{innerHeaderData?.logoIcon}}" alt="">
+    </div>
 
     <div
       class="burger"

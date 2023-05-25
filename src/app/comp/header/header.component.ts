@@ -1,23 +1,31 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
+import { HeaderService } from 'src/app/shared/services/header.service';
+import { Subscription } from 'rxjs'
+import { Header } from 'src/app/shared/models/header.model';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit, AfterViewInit {
+export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   isOpenTrans: boolean = false;
   isOpenMenu: boolean = false;
   isOpenAcc: boolean = false;
+
+  $Subs = new Subscription();
 
   functionScript: any;
   jsSrvScript: any;
   stylesEl: any;
 
-  accessible_forward: string = 'accessible_forward';
-  g_translate: string = 'g_translate';
+  innerHeaderData: Header | undefined;
 
-  constructor() {}
+  constructor(private headerService: HeaderService) {
+    this.$Subs.add(this.headerService.headerInnerData.subscribe((data)=>{
+      this.innerHeaderData = data;
+    }))
+  }
 
   ngOnInit(): void {}
 
@@ -66,5 +74,9 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   }
   openAcc() {
     this.isOpenAcc = !this.isOpenAcc;
+  }
+
+  ngOnDestroy(){
+    this.$Subs.unsubscribe()
   }
 }

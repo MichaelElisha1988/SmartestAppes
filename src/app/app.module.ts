@@ -10,6 +10,7 @@ import { LoginComponent } from './routes/login/login.component';
 import { HomeComponent } from './routes/home/home.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, LoginComponent, HomeComponent],
@@ -18,6 +19,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     MatIconModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],
