@@ -11,15 +11,16 @@ import { HomeComponent } from './routes/home/home.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { MeasurementsComponent } from './comp/measurements/measurements.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, LoginComponent, HomeComponent],
+  declarations: [AppComponent, HeaderComponent, LoginComponent, HomeComponent, MeasurementsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MatIconModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
-import { HeaderService } from 'src/app/shared/services/header.service';
-import { Subscription } from 'rxjs'
+import { GeneralDataService } from 'src/app/shared/services/generalData.service';
+import { Subscription } from 'rxjs';
 import { Header } from 'src/app/shared/models/header.model';
 
 @Component({
@@ -21,10 +21,12 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
 
   innerHeaderData: Header | undefined;
 
-  constructor(private headerService: HeaderService) {
-    this.$Subs.add(this.headerService.headerInnerData.subscribe((data)=>{
-      this.innerHeaderData = data;
-    }))
+  constructor(private generalDataService: GeneralDataService) {
+    this.$Subs.add(
+      this.generalDataService.headerInnerData.subscribe((data) => {
+        this.innerHeaderData = data;
+      })
+    );
   }
 
   ngOnInit(): void {}
@@ -76,7 +78,7 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
     this.isOpenAcc = !this.isOpenAcc;
   }
 
-  ngOnDestroy(){
-    this.$Subs.unsubscribe()
+  ngOnDestroy() {
+    this.$Subs.unsubscribe();
   }
 }

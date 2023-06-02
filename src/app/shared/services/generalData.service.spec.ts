@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { HeaderService } from './header.service';
+import { GeneralDataService } from './generalData.service';
 
-describe('HeaderService', () => {
-  let service: HeaderService;
+describe('GeneralDataService', () => {
+  let service: GeneralDataService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(HeaderService);
+    service = TestBed.inject(GeneralDataService);
   });
 
   it('should be created', () => {

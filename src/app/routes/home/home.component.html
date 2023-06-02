@@ -1,14 +1,17 @@
-
-    <div class="main-menu" [ngClass]="menuAfterInitDone ? 'inMenu' : ''">
-        <div class="wrap-list">
-            <ul class="list">
-                <li class="action">action</li>
-                <li class="action">action</li>
-                <li class="action">action</li>
-                <li class="action">action</li>
-                <li class="action">action</li>
-                <li class="action">action</li>
-                <li class="action">action</li>
-            </ul>
-        </div>
-    </div>
+<div class="main-menu" [ngClass]="menuAfterInitDone ? 'inMenu' : ''">
+  <div class="wrap-list">
+    <ul class="list">
+      <li
+        class="action"
+        *ngFor="let homeAction of homeData?.actions"
+        (click)="showMeasures($event)"
+      >
+        {{ homeAction["title"] }}
+      </li>
+    </ul>
+  </div>
+</div>
+<app-measurements
+  [ngClass]="measureDataToShow ? '' : ''"
+  (exitFromMeasure)="returnToMenu()"
+></app-measurements>
