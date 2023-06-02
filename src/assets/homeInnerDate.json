@@ -1,5 +1,42 @@
 {
-    "home":{
-        
+  "home": {
+    "actions": {
+      "Kitchen": {
+        "measurements": [
+          "Quart",
+          "Tsp",
+          "Measuring cup",
+          "Gal",
+          "Pint",
+          "Cup",
+          "Tbsp",
+          "Measuring spoon",
+          "Ounce",
+          "Kilogram",
+          "Pound",
+          "Milliliter",
+          "cup",
+          "pint"
+        ]
+      }
+    },
+    "length": {
+      "measurements": [
+        "centimeters",
+        "meters",
+        "Measuring cup",
+        "Gal",
+        "Pint",
+        "Cup",
+        "Tbsp",
+        "Measuring spoon",
+        "Ounce",
+        "Kilogram",
+        "Pound",
+        "Milliliter",
+        "cup",
+        "pint"
+      ]
     }
+  }
 }
