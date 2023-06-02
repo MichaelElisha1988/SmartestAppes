@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  AfterViewInit,
+} from '@angular/core';
 import { Home } from 'src/app/shared/models/home.model';
 
 @Component({
@@ -6,17 +13,25 @@ import { Home } from 'src/app/shared/models/home.model';
   templateUrl: './measurements.component.html',
   styleUrls: ['./measurements.component.scss'],
 })
-export class MeasurementsComponent implements OnInit {
-  @Input() MeasureData: Home | null = null;
+export class MeasurementsComponent implements OnInit, AfterViewInit {
+  @Input() measureData: any = null;
 
   @Output() exitFromMeasure: EventEmitter<any> = new EventEmitter();
+
+  isCompReady: boolean = false;
 
   constructor() {}
 
   ngOnInit(): void {}
 
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.isCompReady = true;
+    }, 500);
+  }
+
   onClose() {
-    this.MeasureData = null;
+    this.measureData = null;
     this.exitFromMeasure.emit();
   }
 }

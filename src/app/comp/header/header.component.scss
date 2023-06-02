@@ -22,13 +22,13 @@
 
     gap: 10vw;
 
-    .logo{
+    .logo {
       height: 30px;
 
-      img{
+      img {
         height: inherit;
       }
-    } 
+    }
     .burger {
       display: flex;
       flex-direction: column;
@@ -62,22 +62,16 @@
     gap: 5vw;
 
     .translate {
-      -webkit-mask-image: var(--gtransIcon);
-      mask-image: var(--gtransIcon);
+      background-image: var(--gtransIcon);
       width: 30px;
       height: 30px;
-      mask-size: contain;
-
-      background-color: var(--c-dark-blue);
+      background-size: contain;
     }
     .acc {
-      -webkit-mask-image: var(--accIcon);
-      mask-image: var(--accIcon);
+      background-image: var(--accIcon);
       width: 30px;
       height: 30px;
-      mask-size: contain;
-
-      background-color: var(--c-dark-blue);
+      background-size: contain;
     }
   }
 }

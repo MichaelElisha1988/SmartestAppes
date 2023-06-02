@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { GeneralDataService } from 'src/app/shared/services/generalData.service';
 
 @Component({
   selector: 'app-login',

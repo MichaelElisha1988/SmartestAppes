@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   $Subs = new Subscription();
   homeData: Home | null = null;
   measureDataToShow: boolean = false;
-  measureData: Actions | null = null;
+  measureData: any = null;
 
   ngOnInit() {
     this.$Subs.add(
@@ -28,14 +28,21 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   showMeasures(event: any) {
     this.menuAfterInitDone = false;
+    this.measureDataToShow = true;
+    this.measureData = this.homeData?.actions.filter(
+      (value) => value['title'] === event?.target.innerHTML.replaceAll(' ', '')
+    );
   }
 
   ngAfterViewInit() {
-    this.returnToMenu();
+    setTimeout(() => {
+      this.returnToMenu();
+    }, 500);
   }
 
   returnToMenu() {
     this.menuAfterInitDone = true;
+    this.measureDataToShow = false;
   }
 
   ngOnDestroy(): void {

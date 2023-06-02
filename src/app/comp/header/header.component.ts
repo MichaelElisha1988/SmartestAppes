@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
-import { GeneralDataService } from 'src/app/shared/services/generalData.service';
+import { LoginService } from 'src/app/shared/services/login.service';
 import { Subscription } from 'rxjs';
 import { Header } from 'src/app/shared/models/header.model';
 
@@ -21,9 +21,9 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
 
   innerHeaderData: Header | undefined;
 
-  constructor(private generalDataService: GeneralDataService) {
+  constructor(private loginService: LoginService) {
     this.$Subs.add(
-      this.generalDataService.headerInnerData.subscribe((data) => {
+      this.loginService.headerInnerData.subscribe((data) => {
         this.innerHeaderData = data;
       })
     );

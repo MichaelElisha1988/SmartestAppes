@@ -10,11 +10,13 @@
   border: 15px solid var(--c-dark);
   box-shadow: inset 0em 0 1em var(--c-blue);
 
+  z-index: 99;
+
   &.inMenu {
     top: 30px !important;
   }
 
-  .measuresOpen {
+  .measuresOpen:ng-deep {
     position: absolute;
     transform: translate(-50%, -50%);
     top: 50%;

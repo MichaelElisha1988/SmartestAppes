@@ -1,3 +1,13 @@
-<p>measurements works!</p>
-
-<button (click)="onClose()">Exit</button>
+<section>
+  <div class="titleAction" id="titleAction">
+    {{ measureData[0]["title"] | uppercase }}
+    <button (click)="onClose()">Exit</button>
+  </div>
+  <div class="listAction">
+    <ul class="infoList" [ngClass]="isCompReady ? 'show' : 'hide'">
+      <li class="infoItem" *ngFor="let info of measureData[0].measurements">
+        {{ info | uppercase }}:
+      </li>
+    </ul>
+  </div>
+</section>

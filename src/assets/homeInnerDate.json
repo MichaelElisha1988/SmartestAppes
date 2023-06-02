@@ -5,16 +5,14 @@
       "measurements": [
         "Quart",
         "Tsp",
-        "Measuring cup",
         "Gal",
         "Pint",
         "Cup",
         "Tbsp",
-        "Measuring spoon",
         "Ounce",
-        "Kilogram",
+        "k.gram",
         "Pound",
-        "Milliliter",
+        "m.liter",
         "cup",
         "pint"
       ]
@@ -22,9 +20,9 @@
     {
       "title": "length",
       "measurements": [
-        "centimeters",
+        "c.meters",
         "meters",
-        "kilometers",
+        "k.meters",
         "inches",
         "feet",
         "yards"
@@ -32,7 +30,7 @@
     },
     {
       "title": "temperature",
-      "measurements": ["Fahrenheit", "Celsius", "Kelvin"]
+      "measurements": ["Fahr.", "Celsius", "Kelvin"]
     }
   ]
 }

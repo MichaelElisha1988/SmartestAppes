@@ -12,6 +12,7 @@
   </div>
 </div>
 <app-measurements
-  [ngClass]="measureDataToShow ? '' : ''"
+  *ngIf="measureDataToShow"
+  [measureData]="measureData"
   (exitFromMeasure)="returnToMenu()"
 ></app-measurements>
