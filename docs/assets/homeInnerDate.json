@@ -1,5 +1,38 @@
 {
-    "home":{
-        
+  "actions": [
+    {
+      "title": "Kitchen",
+      "measurements": [
+        "Quart",
+        "Tsp",
+        "Measuring cup",
+        "Gal",
+        "Pint",
+        "Cup",
+        "Tbsp",
+        "Measuring spoon",
+        "Ounce",
+        "Kilogram",
+        "Pound",
+        "Milliliter",
+        "cup",
+        "pint"
+      ]
+    },
+    {
+      "title": "length",
+      "measurements": [
+        "centimeters",
+        "meters",
+        "kilometers",
+        "inches",
+        "feet",
+        "yards"
+      ]
+    },
+    {
+      "title": "temperature",
+      "measurements": ["Fahrenheit", "Celsius", "Kelvin"]
     }
+  ]
 }
