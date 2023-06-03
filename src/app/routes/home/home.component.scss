@@ -48,10 +48,10 @@
       .action {
         width: 100px;
         height: 100px;
-        background-color: var(--c-dark-blue);
+        background-color: var(--c-blue);
         box-shadow: inset 0em 0 2em var(--c-blue);
         box-shadow: inset 0em 0 0.5em var(--c-dark);
-        box-shadow: 0em 0 0.5em var(--c-blue);
+        box-shadow: 0em 0 1em var(--c-blue);
         border-radius: 10px;
         font-size: 18px;
         display: flex;

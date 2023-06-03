@@ -3,6 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 
   padding: 30px 0;
 
@@ -36,6 +37,10 @@
   }
 }
 
+
+.l-number{
+  display: none;
+}
 .listAction {
   position: relative;
   display: flex;

@@ -2,7 +2,26 @@
   <div class="titleAction" id="titleAction">
     {{ measureData[0]["title"] | uppercase }}
     <button (click)="onClose()">Exit</button>
-  </div>
+      <form class="measureInput" [formGroup]="measureForm" (ngSubmit)="onSubmit()">
+        <input 
+        class="i-number"
+        id="measureNum"
+        type="tel"
+        pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+        formControlName="measureNum"
+        placeholder=" "
+        >
+        <label class="l-number" for="measureNum">User Name: </label>
+        <select 
+        id="measurment"
+        type="select"
+        formControlName="measurment"
+        placeholder=" "
+        >
+          <option *ngFor="let info of measureData[0].measurements" value="{{ info }}">{{info}}</option>
+        </select>
+      </form>
+    </div>
   <div class="listAction">
     <ul class="infoList" [ngClass]="isCompReady ? 'show' : 'hide'">
       <li class="infoItem" *ngFor="let info of measureData[0].measurements">
