@@ -12,9 +12,10 @@ import { HomeComponent } from './routes/home/home.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MeasurementsComponent } from './comp/measurements/measurements.component';
+import { MeasurmentsPipe } from './shared/pipes/measurments.pipe';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, LoginComponent, HomeComponent, MeasurementsComponent],
+  declarations: [AppComponent, HeaderComponent, LoginComponent, HomeComponent, MeasurementsComponent, MeasurmentsPipe],
   imports: [
     BrowserModule,
     AppRoutingModule,

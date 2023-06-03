@@ -28,7 +28,7 @@
   <div class="listAction">
     <ul class="infoList" [ngClass]="isCompReady ? 'show' : 'hide'">
       <li class="infoItem" *ngFor="let info of measurmentsListFiltred">
-        {{ info | uppercase }}: <br><br><div style="color: var(--c-grey)">{{ amountMeasure }}</div> 
+        {{ info | uppercase }}: <br><br><div style="color: var(--c-grey)">{{ amountMeasure | measurments: measureData[0]["title"]: optionValueSelected: info}}</div> 
       </li>
     </ul>
   </div>

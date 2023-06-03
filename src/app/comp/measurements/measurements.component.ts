@@ -19,7 +19,7 @@ export class MeasurementsComponent implements OnInit, AfterViewInit {
 
   @Output() exitFromMeasure: EventEmitter<any> = new EventEmitter();
 
-  optioValueSelected: string | undefined | null = '';
+  optionValueSelected: string | undefined | null = '';
   amountMeasure: string | undefined | null = '';
 
   measurmentsListFiltred: string[] = [];
@@ -50,9 +50,8 @@ export class MeasurementsComponent implements OnInit, AfterViewInit {
   onSubmit(){
     this.measurmentsListFiltred = this.measureData[0]?.measurements.slice()
     this.amountMeasure = this.measureForm.get('measureNum')?.value
-    this.measureForm.get('measurment')
+    this.optionValueSelected = this.measureForm.get('measurment')?.value
     this.measurmentsListFiltred = this.measurmentsListFiltred.filter(value => value !== this.measureForm.get('measurment')?.value)
-    console.log(this.measureForm.get('measureNum')?.value, this.measureForm.get('measurment')?.value)
   }
   onSubmitChage(){
     this.onSubmit()
