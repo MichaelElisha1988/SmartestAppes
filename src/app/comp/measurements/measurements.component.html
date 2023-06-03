@@ -19,15 +19,16 @@
         type="select"
         formControlName="measurment"
         placeholder=" "
+        (change)="onSubmitChage()"
         >
-          <option *ngFor="let info of measureData[0].measurements" value="{{ info }}">{{info}}</option>
+        <option *ngFor="let info of measureData[0].measurements" value="{{ info }}">{{info}}</option>
         </select>
       </form>
     </div>
   <div class="listAction">
     <ul class="infoList" [ngClass]="isCompReady ? 'show' : 'hide'">
-      <li class="infoItem" *ngFor="let info of measureData[0].measurements">
-        {{ info | uppercase }}:
+      <li class="infoItem" *ngFor="let info of measurmentsListFiltred">
+        {{ info | uppercase }}: <br><br><div style="color: var(--c-grey)">{{ amountMeasure }}</div> 
       </li>
     </ul>
   </div>

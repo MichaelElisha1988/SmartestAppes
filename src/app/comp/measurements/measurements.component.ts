@@ -19,6 +19,11 @@ export class MeasurementsComponent implements OnInit, AfterViewInit {
 
   @Output() exitFromMeasure: EventEmitter<any> = new EventEmitter();
 
+  optioValueSelected: string | undefined | null = '';
+  amountMeasure: string | undefined | null = '';
+
+  measurmentsListFiltred: string[] = [];
+
   isCompReady: boolean = false;
   measureForm= new FormGroup({
     measureNum: new FormControl('', Validators.required),
@@ -27,7 +32,9 @@ export class MeasurementsComponent implements OnInit, AfterViewInit {
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.measurmentsListFiltred = this.measureData[0]?.measurements.slice();
+  }
 
   ngAfterViewInit() {
     setTimeout(() => {
@@ -41,8 +48,13 @@ export class MeasurementsComponent implements OnInit, AfterViewInit {
   }
 
   onSubmit(){
-    this.measureForm.get('measureNum')
+    this.measurmentsListFiltred = this.measureData[0]?.measurements.slice()
+    this.amountMeasure = this.measureForm.get('measureNum')?.value
     this.measureForm.get('measurment')
+    this.measurmentsListFiltred = this.measurmentsListFiltred.filter(value => value !== this.measureForm.get('measurment')?.value)
     console.log(this.measureForm.get('measureNum')?.value, this.measureForm.get('measurment')?.value)
+  }
+  onSubmitChage(){
+    this.onSubmit()
   }
 }
