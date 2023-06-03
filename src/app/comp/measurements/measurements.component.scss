@@ -29,6 +29,12 @@
     background-color: transparent;
   }
 }
+@supports (-webkit-touch-callout: none) {
+  button {
+    text-decoration: none;
+    color: black;
+  }
+}
 
 .listAction {
   position: relative;
