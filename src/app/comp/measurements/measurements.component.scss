@@ -40,6 +40,7 @@
 .measureInput{
   display: flex;
   margin-top: .3em;
+  position: relative;
   .i-number{
     background-color: transparent;
     width: 10em;
@@ -53,16 +54,16 @@
 
   }
   .l-number{
+    top: .2rem;
+    left: .6rem;
     position: absolute;
     font-size: 14px;
     font-weight: 300;
-    left: 4.5rem;
-    top: 5.3rem;
     transition: .5s all;
   }
   .i-number:focus + .l-number,
   .i-number:not(:placeholder-shown) + .l-number {
-    top: 4.5rem;
+    top: -.7em;
     padding: 0 2px;
     background-color: var(--c-blue);
     font-size: 12px;
