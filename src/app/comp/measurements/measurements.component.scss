@@ -37,10 +37,48 @@
   }
 }
 
+.measureInput{
+  display: flex;
+  margin-top: .3em;
+  .i-number{
+    background-color: transparent;
+    width: 10em;
+    padding-left: .5em;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    border: 1px solid black;
+    border-right: 0;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
 
-.l-number{
-  display: none;
+  }
+  .l-number{
+    position: absolute;
+    font-size: 14px;
+    font-weight: 300;
+    left: 4.5rem;
+    top: 5.3rem;
+    transition: .5s all;
+  }
+  .i-number:focus + .l-number,
+  .i-number:not(:placeholder-shown) + .l-number {
+    top: 4.5rem;
+    padding: 0 2px;
+    background-color: var(--c-blue);
+    font-size: 12px;
+  }
+  .s-measur{
+    background-color: var(--c-grey);
+    border: 1px solid black;
+    border-left: 0;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    box-shadow: inset 0em 0 1em var(--c-blue);
+    color: var(--c-blue);
+    transition: .5s all;
+  }
 }
+
 .listAction {
   position: relative;
   display: flex;
