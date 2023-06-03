@@ -1,21 +1,25 @@
- <section class="header" 
- [style.--gtransIcon]="innerHeaderData?.gtransIcon"
-  [style.--accIcon]="innerHeaderData?.accIcon" >
+<section
+  class="header"
+  [style.--gtransIcon]="innerHeaderData?.gtransIcon"
+  [style.--accIcon]="innerHeaderData?.accIcon"
+>
   <div class="right">
-    <div
+    <img
+      src="{{ innerHeaderData?.gtransIcon }}"
       class="translate"
       (click)="openTrans()"
       [ngClass]="isOpenTrans ? 'open' : ''"
-    ></div>
-    <div
+    />
+    <img
+      src="{{ innerHeaderData?.accIcon }}"
       class="acc"
       [ngClass]="isOpenAcc ? 'open' : ''"
       (click)="openAcc()"
-    ></div>
+    />
   </div>
   <div class="left">
     <div class="logo">
-      <img src="{{innerHeaderData?.logoIcon}}" alt="">
+      <img src="{{ innerHeaderData?.logoIcon }}" alt="" />
     </div>
 
     <div

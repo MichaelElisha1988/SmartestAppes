@@ -23,10 +23,12 @@
     gap: 10vw;
 
     .logo {
-      height: 30px;
+      height: 45px;
 
       img {
         height: inherit;
+        filter: invert(91%) sepia(82%) saturate(2496%) hue-rotate(150deg)
+          brightness(90%) contrast(98%);
       }
     }
     .burger {
@@ -62,16 +64,16 @@
     gap: 5vw;
 
     .translate {
-      background-image: var(--gtransIcon);
       width: 30px;
       height: 30px;
-      background-size: contain;
+      filter: invert(91%) sepia(82%) saturate(2496%) hue-rotate(150deg)
+        brightness(100%) contrast(98%);
     }
     .acc {
-      background-image: var(--accIcon);
       width: 30px;
       height: 30px;
-      background-size: contain;
+      filter: invert(91%) sepia(82%) saturate(2496%) hue-rotate(150deg)
+        brightness(100%) contrast(98%);
     }
   }
 }
