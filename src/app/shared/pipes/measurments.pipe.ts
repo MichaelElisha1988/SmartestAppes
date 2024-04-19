@@ -99,7 +99,6 @@ export class MeasurmentsPipe implements PipeTransform {
                       : (+(value ? value : 1) * 0.95 * 1000).toString().length
                   )
                   .join('');
-
               case 'Oz':
                 return (+(value ? value : 1) * 8 * 2 * 2 * 4)
                   .toString()
@@ -115,7 +114,6 @@ export class MeasurmentsPipe implements PipeTransform {
                       : (+(value ? value : 1) * 8 * 2 * 2 * 4).toString().length
                   )
                   .join('');
-
               default:
                 return `can't measure`;
             }
@@ -595,23 +593,24 @@ export class MeasurmentsPipe implements PipeTransform {
         }
         break;
       case 'length':
+        let fixedNum = 5;
         switch (measureFrom) {
           case 'c.meters':
             switch (measurmentTo) {
               case 'meters':
-                return value ? +value / 100 : 1;
+                return value ? (+value / 100).toFixed(fixedNum) : 1;
                 break;
               case 'k.meters':
-                return value ? +value / 100000 : 1;
+                return value ? (+value / 100000).toFixed(fixedNum) : 1;
                 break;
               case 'inches':
-                return value ? +value * 0.3937 : 1;
+                return value ? (+value * 0.3937).toFixed(fixedNum) : 1;
                 break;
               case 'feet':
-                return value ? (+value / 100) * 3.2808 : 1;
+                return value ? ((+value / 100) * 3.2808).toFixed(fixedNum) : 1;
                 break;
               case 'yards':
-                return value ? (+value / 100) * 1.0936 : 1;
+                return value ? ((+value / 100) * 1.0936).toFixed(fixedNum) : 1;
                 break;
               default:
                 break;
@@ -620,19 +619,19 @@ export class MeasurmentsPipe implements PipeTransform {
           case 'meters':
             switch (measurmentTo) {
               case 'c.meters':
-                return value ? +value * 100 : 1;
+                return value ? (+value * 100).toFixed(fixedNum) : 1;
                 break;
               case 'k.meters':
-                return value ? (+value / 1000) * 3.2808 : 1;
+                return value ? ((+value / 1000) * 3.2808).toFixed(fixedNum) : 1;
                 break;
               case 'inches':
-                return value ? +value * 39.37 : 1;
+                return value ? (+value * 39.37).toFixed(fixedNum) : 1;
                 break;
               case 'feet':
-                return value ? +value * 3.2808 : 1;
+                return value ? (+value * 3.2808).toFixed(fixedNum) : 1;
                 break;
               case 'yards':
-                return value ? +value * 1.0936 : 1;
+                return value ? (+value * 1.0936).toFixed(fixedNum) : 1;
                 break;
               default:
                 break;
@@ -641,19 +640,19 @@ export class MeasurmentsPipe implements PipeTransform {
           case 'k.meters':
             switch (measurmentTo) {
               case 'c.meters':
-                return value ? +value / 100000 : 1;
+                return value ? (+value / 100000).toFixed(fixedNum) : 1;
                 break;
               case 'meters':
-                return value ? +value / 1000 : 1;
+                return value ? (+value / 1000).toFixed(fixedNum) : 1;
                 break;
               case 'inches':
-                return value ? +value * 39374 : 1;
+                return value ? (+value * 39374).toFixed(fixedNum) : 1;
                 break;
               case 'feet':
-                return value ? +value * 0.003281 : 1;
+                return value ? (+value * 0.003281).toFixed(fixedNum) : 1;
                 break;
               case 'yards':
-                return value ? +value * 0.0011 : 1;
+                return value ? (+value * 0.0011).toFixed(fixedNum) : 1;
                 break;
               default:
                 break;
@@ -662,19 +661,19 @@ export class MeasurmentsPipe implements PipeTransform {
           case 'inches':
             switch (measurmentTo) {
               case 'c.meters':
-                return value ? +value / 0.3937 : 1;
+                return value ? (+value / 0.3937).toFixed(fixedNum) : 1;
                 break;
               case 'meters':
-                return value ? +value / 100 / 0.3937 : 1;
+                return value ? (+value / 100 / 0.3937).toFixed(fixedNum) : 1;
                 break;
               case 'k.meters':
-                return value ? +value / 100000 / 0.3937 : 1;
+                return value ? (+value / 100000 / 0.3937).toFixed(fixedNum) : 1;
                 break;
               case 'feet':
-                return value ? +value * 0.083334 : 1;
+                return value ? (+value * 0.083334).toFixed(fixedNum) : 1;
                 break;
               case 'yards':
-                return value ? +value * 0.27778 : 1;
+                return value ? (+value * 0.27778).toFixed(fixedNum) : 1;
                 break;
               default:
                 break;
@@ -683,19 +682,21 @@ export class MeasurmentsPipe implements PipeTransform {
           case 'feet':
             switch (measurmentTo) {
               case 'c.meters':
-                return value ? +value * (0.305 / 100) : 1;
+                return value ? (+value * (0.305 / 100)).toFixed(fixedNum) : 1;
                 break;
               case 'meters':
-                return value ? +value * 0.305 : 1;
+                return value ? (+value * 0.305).toFixed(fixedNum) : 1;
                 break;
               case 'k.meters':
-                return value ? +value * (0.305 / 100000) : 1;
+                return value
+                  ? (+value * (0.305 / 100000)).toFixed(fixedNum)
+                  : 1;
                 break;
               case 'inches':
-                return value ? +value / 0.3937 : 1;
+                return value ? (+value / 0.3937).toFixed(fixedNum) : 1;
                 break;
               case 'yards':
-                return value ? +value / 0.3937 : 1;
+                return value ? (+value / 0.3937).toFixed(fixedNum) : 1;
                 break;
               default:
                 break;
