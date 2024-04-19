@@ -17,27 +17,35 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   homeData: Home | null = null;
   measureDataToShow: boolean = false;
   measureData: any = null;
+  actionsList: any = [];
 
   ngOnInit() {
     this.$Subs.add(
       this.generalDataSrvice.homeInnerData.subscribe((data) => {
         this.homeData = data;
+        this.homeData.actions.forEach((action) =>
+          this.actionsList.push(action['title'])
+        );
       })
     );
+    console.log(this.actionsList);
   }
 
   showMeasures(event: any) {
     this.menuAfterInitDone = false;
     this.measureDataToShow = true;
+    console.log(event?.target.attributes['id']?.value);
     this.measureData = this.homeData?.actions.filter(
-      (value) => value['title'] === event?.target.innerHTML.replaceAll(' ', '')
+      (value) =>
+        value['title'] ===
+        this.actionsList[event?.target.attributes['id']?.value]
     );
   }
 
   ngAfterViewInit() {
     setTimeout(() => {
       this.returnToMenu();
-    }, 500);
+    });
   }
 
   returnToMenu() {

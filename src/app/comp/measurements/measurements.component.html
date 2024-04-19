@@ -2,8 +2,12 @@
   <div class="titleAction" id="titleAction">
     {{ measureData[0]["title"] | uppercase }}
     <button (click)="onClose()">Exit</button>
-      <form class="measureInput" [formGroup]="measureForm" (ngSubmit)="onSubmit()">
-        <input 
+    <form
+      class="measureInput"
+      [formGroup]="measureForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <input
         class="i-number"
         id="measureNum"
         type="tel"
@@ -11,24 +15,38 @@
         formControlName="measureNum"
         placeholder=" "
         autocomplete="off"
-        >
-        <label class="l-number" for="measureNum">Amount:</label>
-        <select
+      />
+      <label class="l-number" for="measureNum">Amount:</label>
+      <select
         class="s-measur"
         id="measurment"
         type="select"
         formControlName="measurment"
         placeholder=" "
         (change)="onSubmitChage()"
+      >
+        <option
+          *ngFor="let info of measureData[0].measurements"
+          value="{{ info }}"
         >
-        <option *ngFor="let info of measureData[0].measurements" value="{{ info }}">{{info}}</option>
-        </select>
-      </form>
-    </div>
+          {{ info }}
+        </option>
+      </select>
+    </form>
+  </div>
   <div class="listAction">
     <ul class="infoList" [ngClass]="isCompReady ? 'show' : 'hide'">
       <li class="infoItem" *ngFor="let info of measurmentsListFiltred">
-        {{ info | uppercase }}: <br><br><div style="color: var(--c-grey)">{{ amountMeasure | measurments: measureData[0]["title"]: optionValueSelected: info}}</div> 
+        {{ info | uppercase }}: <br /><br />
+        <div style="color: var(--c-grey)">
+          {{
+            amountMeasure
+              | measurments
+                : measureData[0]["title"]
+                : optionValueSelected
+                : info
+          }}
+        </div>
       </li>
     </ul>
   </div>

@@ -3,10 +3,11 @@
     <ul class="list">
       <li
         class="action"
-        *ngFor="let homeAction of homeData?.actions"
+        *ngFor="let homeAction of homeData?.actions; let i = index"
         (click)="showMeasures($event)"
+        [attr.id]="i"
       >
-        {{ homeAction["title"] }}
+        <span>{{ homeAction["title"] }}</span>
       </li>
     </ul>
   </div>
