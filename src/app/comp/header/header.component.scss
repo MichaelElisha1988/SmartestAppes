@@ -23,18 +23,19 @@
     gap: 10vw;
 
     .logo {
-      height: 45px;
+      height: 40px;
 
       img {
-        height: inherit;
-        filter: invert(91%) sepia(82%) saturate(2496%) hue-rotate(150deg)
-          brightness(90%) contrast(98%);
+        height: 40px;
+        filter: invert(396%) sepia(215%) saturate(207%) hue-rotate(89deg)
+          saturate(475%) brightness(206%) contrast(98%);
       }
     }
     .burger {
       display: flex;
       flex-direction: column;
       gap: 0.225rem;
+      padding: 15px 10px;
 
       .line {
         height: 1px;
