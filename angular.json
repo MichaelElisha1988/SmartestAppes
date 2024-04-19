@@ -29,6 +29,7 @@
           },
           "configurations": {
             "production": {
+              "baseHref": "/SmartestAppes/",
               "budgets": [
                 {
                   "type": "initial",
@@ -55,7 +56,8 @@
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true
+              "namedChunks": true,
+              "baseHref": "/SmartestAppes/"
             }
           },
           "defaultConfiguration": "production"
