@@ -28,13 +28,11 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         );
       })
     );
-    console.log(this.actionsList);
   }
 
   showMeasures(event: any) {
     this.menuAfterInitDone = false;
     this.measureDataToShow = true;
-    console.log(event?.target.attributes['id']?.value);
     this.measureData = this.homeData?.actions.filter(
       (value) =>
         value['title'] ===
