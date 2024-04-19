@@ -13,9 +13,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MeasurementsComponent } from './comp/measurements/measurements.component';
 import { MeasurmentsPipe } from './shared/pipes/measurments.pipe';
+import { ClickOutsideDirective } from './shared/directive/click-outside.directive';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, LoginComponent, HomeComponent, MeasurementsComponent, MeasurmentsPipe],
+  declarations: [AppComponent, HeaderComponent, LoginComponent, HomeComponent, MeasurementsComponent, MeasurmentsPipe, ClickOutsideDirective],
   imports: [
     BrowserModule,
     AppRoutingModule,

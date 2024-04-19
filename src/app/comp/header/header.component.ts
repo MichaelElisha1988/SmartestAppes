@@ -1,7 +1,8 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/shared/services/login.service';
-import { Subscription } from 'rxjs';
+import { Subscription, debounce, debounceTime, first, take } from 'rxjs';
 import { Header } from 'src/app/shared/models/header.model';
+import { DataSavingService } from 'src/app/shared/services/dataSaving.service';
 
 @Component({
   selector: 'app-header',
@@ -21,10 +22,22 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
 
   innerHeaderData: Header | undefined;
 
-  constructor(private loginService: LoginService) {
+  constructor(
+    private loginService: LoginService,
+    private dataSavingSrv: DataSavingService
+  ) {
     this.$Subs.add(
       this.loginService.headerInnerData.subscribe((data) => {
         this.innerHeaderData = data;
+      })
+    );
+    this.$Subs.add(
+      this.dataSavingSrv.lastClickedOn.subscribe((onchange) => {
+        onchange == null
+          ? ((this.isOpenAcc = false),
+            (this.isOpenMenu = false),
+            (this.isOpenTrans = false))
+          : '';
       })
     );
   }
@@ -45,10 +58,17 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
     this.stylesEl = document.createElement('style');
     this.stylesEl.innerHTML = `
     #goog-gt-vt{
-      display: none;
+      display: none !important;
     }
     #goog-gt-tt{
       display: none;
+    }
+    .VIpgJd-yAWNEb-VIpgJd-fmcmS-sn54Q{
+      background: transparent;
+      box-shadow: 2px 2px 4px transparent;
+    }
+    .VIpgJd-yAWNEb-L7lbkb{
+      display: none !important;
     }
     body{
       top: 0 !important;
