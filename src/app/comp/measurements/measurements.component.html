@@ -10,11 +10,12 @@
       <input
         class="i-number"
         id="measureNum"
-        type="tel"
-        pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+        type="number"
+        pattern="[0-9]"
         formControlName="measureNum"
         placeholder=" "
         autocomplete="off"
+        (input)="onSubmitChage()"
       />
       <label class="l-number" for="measureNum">Amount:</label>
       <select

@@ -25,10 +25,10 @@ export class MeasurementsComponent implements OnInit, AfterViewInit {
   measurmentsListFiltred: string[] = [];
 
   isCompReady: boolean = false;
-  measureForm= new FormGroup({
+  measureForm = new FormGroup({
     measureNum: new FormControl('', Validators.required),
     measurment: new FormControl('', Validators.required),
-  })
+  });
 
   constructor() {}
 
@@ -47,13 +47,21 @@ export class MeasurementsComponent implements OnInit, AfterViewInit {
     this.exitFromMeasure.emit();
   }
 
-  onSubmit(){
-    this.measurmentsListFiltred = this.measureData[0]?.measurements.slice()
-    this.amountMeasure = this.measureForm.get('measureNum')?.value
-    this.optionValueSelected = this.measureForm.get('measurment')?.value
-    this.measurmentsListFiltred = this.measurmentsListFiltred.filter(value => value !== this.measureForm.get('measurment')?.value)
+  onSubmit() {
+    if (
+      this.measureForm.get('measurment')?.value &&
+      this.measureForm.get('measureNum')?.value
+    ) {
+      this.measurmentsListFiltred = this.measureData[0]?.measurements.slice();
+      this.amountMeasure = this.measureForm.get('measureNum')?.value;
+      this.optionValueSelected = this.measureForm.get('measurment')?.value;
+      this.measurmentsListFiltred = this.measurmentsListFiltred.filter(
+        (value) => value !== this.measureForm.get('measurment')?.value
+      );
+    }
   }
-  onSubmitChage(){
-    this.onSubmit()
+
+  onSubmitChage() {
+    this.onSubmit();
   }
 }
