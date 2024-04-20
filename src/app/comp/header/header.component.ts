@@ -34,9 +34,9 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
     this.$Subs.add(
       this.dataSavingSrv.lastClickedOn.subscribe((onchange) => {
         onchange == null
-          ? ((this.isOpenAcc = false),
-            (this.isOpenMenu = false),
-            (this.isOpenTrans = false))
+          ? (this.isOpenAcc ? (this.isOpenAcc = false) : '',
+            this.isOpenMenu ? (this.isOpenMenu = false) : '',
+            this.isOpenTrans ? (this.isOpenTrans = false) : '')
           : '';
       })
     );
