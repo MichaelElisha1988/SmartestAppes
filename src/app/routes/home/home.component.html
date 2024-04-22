@@ -18,6 +18,9 @@
 </div>
 <ng-template #settings>
   <div class="settings">
+    <div class="exit-sign">
+      <span (click)="exitToMenu()">< Exit to Menu</span>
+    </div>
     <div
       class="action"
       *ngFor="let homeAction of homeData?.actions; let i = index"
@@ -38,9 +41,9 @@
         </li>
       </div>
     </div>
-  </div>
-  <div class="exit">
-    <span (click)="exitToMenu()">Exit to Menu</span>
+    <div class="exit">
+      <span (click)="exitToMenu()">Exit to Menu</span>
+    </div>
   </div>
 </ng-template>
 <app-measurements
