@@ -7,6 +7,7 @@ import { BehaviorSubject, Subject } from 'rxjs';
 export class DataSavingService {
   lastClickedOn = new BehaviorSubject<PointerEvent | null>(null);
   activeMenu = new BehaviorSubject<string | null>(null);
+  settingsEdit = new BehaviorSubject<boolean>(false);
 
   constructor() {}
   setLastClickedOn(ev: PointerEvent | null) {
@@ -20,5 +21,11 @@ export class DataSavingService {
   }
   getActiveMenu(): string | null {
     return this.activeMenu?.value;
+  }
+  setSettingsEdit(ev: boolean) {
+    this.settingsEdit.next(ev);
+  }
+  getSettingsEdit(): boolean {
+    return this.settingsEdit?.value;
   }
 }

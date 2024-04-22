@@ -42,6 +42,18 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
     );
   }
 
+  close(ack: string) {
+    switch (ack) {
+      case 'menu':
+        this.isOpenMenu ? (this.isOpenMenu = false) : '';
+        this.dataSavingSrv.setSettingsEdit(true);
+        break;
+
+      default:
+        break;
+    }
+  }
+
   ngOnInit(): void {}
 
   ngAfterViewInit() {

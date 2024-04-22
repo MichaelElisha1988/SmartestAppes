@@ -10,18 +10,18 @@
         "Cup",
         "Tbsp",
         "Ounce",
-        "k.gram",
+        "k-gram",
         "Pound",
-        "m.liter",
+        "m-liter",
         "Oz"
       ]
     },
     {
       "title": "length",
       "measurements": [
-        "c.meters",
+        "c-meters",
         "meters",
-        "k.meters",
+        "k-meters",
         "inches",
         "feet",
         "yards"
@@ -29,7 +29,7 @@
     },
     {
       "title": "temperature",
-      "measurements": ["Fahr.", "Celsius", "Kelvin"]
+      "measurements": ["Fahr", "Celsius", "Kelvin"]
     }
   ]
 }

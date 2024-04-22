@@ -3,7 +3,7 @@
   [ngClass]="menuAfterInitDone ? 'inMenu' : ''"
   appClickOutside
 >
-  <div class="wrap-list">
+  <div class="wrap-list" *ngIf="!menuSettingEdit; else settings">
     <ul class="list">
       <li
         class="action"
@@ -16,6 +16,33 @@
     </ul>
   </div>
 </div>
+<ng-template #settings>
+  <div class="settings">
+    <div
+      class="action"
+      *ngFor="let homeAction of homeData?.actions; let i = index"
+    >
+      <div class="span-text">
+        <span>{{ homeAction["title"] }}</span>
+      </div>
+      <div class="measures">
+        <li
+          *ngFor="
+            let actionMeasure of homeAction['measurements'];
+            let i = index
+          "
+          [class]="actionMeasure"
+          (click)="addRemove($event, homeAction['title'], actionMeasure, i)"
+        >
+          <span>{{ actionMeasure }}</span>
+        </li>
+      </div>
+    </div>
+  </div>
+  <div class="exit">
+    <span (click)="exitToMenu()">Exit to Menu</span>
+  </div>
+</ng-template>
 <app-measurements
   *ngIf="measureDataToShow"
   [measureData]="measureData"
