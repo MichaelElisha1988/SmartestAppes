@@ -11,7 +11,7 @@
         (click)="showMeasures($event)"
         [attr.id]="i"
       >
-        <span>{{ homeAction["title"] }}</span>
+        <span>{{ homeAction["title"] | toDotLimit : 8 }}</span>
       </li>
     </ul>
   </div>
