@@ -49,5 +49,6 @@
 <app-measurements
   *ngIf="measureDataToShow"
   [measureData]="measureData"
+  [desityData]="selectedDesityList[0]?.desity"
   (exitFromMeasure)="returnToMenu()"
 ></app-measurements>

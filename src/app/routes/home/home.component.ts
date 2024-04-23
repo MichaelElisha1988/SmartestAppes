@@ -23,6 +23,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   measureDataToShow: boolean = false;
   measureData: any = null;
   actionsList: any = [];
+  allDesityList: any = [];
+  selectedDesityList: any = [];
   notInList: Home | null = null;
 
   ngOnInit() {
@@ -32,9 +34,15 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.$Subs.add(
       this.generalDataSrvice.homeInnerData.pipe(take(1)).subscribe((data) => {
         this.homeData = data;
-        this.homeData.actions.forEach((action) =>
-          this.actionsList.push(action['title'])
-        );
+        this.homeData.actions.forEach((action) => {
+          this.actionsList.push(action['title']);
+          if (action['desity']) {
+            this.allDesityList.push({
+              title: action['title'],
+              desity: [...action['desity']],
+            });
+          }
+        });
       })
     );
     this.$Subs.add(
@@ -70,6 +78,11 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       )
     );
 
+    this.selectedDesityList = this.allDesityList.filter(
+      (x: { title: any }) =>
+        x.title == this.actionsList[event?.target.attributes['id']?.value]
+    );
+
     let indexOfNotShowMeasures = this.notInList?.actions.findIndex(
       (x) =>
         x['title'] == this.actionsList[event?.target.attributes['id']?.value]
@@ -97,7 +110,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   ) {
     if (!this.notInList) {
       this.notInList = JSON.parse(JSON.stringify(this.homeData));
-      console.log(this.homeData);
       this.notInList?.actions.map((x) => {
         x['measurements'] = [];
       });

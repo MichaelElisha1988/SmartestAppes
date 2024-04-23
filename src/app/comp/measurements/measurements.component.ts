@@ -7,6 +7,7 @@ import {
   AfterViewInit,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Action } from 'rxjs/internal/scheduler/Action';
 import { Home } from 'src/app/shared/models/home.model';
 
 @Component({
@@ -16,6 +17,7 @@ import { Home } from 'src/app/shared/models/home.model';
 })
 export class MeasurementsComponent implements OnInit, AfterViewInit {
   @Input() measureData: any = null;
+  @Input() desityData: any = null;
 
   @Output() exitFromMeasure: EventEmitter<any> = new EventEmitter();
 
@@ -23,11 +25,12 @@ export class MeasurementsComponent implements OnInit, AfterViewInit {
   amountMeasure: string | undefined | null = '';
 
   measurmentsListFiltred: string[] = [];
-
+  textDensity: string = '';
   isCompReady: boolean = false;
   measureForm = new FormGroup({
     measureNum: new FormControl('', Validators.required),
     measurment: new FormControl('', Validators.required),
+    density: new FormControl('', Validators.required),
   });
 
   constructor() {}
@@ -45,6 +48,12 @@ export class MeasurementsComponent implements OnInit, AfterViewInit {
   onClose() {
     this.measureData = null;
     this.exitFromMeasure.emit();
+  }
+
+  selectedDensity(densityNum: any) {
+    this.textDensity = this.measureForm.controls.density.value
+      ? this.measureForm.controls.density.value
+      : '';
   }
 
   onSubmit() {

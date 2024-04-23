@@ -7,33 +7,58 @@
       [formGroup]="measureForm"
       (ngSubmit)="onSubmit()"
     >
-      <input
-        class="i-number"
-        id="measureNum"
-        pattern="[0-9]"
-        maxlength="5"
-        formControlName="measureNum"
-        placeholder=" "
-        autocomplete="off"
-        (input)="onSubmitChage()"
-      />
-      <label class="l-number" for="measureNum">Amount:</label>
-      <select
-        class="s-measur"
-        id="measurment"
-        type="select"
-        formControlName="measurment"
-        placeholder=" "
-        (change)="onSubmitChage()"
-      >
-        <option
-          *ngFor="let info of measureData[0].measurements"
-          value="{{ info }}"
+      <div class="amount">
+        <input
+          class="i-number"
+          id="measureNum"
+          pattern="[0-9]"
+          maxlength="5"
+          formControlName="measureNum"
+          placeholder=" "
+          autocomplete="off"
+          (input)="onSubmitChage()"
+        />
+        <label class="l-number" for="measureNum">Amount:</label>
+        <select
+          class="s-measur"
+          id="measurment"
+          type="select"
+          formControlName="measurment"
+          placeholder=" "
+          (change)="onSubmitChage()"
         >
-          {{ info }}
-        </option>
-      </select>
+          <option
+            *ngFor="let info of measureData[0].measurements"
+            value="{{ info }}"
+          >
+            {{ info }}
+          </option>
+        </select>
+      </div>
+
+      <div class="density" *ngIf="desityData">
+        <select
+          class="s-density"
+          id="density"
+          type="select"
+          formControlName="density"
+          placeholder=" "
+          (change)="onSubmitChage()"
+          (change)="selectedDensity($event.target)"
+        >
+          <option
+            *ngFor="let info of desityData; let i = index"
+            value="{{ info[1] }}"
+          >
+            {{ info[0] }}
+          </option>
+        </select>
+      </div>
     </form>
+  </div>
+  <div class="textDensity" *ngIf="textDensity">
+    density of this matarial is: {{ textDensity }}, please notice that there can
+    be differences beetween calculators you use.
   </div>
   <div class="listAction">
     <ul class="infoList" [ngClass]="isCompReady ? 'show' : 'hide'">
@@ -46,6 +71,7 @@
                 : measureData[0]["title"]
                 : optionValueSelected
                 : info
+                : textDensity
           }}
         </div>
       </li>
