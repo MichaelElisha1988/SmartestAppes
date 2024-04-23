@@ -14,9 +14,19 @@ import { HttpClientModule } from '@angular/common/http';
 import { MeasurementsComponent } from './comp/measurements/measurements.component';
 import { MeasurmentsPipe } from './shared/pipes/measurments.pipe';
 import { ClickOutsideDirective } from './shared/directive/click-outside.directive';
+import { ToDotLimitPipe } from './shared/pipes/dotToLimit.pipe';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, LoginComponent, HomeComponent, MeasurementsComponent, MeasurmentsPipe, ClickOutsideDirective],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    LoginComponent,
+    HomeComponent,
+    MeasurementsComponent,
+    MeasurmentsPipe,
+    ToDotLimitPipe,
+    ClickOutsideDirective,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
