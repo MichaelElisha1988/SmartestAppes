@@ -34,15 +34,35 @@ export class MeasurmentsPipe implements PipeTransform {
                   fixedNum
                 );
               case 'k-gram':
-                return Density ? '' : 'Choose Density';
+                return Density
+                  ? (+(value ? value : 1) * 0.95 * +Density).toFixed(fixedNum)
+                  : 'Choose Density';
+              case 'gram':
+                return Density
+                  ? ((+(value ? value : 1) * 0.95 * +Density) / 1000).toFixed(
+                      fixedNum
+                    )
+                  : 'Choose Density';
+              case 'm-gram':
+                return Density
+                  ? (+(value ? value : 1) * 0.95 * +Density * 1000).toFixed(
+                      fixedNum
+                    )
+                  : 'Choose Density';
               case 'Pound':
-                return Density ? '' : 'Choose Density';
+                return Density
+                  ? (+(value ? value : 1) * 0.95 * +Density * 2.204).toFixed(
+                      fixedNum
+                    )
+                  : 'Choose Density';
               case 'm-liter':
                 return (+(value ? value : 1) * 0.95 * 1000).toFixed(fixedNum);
+              case 'liter':
+                return (+(value ? value : 1) * 0.95).toFixed(fixedNum);
               case 'Oz':
                 return (+(value ? value : 1) * 8 * 2 * 2 * 4).toFixed(fixedNum);
               default:
-                return Density ? '' : 'Choose Density';
+                return "Can't Measure";
             }
             break;
           case 'Tsp':

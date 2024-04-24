@@ -9,12 +9,11 @@
         "Pint",
         "Cup",
         "Tbsp",
-        "Ounce",
-        "k-gram",
         "gram",
         "m-gram",
         "Pound",
         "m-liter",
+        "liter",
         "Oz"
       ],
       "desity": [
