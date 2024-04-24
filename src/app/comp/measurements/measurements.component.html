@@ -43,8 +43,7 @@
           type="select"
           formControlName="density"
           placeholder=" "
-          (change)="onSubmitChage()"
-          (change)="selectedDensity($event.target)"
+          (change)="onSubmitChage(); selectedDensity($event.target)"
         >
           <option
             *ngFor="let info of desityData; let i = index"
@@ -63,8 +62,8 @@
   <div class="listAction">
     <ul class="infoList" [ngClass]="isCompReady ? 'show' : 'hide'">
       <li class="infoItem" *ngFor="let info of measurmentsListFiltred">
-        {{ info | uppercase }}: <br /><br />
-        <div style="color: var(--c-grey)">
+        {{ info | uppercase }}:
+        <div>
           {{
             amountMeasure
               | measurments

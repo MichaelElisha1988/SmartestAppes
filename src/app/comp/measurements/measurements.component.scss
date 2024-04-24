@@ -106,7 +106,7 @@
   .infoList {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0.5em;
+    gap: 1.2em;
     justify-items: flex-start;
     font-size: 1.2em;
     font-weight: 600;
@@ -123,6 +123,11 @@
   }
   .infoItem {
     width: 7em;
+
+    div {
+      color: var(--c-grey);
+      margin-top: 5px;
+    }
   }
 }
 .textDensity {

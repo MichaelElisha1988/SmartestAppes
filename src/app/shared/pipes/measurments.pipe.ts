@@ -4,6 +4,8 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'measurments',
 })
 export class MeasurmentsPipe implements PipeTransform {
+  tmpValue: any = '';
+  maxAmout: any = 10000;
   transform(
     value: string | null | undefined,
     topic: string,
@@ -20,138 +22,179 @@ export class MeasurmentsPipe implements PipeTransform {
           case 'Quart':
             switch (measurmentTo) {
               case 'Tsp':
-                return (+(value ? value : 1) * 0.95 * 1000 * 0.2).toFixed(
-                  fixedNum
-                );
+                this.tmpValue = (
+                  +(value ? value : 1) *
+                  0.95 *
+                  1000 *
+                  0.2
+                ).toFixed(fixedNum);
+                break;
               case 'Gal':
-                return (+(value ? value : 1) * 0.25).toFixed(fixedNum);
+                this.tmpValue = (+(value ? value : 1) * 0.25).toFixed(fixedNum);
+                break;
               case 'Pint':
-                return (+(value ? value : 1) * 2).toFixed(fixedNum);
+                this.tmpValue = (+(value ? value : 1) * 2).toFixed(fixedNum);
+                break;
               case 'Cup':
-                return (+(value ? value : 1) * 4).toFixed(fixedNum);
+                this.tmpValue = (+(value ? value : 1) * 4).toFixed(fixedNum);
+                break;
               case 'Tbsp':
-                return (+(value ? value : 1) * 0.95 * 1000 * 0.06).toFixed(
-                  fixedNum
-                );
+                this.tmpValue = (
+                  +(value ? value : 1) *
+                  0.95 *
+                  1000 *
+                  0.06
+                ).toFixed(fixedNum);
+                break;
               case 'k-gram':
-                return Density
+                this.tmpValue = Density
                   ? (+(value ? value : 1) * 0.95 * +Density).toFixed(fixedNum)
                   : 'Choose Density';
+                break;
               case 'gram':
-                return Density
+                this.tmpValue = Density
                   ? ((+(value ? value : 1) * 0.95 * +Density) / 1000).toFixed(
                       fixedNum
                     )
                   : 'Choose Density';
+                break;
               case 'm-gram':
-                return Density
+                this.tmpValue = Density
                   ? (+(value ? value : 1) * 0.95 * +Density * 1000).toFixed(
                       fixedNum
                     )
                   : 'Choose Density';
+                break;
               case 'Pound':
-                return Density
+                this.tmpValue = Density
                   ? (+(value ? value : 1) * 0.95 * +Density * 2.204).toFixed(
                       fixedNum
                     )
                   : 'Choose Density';
+                break;
               case 'm-liter':
-                return (+(value ? value : 1) * 0.95 * 1000).toFixed(fixedNum);
+                this.tmpValue = (+(value ? value : 1) * 0.95 * 1000).toFixed(
+                  fixedNum
+                );
+                break;
               case 'liter':
-                return (+(value ? value : 1) * 0.95).toFixed(fixedNum);
+                this.tmpValue = (+(value ? value : 1) * 0.95).toFixed(fixedNum);
+                break;
               case 'Oz':
-                return (+(value ? value : 1) * 8 * 2 * 2 * 4).toFixed(fixedNum);
+                this.tmpValue = (+(value ? value : 1) * 8 * 2 * 2 * 4).toFixed(
+                  fixedNum
+                );
+                break;
               default:
-                return "Can't Measure";
+                this.tmpValue = "Can't Measure";
             }
             break;
           case 'Tsp':
             switch (measurmentTo) {
               case 'Quart':
-                return (+(value ? value : 1) / 192).toFixed(fixedNum);
+                this.tmpValue = (+(value ? value : 1) / 192).toFixed(fixedNum);
+                break;
               case 'Gal':
-                return (+(value ? value : 1) / 768).toFixed(fixedNum);
+                this.tmpValue = (+(value ? value : 1) / 768).toFixed(fixedNum);
+                break;
               case 'Pint':
-                return (+(value ? value : 1) / 96).toFixed(fixedNum);
+                this.tmpValue = (+(value ? value : 1) / 96).toFixed(fixedNum);
+                break;
 
               case 'Cup':
-                return (+(value ? value : 1) / 48).toFixed(fixedNum);
+                this.tmpValue = (+(value ? value : 1) / 48).toFixed(fixedNum);
+                break;
 
               case 'Tbsp':
-                return (+(value ? value : 1) / 3).toFixed(fixedNum);
+                this.tmpValue = (+(value ? value : 1) / 3).toFixed(fixedNum);
+                break;
 
               case 'k-gram':
-                return Density
+                this.tmpValue = Density
                   ? ((+(value ? value : 1) * 4.92 * +Density) / 1000).toFixed(
                       fixedNum
                     )
                   : 'Choose Density';
+                break;
 
               case 'gram':
-                return Density
+                this.tmpValue = Density
                   ? (+(value ? value : 1) * 4.92 * +Density).toFixed(fixedNum)
                   : 'Choose Density';
+                break;
 
               case 'm-gram':
-                return Density
+                this.tmpValue = Density
                   ? (+(value ? value : 1) * 4.92 * +Density * 1000).toFixed(
                       fixedNum
                     )
                   : 'Choose Density';
+                break;
 
               case 'liter':
-                return Density
+                this.tmpValue = Density
                   ? (+(value ? value : 1) * 0.00492).toFixed(fixedNum)
                   : 'Choose Density';
+                break;
 
               case 'Pound':
-                return Density
+                this.tmpValue = Density
                   ? (+(value ? value : 1) * 2.204 * 0.00492).toFixed(fixedNum)
                   : 'Choose Density';
+                break;
 
               case 'm-liter':
-                return (+(value ? value : 1) / 4.92).toFixed(fixedNum);
+                this.tmpValue = (+(value ? value : 1) / 4.92).toFixed(fixedNum);
+                break;
 
               case 'Oz':
-                return (+(value ? value : 1) * 1.5).toFixed(fixedNum);
+                this.tmpValue = (+(value ? value : 1) * 1.5).toFixed(fixedNum);
+                break;
 
               default:
-                return "Can't Measure";
+                this.tmpValue = "Can't Measure";
             }
             break;
           case 'Gal':
             switch (measurmentTo) {
               case 'Quart':
-                return (+(value ? value : 1) * 4).toFixed(fixedNum);
+                this.tmpValue = (+(value ? value : 1) * 4).toFixed(fixedNum);
+                break;
 
               case 'Tsp':
-                return (+(value ? value : 1) * 768).toFixed(fixedNum);
+                this.tmpValue = (+(value ? value : 1) * 768).toFixed(fixedNum);
+                break;
 
               case 'Pint':
-                return (+(value ? value : 1) * 8).toFixed(fixedNum);
+                this.tmpValue = (+(value ? value : 1) * 8).toFixed(fixedNum);
+                break;
 
               case 'Cup':
-                return (+(value ? value : 1) * 16).toFixed(fixedNum);
+                this.tmpValue = (+(value ? value : 1) * 16).toFixed(fixedNum);
+                break;
 
               case 'Tbsp':
-                return (+(value ? value : 1) * 256).toFixed(fixedNum);
+                this.tmpValue = (+(value ? value : 1) * 256).toFixed(fixedNum);
+                break;
 
               case 'k-gram':
-                return Density
+                this.tmpValue = Density
                   ? (+(value ? value : 1) * 3.78541 * +Density).toFixed(
                       fixedNum
                     )
                   : 'Choose Density';
+                break;
 
               case 'gram':
-                return Density
+                this.tmpValue = Density
                   ? (+(value ? value : 1) * 3.78541 * +Density * 1000).toFixed(
                       fixedNum
                     )
                   : 'Choose Density';
+                break;
 
               case 'm-gram':
-                return Density
+                this.tmpValue = Density
                   ? (
                       +(value ? value : 1) *
                       3.78541 *
@@ -159,126 +202,175 @@ export class MeasurmentsPipe implements PipeTransform {
                       1000000
                     ).toFixed(fixedNum)
                   : 'Choose Density';
+                break;
 
               case 'liter':
-                return Density
+                this.tmpValue = Density
                   ? (+(value ? value : 1) * 3.78541).toFixed(fixedNum)
                   : 'Choose Density';
+                break;
 
               case 'Pound':
-                return Density
+                this.tmpValue = Density
                   ? (+(value ? value : 1) * 3.78541 * 2.204 * +Density).toFixed(
                       fixedNum
                     )
                   : 'Choose Density';
+                break;
 
               case 'm-liter':
-                return (+(value ? value : 1) * 3785.41).toFixed(fixedNum);
+                this.tmpValue = (+(value ? value : 1) * 3785.41).toFixed(
+                  fixedNum
+                );
+                break;
 
               case 'Oz':
-                return (+(value ? value : 1) * 128).toFixed(fixedNum);
+                this.tmpValue = (+(value ? value : 1) * 128).toFixed(fixedNum);
+                break;
 
               default:
-                return "Can't Measure";
+                this.tmpValue = "Can't Measure";
             }
             break;
           case 'Pint':
             switch (measurmentTo) {
               case 'Quart':
-                return (+(value ? value : 1) / 2).toFixed(fixedNum);
+                this.tmpValue = (+(value ? value : 1) / 2).toFixed(fixedNum);
+                break;
 
               case 'Tsp':
-                return (+(value ? value : 1) * 96).toFixed(fixedNum);
+                this.tmpValue = (+(value ? value : 1) * 96).toFixed(fixedNum);
+                break;
 
               case 'Gal':
-                return (+(value ? value : 1) / 8).toFixed(fixedNum);
+                this.tmpValue = (+(value ? value : 1) / 8).toFixed(fixedNum);
+                break;
 
               case 'Cup':
-                return (+(value ? value : 1) * 2).toFixed(fixedNum);
+                this.tmpValue = (+(value ? value : 1) * 2).toFixed(fixedNum);
+                break;
 
               case 'Tbsp':
-                return (+(value ? value : 1) * 32).toFixed(fixedNum);
+                this.tmpValue = (+(value ? value : 1) * 32).toFixed(fixedNum);
+                break;
 
               case 'k-gram':
-                return Density ? '' : 'Choose Density';
+                this.tmpValue = Density
+                  ? (
+                      ((+(value ? value : 1) * 473.2) / 1000) *
+                      +Density
+                    ).toFixed(fixedNum)
+                  : 'Choose Density';
+                break;
 
               case 'gram':
-                return Density ? '' : 'Choose Density';
+                this.tmpValue = Density
+                  ? (+(value ? value : 1) * 473.2 * +Density).toFixed(fixedNum)
+                  : 'Choose Density';
+                break;
 
               case 'm-gram':
-                return Density ? '' : 'Choose Density';
+                this.tmpValue = Density
+                  ? (+(value ? value : 1) * 473.2 * 1000 * +Density).toFixed(
+                      fixedNum
+                    )
+                  : 'Choose Density';
+                break;
 
               case 'liter':
-                return Density ? '' : 'Choose Density';
+                this.tmpValue = Density
+                  ? ((+(value ? value : 1) * 473.2) / 1000).toFixed(fixedNum)
+                  : 'Choose Density';
+                break;
 
               case 'Pound':
-                return Density ? '' : 'Choose Density';
+                this.tmpValue = Density ? '' : 'Choose Density';
+                break;
 
               case 'm-liter':
-                return (+(value ? value : 1) * 473.2).toFixed(fixedNum);
+                this.tmpValue = (+(value ? value : 1) * 473.2).toFixed(
+                  fixedNum
+                );
+                break;
 
               case 'Oz':
-                return (+(value ? value : 1) * 16).toFixed(fixedNum);
+                this.tmpValue = (+(value ? value : 1) * 16).toFixed(fixedNum);
+                break;
 
               default:
-                return "Can't Measure";
+                this.tmpValue = "Can't Measure";
             }
             break;
           case 'Cup':
             switch (measurmentTo) {
               case 'Quart':
-                return (+(value ? value : 1) / 4).toFixed(fixedNum);
+                this.tmpValue = (+(value ? value : 1) / 4).toFixed(fixedNum);
+                break;
 
               case 'Tsp':
-                return (+(value ? value : 1) * 16 * 16 * 3).toFixed(fixedNum);
+                this.tmpValue = (+(value ? value : 1) * 16 * 16 * 3).toFixed(
+                  fixedNum
+                );
+                break;
 
               case 'Gal':
-                return (+(value ? value : 1) / 16).toFixed(fixedNum);
+                this.tmpValue = (+(value ? value : 1) / 16).toFixed(fixedNum);
+                break;
 
               case 'Pint':
-                return (+(value ? value : 1) / 2).toFixed(fixedNum);
+                this.tmpValue = (+(value ? value : 1) / 2).toFixed(fixedNum);
+                break;
 
               case 'Tbsp':
-                return (+(value ? value : 1) * 16).toFixed(fixedNum);
+                this.tmpValue = (+(value ? value : 1) * 16).toFixed(fixedNum);
+                break;
 
               case 'k-gram':
-                return Density
+                this.tmpValue = Density
                   ? (
                       ((+(value ? value : 1) * 236.6) / 1000) *
                       +Density
                     ).toFixed(fixedNum)
                   : 'Choose Density';
+                break;
 
               case 'gram':
-                return Density
+                this.tmpValue = Density
                   ? (+(value ? value : 1) * 236.6 * +Density).toFixed(fixedNum)
                   : 'Choose Density';
+                break;
 
               case 'm-gram':
-                return Density
+                this.tmpValue = Density
                   ? (+(value ? value : 1) * 236.6 * 1000 * +Density).toFixed(
                       fixedNum
                     )
                   : 'Choose Density';
+                break;
 
               case 'liter':
-                return Density
+                this.tmpValue = Density
                   ? ((+(value ? value : 1) * 236.6) / 1000).toFixed(fixedNum)
                   : 'Choose Density';
+                break;
 
               case 'Pound':
-                return Density
+                this.tmpValue = Density
                   ? (
                       ((+(value ? value : 1) * 236.6) / 1000) *
                       2.204 *
                       +Density
                     ).toFixed(fixedNum)
                   : 'Choose Density';
+                break;
 
               case 'm-liter':
-                return (+(value ? value : 1) * 236.6).toFixed(fixedNum);
+                this.tmpValue = (+(value ? value : 1) * 236.6).toFixed(
+                  fixedNum
+                );
+                break;
               default:
-                return "Can't Measure";
+                this.tmpValue = "Can't Measure";
             }
             break;
           case 'Tbsp':
@@ -296,13 +388,15 @@ export class MeasurmentsPipe implements PipeTransform {
               case 'k-gram':
 
               case 'gram':
-                return Density ? '' : 'Choose Density';
+                this.tmpValue = Density ? '' : 'Choose Density';
+                break;
 
               case 'm-gram':
-                return Density ? '' : 'Choose Density';
+                this.tmpValue = Density ? '' : 'Choose Density';
+                break;
 
               case 'liter':
-                return Density ? '' : 'Choose Density';
+                this.tmpValue = Density ? '' : 'Choose Density';
                 break;
               case 'Pound':
                 break;
@@ -329,13 +423,16 @@ export class MeasurmentsPipe implements PipeTransform {
                 break;
 
               case 'gram':
-                return Density ? '' : 'Choose Density';
+                this.tmpValue = Density ? '' : 'Choose Density';
+                break;
 
               case 'm-gram':
-                return Density ? '' : 'Choose Density';
+                this.tmpValue = Density ? '' : 'Choose Density';
+                break;
 
               case 'liter':
-                return Density ? '' : 'Choose Density';
+                this.tmpValue = Density ? '' : 'Choose Density';
+                break;
               case 'Pound':
                 break;
               case 'm-liter':
@@ -362,13 +459,17 @@ export class MeasurmentsPipe implements PipeTransform {
               case 'k-gram':
 
               case 'gram':
-                return Density ? '' : 'Choose Density';
+                this.tmpValue = Density ? '' : 'Choose Density';
+                break;
 
               case 'm-gram':
-                return Density ? '' : 'Choose Density';
+                this.tmpValue = Density ? '' : 'Choose Density';
+                break;
 
               case 'liter':
-                return Density ? '' : 'Choose Density';
+                this.tmpValue = Density ? '' : 'Choose Density';
+                break;
+                break;
                 break;
               case 'm-liter':
                 break;
@@ -394,13 +495,15 @@ export class MeasurmentsPipe implements PipeTransform {
               case 'k-gram':
 
               case 'gram':
-                return Density ? '' : 'Choose Density';
+                this.tmpValue = Density ? '' : 'Choose Density';
+                break;
 
               case 'm-gram':
-                return Density ? '' : 'Choose Density';
+                this.tmpValue = Density ? '' : 'Choose Density';
+                break;
 
               case 'liter':
-                return Density ? '' : 'Choose Density';
+                this.tmpValue = Density ? '' : 'Choose Density';
                 break;
               case 'Pound':
                 break;
@@ -418,20 +521,24 @@ export class MeasurmentsPipe implements PipeTransform {
           case 'c-meters':
             switch (measurmentTo) {
               case 'meters':
-                return value ? (+value / 100).toFixed(fixedNum) : 1;
-
+                this.tmpValue = value ? (+value / 100).toFixed(fixedNum) : 1;
+                break;
               case 'k-meters':
-                return value ? (+value / 100000).toFixed(fixedNum) : 1;
-
+                this.tmpValue = value ? (+value / 100000).toFixed(fixedNum) : 1;
+                break;
               case 'inches':
-                return value ? (+value * 0.3937).toFixed(fixedNum) : 1;
-
+                this.tmpValue = value ? (+value * 0.3937).toFixed(fixedNum) : 1;
+                break;
               case 'feet':
-                return value ? ((+value / 100) * 3.2808).toFixed(fixedNum) : 1;
-
+                this.tmpValue = value
+                  ? ((+value / 100) * 3.2808).toFixed(fixedNum)
+                  : 1;
+                break;
               case 'yards':
-                return value ? ((+value / 100) * 1.0936).toFixed(fixedNum) : 1;
-
+                this.tmpValue = value
+                  ? ((+value / 100) * 1.0936).toFixed(fixedNum)
+                  : 1;
+                break;
               default:
                 break;
             }
@@ -439,20 +546,22 @@ export class MeasurmentsPipe implements PipeTransform {
           case 'meters':
             switch (measurmentTo) {
               case 'c-meters':
-                return value ? (+value * 100).toFixed(fixedNum) : 1;
-
+                this.tmpValue = value ? (+value * 100).toFixed(fixedNum) : 1;
+                break;
               case 'k-meters':
-                return value ? ((+value / 1000) * 3.2808).toFixed(fixedNum) : 1;
-
+                this.tmpValue = value
+                  ? ((+value / 1000) * 3.2808).toFixed(fixedNum)
+                  : 1;
+                break;
               case 'inches':
-                return value ? (+value * 39.37).toFixed(fixedNum) : 1;
-
+                this.tmpValue = value ? (+value * 39.37).toFixed(fixedNum) : 1;
+                break;
               case 'feet':
-                return value ? (+value * 3.2808).toFixed(fixedNum) : 1;
-
+                this.tmpValue = value ? (+value * 3.2808).toFixed(fixedNum) : 1;
+                break;
               case 'yards':
-                return value ? (+value * 1.0936).toFixed(fixedNum) : 1;
-
+                this.tmpValue = value ? (+value * 1.0936).toFixed(fixedNum) : 1;
+                break;
               default:
                 break;
             }
@@ -460,20 +569,22 @@ export class MeasurmentsPipe implements PipeTransform {
           case 'k-meters':
             switch (measurmentTo) {
               case 'c-meters':
-                return value ? (+value / 100000).toFixed(fixedNum) : 1;
-
+                this.tmpValue = value ? (+value / 100000).toFixed(fixedNum) : 1;
+                break;
               case 'meters':
-                return value ? (+value / 1000).toFixed(fixedNum) : 1;
-
+                this.tmpValue = value ? (+value / 1000).toFixed(fixedNum) : 1;
+                break;
               case 'inches':
-                return value ? (+value * 39374).toFixed(fixedNum) : 1;
-
+                this.tmpValue = value ? (+value * 39374).toFixed(fixedNum) : 1;
+                break;
               case 'feet':
-                return value ? (+value * 0.003281).toFixed(fixedNum) : 1;
-
+                this.tmpValue = value
+                  ? (+value * 0.003281).toFixed(fixedNum)
+                  : 1;
+                break;
               case 'yards':
-                return value ? (+value * 0.0011).toFixed(fixedNum) : 1;
-
+                this.tmpValue = value ? (+value * 0.0011).toFixed(fixedNum) : 1;
+                break;
               default:
                 break;
             }
@@ -481,20 +592,28 @@ export class MeasurmentsPipe implements PipeTransform {
           case 'inches':
             switch (measurmentTo) {
               case 'c-meters':
-                return value ? (+value / 0.3937).toFixed(fixedNum) : 1;
-
+                this.tmpValue = value ? (+value / 0.3937).toFixed(fixedNum) : 1;
+                break;
               case 'meters':
-                return value ? (+value / 100 / 0.3937).toFixed(fixedNum) : 1;
-
+                this.tmpValue = value
+                  ? (+value / 100 / 0.3937).toFixed(fixedNum)
+                  : 1;
+                break;
               case 'k-meters':
-                return value ? (+value / 100000 / 0.3937).toFixed(fixedNum) : 1;
-
+                this.tmpValue = value
+                  ? (+value / 100000 / 0.3937).toFixed(fixedNum)
+                  : 1;
+                break;
               case 'feet':
-                return value ? (+value * 0.083334).toFixed(fixedNum) : 1;
-
+                this.tmpValue = value
+                  ? (+value * 0.083334).toFixed(fixedNum)
+                  : 1;
+                break;
               case 'yards':
-                return value ? (+value * 0.27778).toFixed(fixedNum) : 1;
-
+                this.tmpValue = value
+                  ? (+value * 0.27778).toFixed(fixedNum)
+                  : 1;
+                break;
               default:
                 break;
             }
@@ -502,17 +621,24 @@ export class MeasurmentsPipe implements PipeTransform {
           case 'feet':
             switch (measurmentTo) {
               case 'c-meters':
-                return value ? (+value * (0.305 / 100)).toFixed(fixedNum) : 1;
+                this.tmpValue = value
+                  ? (+value * (0.305 / 100)).toFixed(fixedNum)
+                  : 1;
+                break;
               case 'meters':
-                return value ? (+value * 0.305).toFixed(fixedNum) : 1;
+                this.tmpValue = value ? (+value * 0.305).toFixed(fixedNum) : 1;
+                break;
               case 'k-meters':
-                return value
+                this.tmpValue = value
                   ? (+value * (0.305 / 100000)).toFixed(fixedNum)
                   : 1;
+                break;
               case 'inches':
-                return value ? (+value / 0.3937).toFixed(fixedNum) : 1;
+                this.tmpValue = value ? (+value / 0.3937).toFixed(fixedNum) : 1;
+                break;
               case 'yards':
-                return value ? (+value / 0.3937).toFixed(fixedNum) : 1;
+                this.tmpValue = value ? (+value / 0.3937).toFixed(fixedNum) : 1;
+                break;
               default:
                 break;
             }
@@ -542,6 +668,6 @@ export class MeasurmentsPipe implements PipeTransform {
         break;
     }
 
-    return value;
+    return this.tmpValue > this.maxAmout ? 'N/A' : this.tmpValue;
   }
 }
