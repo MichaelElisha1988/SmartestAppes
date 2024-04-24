@@ -81,10 +81,33 @@ export class MeasurmentsPipe implements PipeTransform {
                 return (+(value ? value : 1) / 3).toFixed(fixedNum);
 
               case 'k-gram':
-                return Density ? '' : 'Choose Density';
+                return Density
+                  ? ((+(value ? value : 1) * 4.92 * +Density) / 1000).toFixed(
+                      fixedNum
+                    )
+                  : 'Choose Density';
+
+              case 'gram':
+                return Density
+                  ? (+(value ? value : 1) * 4.92 * +Density).toFixed(fixedNum)
+                  : 'Choose Density';
+
+              case 'm-gram':
+                return Density
+                  ? (+(value ? value : 1) * 4.92 * +Density * 1000).toFixed(
+                      fixedNum
+                    )
+                  : 'Choose Density';
+
+              case 'liter':
+                return Density
+                  ? (+(value ? value : 1) * 0.00492).toFixed(fixedNum)
+                  : 'Choose Density';
 
               case 'Pound':
-                return Density ? '' : 'Choose Density';
+                return Density
+                  ? (+(value ? value : 1) * 2.204 * 0.00492).toFixed(fixedNum)
+                  : 'Choose Density';
 
               case 'm-liter':
                 return (+(value ? value : 1) / 4.92).toFixed(fixedNum);
@@ -93,7 +116,7 @@ export class MeasurmentsPipe implements PipeTransform {
                 return (+(value ? value : 1) * 1.5).toFixed(fixedNum);
 
               default:
-                return Density ? '' : 'Choose Density';
+                return "Can't Measure";
             }
             break;
           case 'Gal':
@@ -114,10 +137,40 @@ export class MeasurmentsPipe implements PipeTransform {
                 return (+(value ? value : 1) * 256).toFixed(fixedNum);
 
               case 'k-gram':
-                return Density ? '' : 'Choose Density';
+                return Density
+                  ? (+(value ? value : 1) * 3.78541 * +Density).toFixed(
+                      fixedNum
+                    )
+                  : 'Choose Density';
+
+              case 'gram':
+                return Density
+                  ? (+(value ? value : 1) * 3.78541 * +Density * 1000).toFixed(
+                      fixedNum
+                    )
+                  : 'Choose Density';
+
+              case 'm-gram':
+                return Density
+                  ? (
+                      +(value ? value : 1) *
+                      3.78541 *
+                      +Density *
+                      1000000
+                    ).toFixed(fixedNum)
+                  : 'Choose Density';
+
+              case 'liter':
+                return Density
+                  ? (+(value ? value : 1) * 3.78541).toFixed(fixedNum)
+                  : 'Choose Density';
 
               case 'Pound':
-                return Density ? '' : 'Choose Density';
+                return Density
+                  ? (+(value ? value : 1) * 3.78541 * 2.204 * +Density).toFixed(
+                      fixedNum
+                    )
+                  : 'Choose Density';
 
               case 'm-liter':
                 return (+(value ? value : 1) * 3785.41).toFixed(fixedNum);
@@ -126,7 +179,7 @@ export class MeasurmentsPipe implements PipeTransform {
                 return (+(value ? value : 1) * 128).toFixed(fixedNum);
 
               default:
-                return Density ? '' : 'Choose Density';
+                return "Can't Measure";
             }
             break;
           case 'Pint':
@@ -149,6 +202,15 @@ export class MeasurmentsPipe implements PipeTransform {
               case 'k-gram':
                 return Density ? '' : 'Choose Density';
 
+              case 'gram':
+                return Density ? '' : 'Choose Density';
+
+              case 'm-gram':
+                return Density ? '' : 'Choose Density';
+
+              case 'liter':
+                return Density ? '' : 'Choose Density';
+
               case 'Pound':
                 return Density ? '' : 'Choose Density';
 
@@ -159,7 +221,7 @@ export class MeasurmentsPipe implements PipeTransform {
                 return (+(value ? value : 1) * 16).toFixed(fixedNum);
 
               default:
-                return Density ? '' : 'Choose Density';
+                return "Can't Measure";
             }
             break;
           case 'Cup':
@@ -180,15 +242,43 @@ export class MeasurmentsPipe implements PipeTransform {
                 return (+(value ? value : 1) * 16).toFixed(fixedNum);
 
               case 'k-gram':
-                return Density ? '' : 'Choose Density';
+                return Density
+                  ? (
+                      ((+(value ? value : 1) * 236.6) / 1000) *
+                      +Density
+                    ).toFixed(fixedNum)
+                  : 'Choose Density';
+
+              case 'gram':
+                return Density
+                  ? (+(value ? value : 1) * 236.6 * +Density).toFixed(fixedNum)
+                  : 'Choose Density';
+
+              case 'm-gram':
+                return Density
+                  ? (+(value ? value : 1) * 236.6 * 1000 * +Density).toFixed(
+                      fixedNum
+                    )
+                  : 'Choose Density';
+
+              case 'liter':
+                return Density
+                  ? ((+(value ? value : 1) * 236.6) / 1000).toFixed(fixedNum)
+                  : 'Choose Density';
 
               case 'Pound':
-                return Density ? '' : 'Choose Density';
+                return Density
+                  ? (
+                      ((+(value ? value : 1) * 236.6) / 1000) *
+                      2.204 *
+                      +Density
+                    ).toFixed(fixedNum)
+                  : 'Choose Density';
 
               case 'm-liter':
-                return (+(value ? value : 1) * 236.6).toFixed();
+                return (+(value ? value : 1) * 236.6).toFixed(fixedNum);
               default:
-                return Density ? '' : 'Choose Density';
+                return "Can't Measure";
             }
             break;
           case 'Tbsp':
@@ -204,6 +294,15 @@ export class MeasurmentsPipe implements PipeTransform {
               case 'Cup':
                 break;
               case 'k-gram':
+
+              case 'gram':
+                return Density ? '' : 'Choose Density';
+
+              case 'm-gram':
+                return Density ? '' : 'Choose Density';
+
+              case 'liter':
+                return Density ? '' : 'Choose Density';
                 break;
               case 'Pound':
                 break;
@@ -228,6 +327,15 @@ export class MeasurmentsPipe implements PipeTransform {
                 break;
               case 'Tbsp':
                 break;
+
+              case 'gram':
+                return Density ? '' : 'Choose Density';
+
+              case 'm-gram':
+                return Density ? '' : 'Choose Density';
+
+              case 'liter':
+                return Density ? '' : 'Choose Density';
               case 'Pound':
                 break;
               case 'm-liter':
@@ -252,6 +360,15 @@ export class MeasurmentsPipe implements PipeTransform {
               case 'Tbsp':
                 break;
               case 'k-gram':
+
+              case 'gram':
+                return Density ? '' : 'Choose Density';
+
+              case 'm-gram':
+                return Density ? '' : 'Choose Density';
+
+              case 'liter':
+                return Density ? '' : 'Choose Density';
                 break;
               case 'm-liter':
                 break;
@@ -275,6 +392,15 @@ export class MeasurmentsPipe implements PipeTransform {
               case 'Tbsp':
                 break;
               case 'k-gram':
+
+              case 'gram':
+                return Density ? '' : 'Choose Density';
+
+              case 'm-gram':
+                return Density ? '' : 'Choose Density';
+
+              case 'liter':
+                return Density ? '' : 'Choose Density';
                 break;
               case 'Pound':
                 break;
