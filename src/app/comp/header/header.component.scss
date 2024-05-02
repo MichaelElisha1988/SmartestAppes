@@ -20,7 +20,7 @@
     justify-content: center;
     align-items: center;
 
-    gap: 10vw;
+    gap: 20px;
 
     .logo {
       height: 40px;
@@ -83,6 +83,7 @@
   top: -200px;
   z-index: 99998;
   width: 100%;
+  max-width: 490px;
 
   background-color: var(--c-grey);
   box-shadow: 0em 0 1em var(--c-blue);
@@ -107,6 +108,7 @@
   z-index: 99998;
   width: -webkit-fill-available;
   color: var(--c-blue);
+  max-width: 490px;
 
   background-color: var(--c-grey);
   box-shadow: 0em 0 1em var(--c-blue);
