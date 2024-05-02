@@ -3,6 +3,7 @@ import { LoginService } from 'src/app/shared/services/login.service';
 import { Subscription, debounce, debounceTime, first, take } from 'rxjs';
 import { Header } from 'src/app/shared/models/header.model';
 import { DataSavingService } from 'src/app/shared/services/dataSaving.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -24,7 +25,8 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
 
   constructor(
     private loginService: LoginService,
-    private dataSavingSrv: DataSavingService
+    private dataSavingSrv: DataSavingService,
+    private router: Router
   ) {
     this.$Subs.add(
       this.loginService.headerInnerData.subscribe((data) => {
@@ -50,7 +52,7 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
         break;
       case 'policy':
         this.isOpenMenu ? (this.isOpenMenu = false) : '';
-        location.href = 'policy';
+        this.router.navigate(['/policy']);
         break;
 
       default:
