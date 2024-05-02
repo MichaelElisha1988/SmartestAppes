@@ -62,7 +62,7 @@
   }
   .right {
     display: flex;
-    gap: 5vw;
+    gap: 10px;
 
     .translate {
       width: 30px;
@@ -108,7 +108,7 @@
   z-index: 99998;
   width: -webkit-fill-available;
   color: var(--c-blue);
-  max-width: 490px;
+  max-width: 465px;
 
   background-color: var(--c-grey);
   box-shadow: 0em 0 1em var(--c-blue);
