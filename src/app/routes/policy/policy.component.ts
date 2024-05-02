@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-policy',
@@ -7,10 +6,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./policy.component.scss'],
 })
 export class PolicyComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor() {}
 
   ngOnInit(): void {}
-  back() {
-    this.router.navigate(['']);
-  }
 }

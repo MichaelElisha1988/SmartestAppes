@@ -48,6 +48,7 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
     switch (ack) {
       case 'menu':
         this.isOpenMenu ? (this.isOpenMenu = false) : '';
+        this.router.navigate(['..']);
         this.dataSavingSrv.setSettingsEdit(true);
         break;
       case 'policy':
