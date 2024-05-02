@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       ? (this.notInList = JSON.parse(localStorage.getItem('notInList')!))
       : '';
     this.$Subs.add(
-      this.generalDataSrvice.homeInnerData.pipe(take(1)).subscribe((data) => {
+      this.generalDataSrvice.homeInnerData.subscribe((data) => {
         this.homeData = data;
         this.homeData.actions.forEach((action) => {
           this.actionsList.push(action['title']);
@@ -47,6 +47,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         });
       })
     );
+
     this.$Subs.add(
       this.dataSavingSrv.settingsEdit.subscribe((data) => {
         this.measureDataToShow = false;
@@ -55,6 +56,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         this.menuSettingEdit ? this.initDisabledList() : '';
       })
     );
+    this.generalDataSrvice.getDataFromJson();
   }
 
   initDisabledList() {
