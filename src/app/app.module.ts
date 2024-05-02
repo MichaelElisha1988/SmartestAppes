@@ -15,6 +15,7 @@ import { MeasurementsComponent } from './comp/measurements/measurements.componen
 import { MeasurmentsPipe } from './shared/pipes/measurments.pipe';
 import { ClickOutsideDirective } from './shared/directive/click-outside.directive';
 import { ToDotLimitPipe } from './shared/pipes/dotToLimit.pipe';
+import { PolicyComponent } from './routes/policy/policy.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ToDotLimitPipe } from './shared/pipes/dotToLimit.pipe';
     MeasurmentsPipe,
     ToDotLimitPipe,
     ClickOutsideDirective,
+    PolicyComponent,
   ],
   imports: [
     BrowserModule,

@@ -48,6 +48,10 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
         this.isOpenMenu ? (this.isOpenMenu = false) : '';
         this.dataSavingSrv.setSettingsEdit(true);
         break;
+      case 'policy':
+        this.isOpenMenu ? (this.isOpenMenu = false) : '';
+        location.href = 'policy';
+        break;
 
       default:
         break;
