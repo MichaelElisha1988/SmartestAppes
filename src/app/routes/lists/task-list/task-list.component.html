@@ -1,9 +1,10 @@
 <div class="scroll-bar">
-  <div class="scroll-arrows left">
+  <!-- <div class="scroll-arrows left">
     <button class="btn-scroll back" (click)="moveAround(50)">
       {{ "←" }}
     </button>
-  </div>
+  </div> -->
+
   <section class="list-menu" #ListId>
     <div
       *ngFor="let list of listId; let i = index"
@@ -14,21 +15,26 @@
     >
       {{ list.name }}
     </div>
+
+  </section>
+  <div class="add-section" [ngClass]="{ 'new-add': addActive }">
     <input
-      type="text"
-      class="add-list-input"
-      [ngClass]="{ 'new-add': addActive }"
-      #addInput
-    />
+    type="text"
+    class="add-list-input"
+    [ngClass]="{ 'new-add': addActive }"
+    #addInput
+  />
     <div (click)="addListId($event)" class="add-list">
       {{ addActive ? "Ok" : "Add List" }}
     </div>
-  </section>
-  <div class="scroll-arrows right">
+
+  </div>
+
+  <!-- <div class="scroll-arrows right">
     <button class="btn-scroll forward" (click)="moveAround(-50)">
       {{ "→" }}
     </button>
-  </div>
+  </div> -->
 </div>
 <task class="tasks"></task>
 <div class="end-line"></div>
