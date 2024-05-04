@@ -171,7 +171,8 @@ table {
 body {
   background-color: var(--c-silver);
   height: auto;
-  width: 100vw;
+  width: -webkit-fill-available;
+
   max-width: 490px;
   max-height: 1920px;
   margin: 0 auto;
