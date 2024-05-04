@@ -1,0 +1,76 @@
+.scroll-bar {
+  width: 100vw;
+  position: relative;
+  .list-menu {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding: 0 30px;
+    width: max-content;
+    position: relative;
+    transition: 0.6s left ease-in-out;
+    .list {
+      padding: 10px 10px;
+      border-right: 1px solid var(--c-silver);
+      border-left: 1px solid var(--c-silver);
+      cursor: pointer;
+      &.selected {
+        background-color: var(--c-dark-blue);
+      }
+    }
+    .add-list-input {
+      pointer-events: none;
+      width: 0;
+      opacity: 0;
+      background-color: transparent;
+      padding-left: 5px;
+      transition: 0.3s all ease-in-out;
+
+      &.new-add {
+        width: 100px;
+        height: 30px;
+        opacity: 1;
+        border: 0px transparent;
+        border-right: 1px solid var(--c-silver);
+        pointer-events: all;
+      }
+    }
+
+    .add-list {
+      background-color: var(--c-silver);
+      padding: 5px 20px;
+      margin: 5px 0;
+      margin-left: 15px;
+      border-radius: 30px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s box-shadow ease-in-out;
+      &:hover {
+        box-shadow: 1px 1px 5px var(--c-dark-blue);
+      }
+    }
+  }
+  .btn-scroll {
+    background-color: var(--c-dark);
+    border: 0;
+    font-size: 18px;
+    color: var(--c-silver);
+  }
+  .scroll-arrows {
+    position: absolute;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    top: 0;
+    z-index: 2;
+    &.left {
+      left: 0;
+    }
+    &.right {
+      right: 0;
+    }
+  }
+}
+.end-line {
+  height: 110px;
+}

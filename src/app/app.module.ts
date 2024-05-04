@@ -18,6 +18,10 @@ import { MeasurmentsPipe } from './shared/pipes/measurments.pipe';
 import { ClickOutsideDirective } from './shared/directive/click-outside.directive';
 import { ToDotLimitPipe } from './shared/pipes/dotToLimit.pipe';
 import { PolicyComponent } from './routes/policy/policy.component';
+import { ListsComponent } from './routes/lists/lists.component';
+import { UserHeaderComponent } from './routes/lists/user-header/user-header.component';
+import { TaskListComponent } from './routes/lists/task-list/task-list.component';
+import { TaskComponent } from './routes/lists/task-list/task/task.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +34,10 @@ import { PolicyComponent } from './routes/policy/policy.component';
     ToDotLimitPipe,
     ClickOutsideDirective,
     PolicyComponent,
+    ListsComponent,
+    UserHeaderComponent,
+    TaskListComponent,
+    TaskComponent,
   ],
   imports: [
     BrowserModule,

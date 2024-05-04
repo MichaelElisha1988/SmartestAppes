@@ -1,0 +1,47 @@
+.task {
+  padding: 2vh 5vw;
+  margin: 5px 1vw;
+
+  .close {
+    position: relative;
+    font-size: 12px;
+    font-weight: 600;
+    width: fit-content;
+    transition: 0.3s color ease-in-out;
+    cursor: pointer;
+    &:hover {
+      color: red;
+    }
+  }
+
+  .task-name {
+    font-size: 22px;
+    margin-bottom: 1vh;
+  }
+  .descripption-task {
+    display: flex;
+    gap: 20px;
+    font-size: 18px;
+    .auther-task {
+    }
+    .date-task {
+    }
+    .status-task {
+      .status-state {
+        cursor: pointer;
+        transition: color 0.3s ease-in-out;
+        &:hover {
+          color: var(--yellow);
+        }
+      }
+    }
+  }
+}
+
+.odd {
+  background-color: var(--pink);
+}
+
+.even {
+  background-color: var(--offgreen);
+}
