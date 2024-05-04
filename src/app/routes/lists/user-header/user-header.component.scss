@@ -1,0 +1,62 @@
+.header-panel {
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  display: flex;
+  height: 60px;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--offgreen);
+  border-bottom: 2px solid var(--green);
+  box-shadow: 1px 1px 3px var(--dark);
+  padding: 0 20px;
+  .user {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    height: 60px;
+    // .user-pic {
+    //   height: 50%;
+    //   img {
+    //     height: -webkit-fill-available;
+    //     border-radius: 50%;
+    //   }
+    // }
+    .user-name {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--dark);
+      text-shadow: 1px 1px 2px var(--dark);
+    }
+  }
+  .app-info {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 16px;
+    text-shadow: 1px 1px 25px var(--dark);
+    .app-logo {
+      font-weight: 600;
+      color: var(--green);
+      text-shadow: 1px 1px 2px var(--dark);
+    }
+    .app-name {
+      font-weight: 600;
+      color: var(--yellow);
+      text-shadow: 1px 1px 2px var(--dark);
+    }
+  }
+  .date-info {
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    .day {
+      font-weight: 600;
+      color: var(--green);
+      text-shadow: 1px 1px 2px var(--dark);
+    }
+    .date {
+    }
+  }
+}

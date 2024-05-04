@@ -1,0 +1,34 @@
+<div class="scroll-bar">
+  <div class="scroll-arrows left">
+    <button class="btn-scroll back" (click)="moveAround(50)">
+      {{ "←" }}
+    </button>
+  </div>
+  <section class="list-menu" #ListId>
+    <div
+      *ngFor="let list of listId; let i = index"
+      class="list"
+      [ngClass]="getSelectedListId() == +list.id ? 'selected' : ''"
+      (click)="selectListId($event)"
+      [attr.listId]="list.id"
+    >
+      {{ list.name }}
+    </div>
+    <input
+      type="text"
+      class="add-list-input"
+      [ngClass]="{ 'new-add': addActive }"
+      #addInput
+    />
+    <div (click)="addListId($event)" class="add-list">
+      {{ addActive ? "Ok" : "Add List" }}
+    </div>
+  </section>
+  <div class="scroll-arrows right">
+    <button class="btn-scroll forward" (click)="moveAround(-50)">
+      {{ "→" }}
+    </button>
+  </div>
+</div>
+<task class="tasks"></task>
+<div class="end-line"></div>
