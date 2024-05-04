@@ -3,19 +3,19 @@
     {
       "title": "Kitchen",
       "measurements": [
-        "Quart",
-        "Tsp",
-        "Gal",
-        "Pint",
-        "Cup",
-        "Tbsp",
+        "quart",
+        "teaspoons",
+        "gallon",
+        "pint",
+        "cup",
+        "tablespoons",
         "gram",
-        "miligram",
+        "milligram",
         "kilogram",
-        "Pound",
-        "mililiter",
+        "pound",
+        "milliliter",
         "liter",
-        "Oz"
+        "oz"
       ],
       "desity": [
         ["water", 1],
