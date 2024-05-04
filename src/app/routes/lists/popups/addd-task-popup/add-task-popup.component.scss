@@ -29,10 +29,15 @@
       top: 0;
       padding: 12px 0 0 12px;
       cursor: pointer;
+      &:hover{
+        color: var(--c-dark-blue);
+        transition: .2s color ease-in-out;
+      }
     }
     .title {
       text-align: center;
       margin: 20px auto;
+      color: var(--c-dark-blue);
       font-size: 22px;
       font-weight: 600;
       width: 200px;
@@ -61,7 +66,7 @@
           left: 15px;
           top: 8px;
           background-color: var(--c-silver);
-          text-shadow: 1px 1px 1px var(--c-dark-blue);
+          text-shadow: 1px 1px 1px var(--c-silver);
         }
 
         input {
@@ -77,21 +82,21 @@
             position: absolute;
             transition: 0.3s all ease-in-out;
             top: -8px;
-            color: var(--green);
+            color: var(--c-dark-blue);
             font-weight: 600;
           }
         }
         .error {
           position: absolute;
           bottom: -15px;
-          color: rosybrown;
+          color: var(--dark);
           font-size: 12px;
           font-weight: 600;
           left: 15px;
         }
       }
       .sbm-btn {
-        background-color: var(--green);
+        background-color: var(--dark);
         border: 0px transparent;
         border-radius: 30px;
         padding: 12px 30px;
@@ -99,9 +104,9 @@
         transition: all 0.3s ease-in-out;
 
         &:hover {
-          box-shadow: 1px 1px 15px black;
+          box-shadow: 1px 1px 15px var(--c-dark);
           transition: all 0.3s ease-in-out;
-          color: var(--white);
+          color: var(--c-dark-blue);
         }
       }
     }

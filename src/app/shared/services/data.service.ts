@@ -60,8 +60,6 @@ export class DataService {
     // GET FIRST DATA FIREBASE/SESSION
     this.getListId();
     this.getTaskList();
-
-    this.setSelectedListId(0);
   }
 
   getSelectedListId(): number {
@@ -105,6 +103,18 @@ export class DataService {
     deleteDoc(docRef);
     this.taskList = this.taskList.filter((x) => x.id != id);
     this.TaskListSubject.next(this.taskList);
+    this.ListIdChgSubject.next(this.selectedId);
+  }
+
+  deleteList(id: number, taskIds: TaskModel[]) {
+    taskIds.forEach(x=>this.deleteTask(x.id))
+    const dbId = this.listId.find((x) => x.id == id)
+      ? this.listId.find((x) => x.id == id)?.dbId
+      : '';
+    const docRef = doc(this.DataBaseApp, 'listId', '' + dbId);
+    deleteDoc(docRef);
+    this.listId = this.listId.filter((x) => x.id != id);
+    this.ListIdSubject.next(this.listId);
     this.ListIdChgSubject.next(this.selectedId);
   }
 

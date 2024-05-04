@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ListId } from '../../../shared/models/list-id.model';
 import { DataService } from '../../../shared/services/data.service';
 
@@ -7,7 +7,7 @@ import { DataService } from '../../../shared/services/data.service';
   templateUrl: './task-list.component.html',
   styleUrls: ['./task-list.component.scss'],
 })
-export class TaskListComponent implements OnInit {
+export class TaskListComponent implements OnInit, AfterViewInit {
   listId: ListId[] = [];
   addActive: boolean = false;
   movearound: number = 0;
@@ -20,7 +20,14 @@ export class TaskListComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
+  
+  ngAfterViewInit(): void {
+    setTimeout(()=>{
+      this.dataSrv.setSelectedListId(Number(document.querySelector('.list-menu')?.children[0].attributes.getNamedItem('listid')?.value))
+    },1500)
+  }
 
   addListId(event: any) {
     if (!this.addActive) {
@@ -40,6 +47,13 @@ export class TaskListComponent implements OnInit {
 
   selectListId(event: any) {
     this.dataSrv.setSelectedListId(event.target.attributes['listId'].value);
+  }
+
+  deleteList(event: any) {
+    let listId = this.getSelectedListId()
+    let taskIds = this.dataSrv.taskList.filter(x=>x.listID == listId)
+    this.dataSrv.deleteList(listId, taskIds)
+
   }
 
   moveAround(moveNum: number) {

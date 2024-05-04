@@ -31,7 +31,7 @@
         cursor: pointer;
         transition: color 0.3s ease-in-out;
         &:hover {
-          color: var(--yellow);
+          color: var(--c-dark-blue);
         }
       }
     }
@@ -39,9 +39,9 @@
 }
 
 .odd {
-  background-color: var(--pink);
+  background-color: var(--c-dark-blue);
 }
 
 .even {
-  background-color: var(--offgreen);
+  background-color: var(--c-silver);
 }
