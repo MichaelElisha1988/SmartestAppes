@@ -60,12 +60,9 @@
     align-items: center;
     .logo {
       height: 40px;
-
-      width: max-content;
       img {
         height: 40px;
 
-        width: max-content;
         filter: invert(264%) sepia(215%) saturate(207%) hue-rotate(89deg)
           saturate(475%) brightness(100%) contrast(304%);
       }
