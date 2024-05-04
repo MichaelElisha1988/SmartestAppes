@@ -8,14 +8,14 @@ import { PolicyComponent } from './routes/policy/policy.component';
 const routes: Routes = [
   // { path: '', component: LoginComponent },
   {
-    path: '',
+    path: 'measurements',
     component: HomeComponent,
   },
   {
     path: 'policy',
     component: PolicyComponent,
   },
-  { path: '**', redirectTo: '' },
+  { path: '**', redirectTo: 'measurements' },
 ];
 
 @NgModule({
