@@ -57,19 +57,19 @@
       border-bottom-left-radius: 30px;
     }
     .l-number {
-      top: 1.3rem;
+      top: 1.2rem;
       left: 0.6rem;
       position: absolute;
-      font-size: 14px;
+      font-size: 16px;
       font-weight: 300;
       transition: 0.5s all;
     }
     .i-number:focus + .l-number,
     .i-number:not(:placeholder-shown) + .l-number {
-      top: 0.7em;
+      top: 0.3em;
       padding: 0 2px;
       background-color: var(--c-blue);
-      font-size: 12px;
+      font-size: 14px;
     }
     .s-measur {
       background-color: var(--c-grey);
