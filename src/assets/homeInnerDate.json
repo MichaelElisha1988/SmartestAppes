@@ -10,10 +10,10 @@
         "Cup",
         "Tbsp",
         "gram",
-        "m-gram",
-        "k-gram",
+        "miligram",
+        "kilogram",
         "Pound",
-        "m-liter",
+        "mililiter",
         "liter",
         "Oz"
       ],
