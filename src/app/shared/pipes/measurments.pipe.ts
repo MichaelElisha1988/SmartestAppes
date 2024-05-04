@@ -30,9 +30,9 @@ export class MeasurmentsPipe implements PipeTransform {
     switch (topic) {
       case 'Kitchen':
         switch (measureFrom) {
-          case 'Quart':
+          case 'quart':
             switch (measurmentTo) {
-              case 'Tsp':
+              case 'teaspoons':
                 this.tmpValue = (
                   +(value ? value : 1) *
                   0.95 *
@@ -40,16 +40,16 @@ export class MeasurmentsPipe implements PipeTransform {
                   0.2
                 ).toFixed(fixedNum);
                 break;
-              case 'Gal':
+              case 'gallon':
                 this.tmpValue = (+(value ? value : 1) * 0.25).toFixed(fixedNum);
                 break;
-              case 'Pint':
+              case 'pint':
                 this.tmpValue = (+(value ? value : 1) * 2).toFixed(fixedNum);
                 break;
-              case 'Cup':
+              case 'cup':
                 this.tmpValue = (+(value ? value : 1) * 4).toFixed(fixedNum);
                 break;
-              case 'Tbsp':
+              case 'tablespoons':
                 this.tmpValue = (
                   +(value ? value : 1) *
                   0.95 *
@@ -57,7 +57,7 @@ export class MeasurmentsPipe implements PipeTransform {
                   0.06
                 ).toFixed(fixedNum);
                 break;
-              case 'k-gram':
+              case 'kilogram':
                 this.tmpValue = Density
                   ? (+(value ? value : 1) * 0.95 * +Density).toFixed(fixedNum)
                   : 'Choose Density';
@@ -69,21 +69,21 @@ export class MeasurmentsPipe implements PipeTransform {
                     )
                   : 'Choose Density';
                 break;
-              case 'm-gram':
+              case 'milligram':
                 this.tmpValue = Density
                   ? (+(value ? value : 1) * 0.95 * +Density * 1000).toFixed(
                       fixedNum
                     )
                   : 'Choose Density';
                 break;
-              case 'Pound':
+              case 'pound':
                 this.tmpValue = Density
                   ? (+(value ? value : 1) * 0.95 * +Density * 2.204).toFixed(
                       fixedNum
                     )
                   : 'Choose Density';
                 break;
-              case 'm-liter':
+              case 'milliliter':
                 this.tmpValue = (+(value ? value : 1) * 0.95 * 1000).toFixed(
                   fixedNum
                 );
@@ -100,27 +100,27 @@ export class MeasurmentsPipe implements PipeTransform {
                 this.tmpValue = "Can't Measure";
             }
             break;
-          case 'Tsp':
+          case 'teaspoons':
             switch (measurmentTo) {
-              case 'Quart':
+              case 'quart':
                 this.tmpValue = (+(value ? value : 1) / 192).toFixed(fixedNum);
                 break;
-              case 'Gal':
+              case 'gallon':
                 this.tmpValue = (+(value ? value : 1) / 768).toFixed(fixedNum);
                 break;
-              case 'Pint':
+              case 'pint':
                 this.tmpValue = (+(value ? value : 1) / 96).toFixed(fixedNum);
                 break;
 
-              case 'Cup':
+              case 'cup':
                 this.tmpValue = (+(value ? value : 1) / 48).toFixed(fixedNum);
                 break;
 
-              case 'Tbsp':
+              case 'tablespoons':
                 this.tmpValue = (+(value ? value : 1) / 3).toFixed(fixedNum);
                 break;
 
-              case 'k-gram':
+              case 'kilogram':
                 this.tmpValue = Density
                   ? ((+(value ? value : 1) * 4.92 * +Density) / 1000).toFixed(
                       fixedNum
@@ -134,7 +134,7 @@ export class MeasurmentsPipe implements PipeTransform {
                   : 'Choose Density';
                 break;
 
-              case 'm-gram':
+              case 'milligram':
                 this.tmpValue = Density
                   ? (+(value ? value : 1) * 4.92 * +Density * 1000).toFixed(
                       fixedNum
@@ -148,13 +148,13 @@ export class MeasurmentsPipe implements PipeTransform {
                   : 'Choose Density';
                 break;
 
-              case 'Pound':
+              case 'pound':
                 this.tmpValue = Density
                   ? (+(value ? value : 1) * 2.204 * 0.00492).toFixed(fixedNum)
                   : 'Choose Density';
                 break;
 
-              case 'm-liter':
+              case 'milliliter':
                 this.tmpValue = (+(value ? value : 1) / 4.92).toFixed(fixedNum);
                 break;
 
@@ -166,29 +166,29 @@ export class MeasurmentsPipe implements PipeTransform {
                 this.tmpValue = "Can't Measure";
             }
             break;
-          case 'Gal':
+          case 'gallon':
             switch (measurmentTo) {
-              case 'Quart':
+              case 'quart':
                 this.tmpValue = (+(value ? value : 1) * 4).toFixed(fixedNum);
                 break;
 
-              case 'Tsp':
+              case 'teaspoons':
                 this.tmpValue = (+(value ? value : 1) * 768).toFixed(fixedNum);
                 break;
 
-              case 'Pint':
+              case 'pint':
                 this.tmpValue = (+(value ? value : 1) * 8).toFixed(fixedNum);
                 break;
 
-              case 'Cup':
+              case 'cup':
                 this.tmpValue = (+(value ? value : 1) * 16).toFixed(fixedNum);
                 break;
 
-              case 'Tbsp':
+              case 'tablespoons':
                 this.tmpValue = (+(value ? value : 1) * 256).toFixed(fixedNum);
                 break;
 
-              case 'k-gram':
+              case 'kilogram':
                 this.tmpValue = Density
                   ? (+(value ? value : 1) * 3.78541 * +Density).toFixed(
                       fixedNum
@@ -204,7 +204,7 @@ export class MeasurmentsPipe implements PipeTransform {
                   : 'Choose Density';
                 break;
 
-              case 'm-gram':
+              case 'milligram':
                 this.tmpValue = Density
                   ? (
                       +(value ? value : 1) *
@@ -221,7 +221,7 @@ export class MeasurmentsPipe implements PipeTransform {
                   : 'Choose Density';
                 break;
 
-              case 'Pound':
+              case 'pound':
                 this.tmpValue = Density
                   ? (+(value ? value : 1) * 3.78541 * 2.204 * +Density).toFixed(
                       fixedNum
@@ -229,7 +229,7 @@ export class MeasurmentsPipe implements PipeTransform {
                   : 'Choose Density';
                 break;
 
-              case 'm-liter':
+              case 'milliliter':
                 this.tmpValue = (+(value ? value : 1) * 3785.41).toFixed(
                   fixedNum
                 );
@@ -243,29 +243,29 @@ export class MeasurmentsPipe implements PipeTransform {
                 this.tmpValue = "Can't Measure";
             }
             break;
-          case 'Pint':
+          case 'pint':
             switch (measurmentTo) {
-              case 'Quart':
+              case 'quart':
                 this.tmpValue = (+(value ? value : 1) / 2).toFixed(fixedNum);
                 break;
 
-              case 'Tsp':
+              case 'teaspoons':
                 this.tmpValue = (+(value ? value : 1) * 96).toFixed(fixedNum);
                 break;
 
-              case 'Gal':
+              case 'gallon':
                 this.tmpValue = (+(value ? value : 1) / 8).toFixed(fixedNum);
                 break;
 
-              case 'Cup':
+              case 'cup':
                 this.tmpValue = (+(value ? value : 1) * 2).toFixed(fixedNum);
                 break;
 
-              case 'Tbsp':
+              case 'tablespoons':
                 this.tmpValue = (+(value ? value : 1) * 32).toFixed(fixedNum);
                 break;
 
-              case 'k-gram':
+              case 'kilogram':
                 this.tmpValue = Density
                   ? (
                       ((+(value ? value : 1) * 473.2) / 1000) *
@@ -280,7 +280,7 @@ export class MeasurmentsPipe implements PipeTransform {
                   : 'Choose Density';
                 break;
 
-              case 'm-gram':
+              case 'milligram':
                 this.tmpValue = Density
                   ? (+(value ? value : 1) * 473.2 * 1000 * +Density).toFixed(
                       fixedNum
@@ -294,11 +294,11 @@ export class MeasurmentsPipe implements PipeTransform {
                   : 'Choose Density';
                 break;
 
-              case 'Pound':
+              case 'pound':
                 this.tmpValue = Density ? '' : 'Choose Density';
                 break;
 
-              case 'm-liter':
+              case 'milliliter':
                 this.tmpValue = (+(value ? value : 1) * 473.2).toFixed(
                   fixedNum
                 );
@@ -312,31 +312,31 @@ export class MeasurmentsPipe implements PipeTransform {
                 this.tmpValue = "Can't Measure";
             }
             break;
-          case 'Cup':
+          case 'cup':
             switch (measurmentTo) {
-              case 'Quart':
+              case 'quart':
                 this.tmpValue = (+(value ? value : 1) / 4).toFixed(fixedNum);
                 break;
 
-              case 'Tsp':
+              case 'teaspoons':
                 this.tmpValue = (+(value ? value : 1) * 16 * 16 * 3).toFixed(
                   fixedNum
                 );
                 break;
 
-              case 'Gal':
+              case 'gallon':
                 this.tmpValue = (+(value ? value : 1) / 16).toFixed(fixedNum);
                 break;
 
-              case 'Pint':
+              case 'pint':
                 this.tmpValue = (+(value ? value : 1) / 2).toFixed(fixedNum);
                 break;
 
-              case 'Tbsp':
+              case 'tablespoons':
                 this.tmpValue = (+(value ? value : 1) * 16).toFixed(fixedNum);
                 break;
 
-              case 'k-gram':
+              case 'kilogram':
                 this.tmpValue = Density
                   ? (
                       ((+(value ? value : 1) * 236.6) / 1000) *
@@ -351,7 +351,7 @@ export class MeasurmentsPipe implements PipeTransform {
                   : 'Choose Density';
                 break;
 
-              case 'm-gram':
+              case 'milligram':
                 this.tmpValue = Density
                   ? (+(value ? value : 1) * 236.6 * 1000 * +Density).toFixed(
                       fixedNum
@@ -365,7 +365,7 @@ export class MeasurmentsPipe implements PipeTransform {
                   : 'Choose Density';
                 break;
 
-              case 'Pound':
+              case 'pound':
                 this.tmpValue = Density
                   ? (
                       ((+(value ? value : 1) * 236.6) / 1000) *
@@ -375,7 +375,7 @@ export class MeasurmentsPipe implements PipeTransform {
                   : 'Choose Density';
                 break;
 
-              case 'm-liter':
+              case 'milliliter':
                 this.tmpValue = (+(value ? value : 1) * 236.6).toFixed(
                   fixedNum
                 );
@@ -384,96 +384,96 @@ export class MeasurmentsPipe implements PipeTransform {
                 this.tmpValue = "Can't Measure";
             }
             break;
-          case 'Tbsp':
+          case 'tablespoons':
             switch (measurmentTo) {
-              case 'Quart':
+              case 'quart':
                 break;
-              case 'Tsp':
+              case 'teaspoons':
                 break;
-              case 'Gal':
+              case 'gallon':
                 break;
-              case 'Pint':
+              case 'pint':
                 break;
-              case 'Cup':
+              case 'cup':
                 break;
-              case 'k-gram':
+              case 'kilogram':
 
               case 'gram':
                 this.tmpValue = Density ? '' : 'Choose Density';
                 break;
 
-              case 'm-gram':
+              case 'milligram':
                 this.tmpValue = Density ? '' : 'Choose Density';
                 break;
 
               case 'liter':
                 this.tmpValue = Density ? '' : 'Choose Density';
                 break;
-              case 'Pound':
+              case 'pound':
                 break;
-              case 'm-liter':
+              case 'milliliter':
                 break;
 
               default:
                 break;
             }
             break;
-          case 'k-gram':
+          case 'kilogram':
             switch (measurmentTo) {
-              case 'Quart':
+              case 'quart':
                 break;
-              case 'Tsp':
+              case 'teaspoons':
                 break;
-              case 'Gal':
+              case 'gallon':
                 break;
-              case 'Pint':
+              case 'pint':
                 break;
-              case 'Cup':
+              case 'cup':
                 break;
-              case 'Tbsp':
+              case 'tablespoons':
                 break;
 
               case 'gram':
                 this.tmpValue = Density ? '' : 'Choose Density';
                 break;
 
-              case 'm-gram':
+              case 'milligram':
                 this.tmpValue = Density ? '' : 'Choose Density';
                 break;
 
               case 'liter':
                 this.tmpValue = Density ? '' : 'Choose Density';
                 break;
-              case 'Pound':
+              case 'pound':
                 break;
-              case 'm-liter':
+              case 'milliliter':
                 break;
 
               default:
                 break;
             }
             break;
-          case 'Pound':
+          case 'pound':
             switch (measurmentTo) {
-              case 'Quart':
+              case 'quart':
                 break;
-              case 'Tsp':
+              case 'teaspoons':
                 break;
-              case 'Gal':
+              case 'gallon':
                 break;
-              case 'Pint':
+              case 'pint':
                 break;
-              case 'Cup':
+              case 'cup':
                 break;
-              case 'Tbsp':
+              case 'tablespoons':
                 break;
-              case 'k-gram':
+              case 'kilogram':
 
               case 'gram':
                 this.tmpValue = Density ? '' : 'Choose Density';
                 break;
 
-              case 'm-gram':
+              case 'milligram':
                 this.tmpValue = Density ? '' : 'Choose Density';
                 break;
 
@@ -482,41 +482,41 @@ export class MeasurmentsPipe implements PipeTransform {
                 break;
                 break;
                 break;
-              case 'm-liter':
+              case 'milliliter':
                 break;
 
               default:
                 break;
             }
             break;
-          case 'm-liter':
+          case 'milliliter':
             switch (measurmentTo) {
-              case 'Quart':
+              case 'quart':
                 break;
-              case 'Tsp':
+              case 'teaspoons':
                 break;
-              case 'Gal':
+              case 'gallon':
                 break;
-              case 'Pint':
+              case 'pint':
                 break;
-              case 'Cup':
+              case 'cup':
                 break;
-              case 'Tbsp':
+              case 'tablespoons':
                 break;
-              case 'k-gram':
+              case 'kilogram':
 
               case 'gram':
                 this.tmpValue = Density ? '' : 'Choose Density';
                 break;
 
-              case 'm-gram':
+              case 'milligram':
                 this.tmpValue = Density ? '' : 'Choose Density';
                 break;
 
               case 'liter':
                 this.tmpValue = Density ? '' : 'Choose Density';
                 break;
-              case 'Pound':
+              case 'pound':
                 break;
 
               default:
@@ -534,7 +534,7 @@ export class MeasurmentsPipe implements PipeTransform {
               case 'meters':
                 this.tmpValue = value ? (+value / 100).toFixed(fixedNum) : 1;
                 break;
-              case 'k-meters':
+              case 'kilometers':
                 this.tmpValue = value ? (+value / 100000).toFixed(fixedNum) : 1;
                 break;
               case 'inches':
@@ -559,7 +559,7 @@ export class MeasurmentsPipe implements PipeTransform {
               case 'c-meters':
                 this.tmpValue = value ? (+value * 100).toFixed(fixedNum) : 1;
                 break;
-              case 'k-meters':
+              case 'kilometers':
                 this.tmpValue = value
                   ? ((+value / 1000) * 3.2808).toFixed(fixedNum)
                   : 1;
@@ -577,7 +577,7 @@ export class MeasurmentsPipe implements PipeTransform {
                 break;
             }
             break;
-          case 'k-meters':
+          case 'kilometers':
             switch (measurmentTo) {
               case 'c-meters':
                 this.tmpValue = value ? (+value / 100000).toFixed(fixedNum) : 1;
@@ -610,7 +610,7 @@ export class MeasurmentsPipe implements PipeTransform {
                   ? (+value / 100 / 0.3937).toFixed(fixedNum)
                   : 1;
                 break;
-              case 'k-meters':
+              case 'kilometers':
                 this.tmpValue = value
                   ? (+value / 100000 / 0.3937).toFixed(fixedNum)
                   : 1;
@@ -639,7 +639,7 @@ export class MeasurmentsPipe implements PipeTransform {
               case 'meters':
                 this.tmpValue = value ? (+value * 0.305).toFixed(fixedNum) : 1;
                 break;
-              case 'k-meters':
+              case 'kilometers':
                 this.tmpValue = value
                   ? (+value * (0.305 / 100000)).toFixed(fixedNum)
                   : 1;
@@ -660,7 +660,7 @@ export class MeasurmentsPipe implements PipeTransform {
                 break;
               case 'meters':
                 break;
-              case 'k-meters':
+              case 'kilometers':
                 break;
               case 'inches':
                 break;
