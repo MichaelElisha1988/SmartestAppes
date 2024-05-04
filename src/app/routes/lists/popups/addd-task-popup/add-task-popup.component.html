@@ -1,0 +1,86 @@
+<div class="popup-background" [ngClass]="hidden ? 'hidden' : ''">
+  <div class="popup">
+    <div class="close-btn" (click)="onPopup(true)">close</div>
+    <div class="title">Add task to your list from here:</div>
+    <form (submit)="addTask($event)" [formGroup]="taskform">
+      <div class="input-div">
+        <input
+          placeholder=" "
+          type="text"
+          id="task"
+          name="task"
+          formControlName="task"
+        />
+        <label for="task">task</label>
+        <div
+          class="error"
+          *ngIf="
+            taskform.controls['task'].errors &&
+            taskform.controls['task'].touched
+          "
+        >
+          * task name input cannot be empty
+        </div>
+      </div>
+      <div class="input-div">
+        <input
+          placeholder=" "
+          type="text"
+          id="author"
+          name="author"
+          formControlName="author"
+        />
+        <label for="author">author</label>
+        <div
+          class="error"
+          *ngIf="
+            taskform.controls['author'].errors &&
+            taskform.controls['author'].touched
+          "
+        >
+          * author name input cannot be empty
+        </div>
+      </div>
+      <div class="input-div">
+        <input
+          placeholder=" "
+          type="text"
+          id="date"
+          name="date"
+          formControlName="date"
+        />
+        <label for="date">date</label>
+        <div
+          class="error"
+          *ngIf="
+            taskform.controls['date'].errors &&
+            taskform.controls['date'].touched
+          "
+        >
+          * date name input cannot be empty
+        </div>
+      </div>
+      <div class="input-div">
+        <input
+          placeholder=" "
+          type="text"
+          id="status"
+          name="status"
+          formControlName="status"
+        />
+        <label for="status">status</label>
+        <div
+          class="error"
+          *ngIf="
+            taskform.controls['status'].errors &&
+            taskform.controls['status'].touched
+          "
+        >
+          * status name input cannot be empty
+        </div>
+      </div>
+
+      <button class="sbm-btn">Add task</button>
+    </form>
+  </div>
+</div>

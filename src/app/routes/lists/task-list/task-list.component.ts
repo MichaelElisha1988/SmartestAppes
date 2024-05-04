@@ -1,7 +1,4 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { TaskComponent } from './task/task.component';
-import { TaskModel } from '../../../shared/models/task.model';
-import { CommonModule } from '@angular/common';
 import { ListId } from '../../../shared/models/list-id.model';
 import { DataService } from '../../../shared/services/data.service';
 

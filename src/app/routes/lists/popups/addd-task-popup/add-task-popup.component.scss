@@ -1,0 +1,109 @@
+.popup-background {
+  transition: 0.3s all ease-in-out;
+  opacity: 1;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.384);
+  top: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+
+  &.hidden {
+    transition: 0.3s all ease-in-out;
+    opacity: 0;
+    z-index: -1;
+  }
+  .popup {
+    position: relative;
+    margin: auto auto;
+    background-color: var(--c-silver);
+    top: 100px;
+    width: 85%;
+    height: 60%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 15px black;
+
+    .close-btn {
+      position: sticky;
+      top: 0;
+      padding: 12px 0 0 12px;
+      cursor: pointer;
+    }
+    .title {
+      text-align: center;
+      margin: 20px auto;
+      font-size: 22px;
+      font-weight: 600;
+      width: 200px;
+      pointer-events: none;
+    }
+
+    form {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 25px;
+
+      .input-div {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        label {
+          position: absolute;
+          transition: 0.3s all ease-in-out;
+          pointer-events: none;
+
+          left: 15px;
+          top: 8px;
+          background-color: var(--c-silver);
+          text-shadow: 1px 1px 1px var(--c-dark-blue);
+        }
+
+        input {
+          border-radius: 30px;
+          background-color: transparent;
+          width: 250px;
+          height: 30px;
+          padding-left: 15px;
+          transition: 0.3s all ease-in-out;
+
+          &:focus ~ label,
+          &:not(:placeholder-shown) ~ label {
+            position: absolute;
+            transition: 0.3s all ease-in-out;
+            top: -8px;
+            color: var(--green);
+            font-weight: 600;
+          }
+        }
+        .error {
+          position: absolute;
+          bottom: -15px;
+          color: rosybrown;
+          font-size: 12px;
+          font-weight: 600;
+          left: 15px;
+        }
+      }
+      .sbm-btn {
+        background-color: var(--green);
+        border: 0px transparent;
+        border-radius: 30px;
+        padding: 12px 30px;
+        font-size: 16px;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+          box-shadow: 1px 1px 15px black;
+          transition: all 0.3s ease-in-out;
+          color: var(--white);
+        }
+      }
+    }
+  }
+}
