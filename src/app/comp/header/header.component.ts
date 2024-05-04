@@ -14,6 +14,7 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   isOpenTrans: boolean = false;
   isOpenMenu: boolean = false;
   isOpenAcc: boolean = false;
+  editMode: boolean = false;
 
   $Subs = new Subscription();
 
@@ -28,6 +29,7 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
     private dataSavingSrv: DataSavingService,
     private router: Router
   ) {
+    this.editMode = sessionStorage.getItem('editMode') == 'true';
     this.$Subs.add(
       this.loginService.headerInnerData.subscribe((data) => {
         this.innerHeaderData = data;
@@ -55,6 +57,14 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
         this.isOpenMenu ? (this.isOpenMenu = false) : '';
         this.router.navigate(['/policy']);
         break;
+      case 'measurements':
+        this.isOpenMenu ? (this.isOpenMenu = false) : '';
+        this.router.navigate(['..']);
+        break;
+      case 'lists':
+          this.isOpenMenu ? (this.isOpenMenu = false) : '';
+          this.router.navigate(['/lists']);
+          break;
 
       default:
         break;
