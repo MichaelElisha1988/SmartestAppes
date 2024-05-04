@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Gtag } from 'angular-gtag';
 import { Subscription, take } from 'rxjs';
 import { Actions, Home } from 'src/app/shared/models/home.model';
 import { DataSavingService } from 'src/app/shared/services/dataSaving.service';
@@ -17,7 +18,8 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(
     private generalDataSrvice: GeneralDataService,
     private dataSavingSrv: DataSavingService,
-    private router: Router
+    private router: Router,
+    private gtag: Gtag
   ) {}
 
   $Subs = new Subscription();

@@ -9,6 +9,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { LoginComponent } from './routes/login/login.component';
 import { HomeComponent } from './routes/home/home.component';
 
+import { GtagModule } from 'angular-gtag';
+
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MeasurementsComponent } from './comp/measurements/measurements.component';
@@ -31,6 +33,7 @@ import { PolicyComponent } from './routes/policy/policy.component';
   ],
   imports: [
     BrowserModule,
+    GtagModule.forRoot({ trackingId: 'G-726X1R2X45', trackPageviews: true }),
     AppRoutingModule,
     MatIconModule,
     ReactiveFormsModule,

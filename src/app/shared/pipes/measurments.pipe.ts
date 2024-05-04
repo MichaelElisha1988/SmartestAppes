@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { Gtag } from 'angular-gtag';
 
 @Pipe({
   name: 'measurments',
@@ -6,6 +7,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class MeasurmentsPipe implements PipeTransform {
   tmpValue: any = '';
   maxAmout: any = 10000;
+
+  constructor(private gtag: Gtag) {}
   transform(
     value: string | null | undefined,
     topic: string,
@@ -16,6 +19,14 @@ export class MeasurmentsPipe implements PipeTransform {
     if (!(topic && measureFrom && measurmentTo)) return null;
     let fixedNum = 2;
     console.log(Density);
+    this.gtag.event('measure', {
+      app_name: 'SmartestAppes',
+      screen_name: 'Measurments Page',
+      topic: topic,
+      measureFrom: measureFrom,
+      measureTo: measurmentTo,
+      Density: Density,
+    });
     switch (topic) {
       case 'Kitchen':
         switch (measureFrom) {
