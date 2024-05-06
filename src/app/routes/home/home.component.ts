@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Gtag } from 'angular-gtag';
-import { Subscription, take } from 'rxjs';
+import { Subscription, debounce, take } from 'rxjs';
 import { Actions, Home } from 'src/app/shared/models/home.model';
 import { DataSavingService } from 'src/app/shared/services/dataSaving.service';
 import { GeneralDataService } from 'src/app/shared/services/generalData.service';
@@ -14,6 +14,8 @@ import { GeneralDataService } from 'src/app/shared/services/generalData.service'
 export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   menuAfterInitDone: boolean = false;
   menuSettingEdit: boolean = false;
+  showResults: boolean = false;
+  lastMeasurement: any[] = [];
 
   constructor(
     private generalDataSrvice: GeneralDataService,
@@ -49,6 +51,31 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         });
       })
     );
+    this.$Subs.add(
+      this.dataSavingSrv.lastMeasurement.subscribe((data)=>{
+        if(data){
+          if(this.lastMeasurement.length > 0 && this.lastMeasurement[0].topic){
+            if(
+              data.topic == this.lastMeasurement[this.lastMeasurement.length-1].topic &&
+              data.value == this.lastMeasurement[this.lastMeasurement.length-1].value &&
+              data.measureFrom == this.lastMeasurement[this.lastMeasurement.length-1].measureFrom &&
+              data.Density == this.lastMeasurement[this.lastMeasurement.length-1].Density 
+              
+              ){
+                Number(data.tmpValue) ? this.lastMeasurement.push(data) : '';
+              }
+              else{
+                this.lastMeasurement = []
+                Number(data.tmpValue) ? this.lastMeasurement.push(data) : '';
+              }
+          }
+          else{
+            this.lastMeasurement = []
+            Number(data.tmpValue) ? this.lastMeasurement.push(data) : ''
+          }
+        }
+      })
+    )
 
     this.$Subs.add(
       this.dataSavingSrv.settingsEdit.subscribe((data) => {
@@ -73,7 +100,12 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     }, 300);
   }
 
+  showLastResults(){
+    this.showResults = !this.showResults
+  }
+
   showMeasures(event: any) {
+    this.showResults = false
     this.measureData = JSON.parse(
       JSON.stringify(
         this.homeData?.actions.filter(

@@ -8,6 +8,7 @@ export class DataSavingService {
   lastClickedOn = new BehaviorSubject<PointerEvent | null>(null);
   activeMenu = new BehaviorSubject<string | null>(null);
   settingsEdit = new BehaviorSubject<boolean>(false);
+  lastMeasurement = new BehaviorSubject<any>([]);
 
   constructor() {}
   setLastClickedOn(ev: PointerEvent | null) {
@@ -27,5 +28,11 @@ export class DataSavingService {
   }
   getSettingsEdit(): boolean {
     return this.settingsEdit?.value;
+  }
+  setLastMeasurement(ev: any) {
+    this.lastMeasurement.next(ev);
+  }
+  getLastMeasurement(): any {
+    return this.lastMeasurement?.value;
   }
 }
