@@ -12,10 +12,30 @@
     <div class="auther-task">author: {{ task.author }}</div>
     <div class="date-task">date: {{ task.date }}</div>
     <div class="status-task">
-      status:
-      <span class="status-state" (click)="taskDone($event)">{{
-        task.status
-      }}</span>
+      <span
+        *ngIf="task.currentStatus == 1"
+        class="status-state"
+        (click)="taskDone(task)"
+        >{{ task.status }}</span
+      >
+      <span
+        *ngIf="task.currentStatus == 2"
+        class="status-state"
+        (click)="taskDone(task)"
+        >In Progress</span
+      >
+      <span
+        *ngIf="task.currentStatus == 3"
+        class="status-state"
+        (click)="taskDone(task)"
+        >Done</span
+      >
+      <span
+        *ngIf="task.currentStatus == 4"
+        class="status-state"
+        (click)="taskDone(task)"
+        >On Hold</span
+      >
     </div>
   </div>
 </section>

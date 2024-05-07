@@ -37,23 +37,14 @@
     gap: 20px;
     font-size: 12px;
     .auther-task {
-      display: flex;
-      flex-direction: column;
     }
     .date-task {
-      display: flex;
-      flex-direction: column;
     }
     .status-task {
-      display: flex;
-      flex-direction: column;
+      width: 100px;
       .status-state {
         cursor: pointer;
         transition: color 0.3s ease-in-out;
-        &:hover {
-          color: var(--c-silver);
-          text-shadow: 1px 1px 30px var(--c-silver);
-        }
       }
     }
   }
@@ -63,6 +54,11 @@
   background-color: var(--c-dark-blue);
   border-top-left-radius: 20px;
   border-bottom-left-radius: 10px;
+  .status-task {
+    .status-state {
+      color: var(--c-silver);
+    }
+  }
 }
 
 .even {
@@ -70,4 +66,9 @@
   border: 1px solid var(--c-dark-blue);
   border-top-right-radius: 20px;
   border-bottom-right-radius: 10px;
+  .status-task {
+    .status-state {
+      color: var(--c-dark-blue);
+    }
+  }
 }

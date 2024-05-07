@@ -61,6 +61,7 @@ export class AddTaskPopupComponent implements OnInit {
       author: this.taskform.value.author!,
       date: this.taskform.value.date!,
       status: this.taskform.value.status!,
+      currentStatus: 1,
     };
   }
 }

@@ -6,4 +6,5 @@ export interface TaskModel {
   date: string;
   author: string;
   status: string;
+  currentStatus: number;
 }

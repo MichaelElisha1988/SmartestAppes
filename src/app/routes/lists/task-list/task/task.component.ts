@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgSwitch } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { TaskModel } from '../../../../shared/models/task.model';
 import { DataService } from '../../../../shared/services/data.service';
@@ -33,8 +33,12 @@ export class TaskComponent implements OnInit {
     }
   }
 
-  taskDone(event: any) {
-    console.log(event);
+  taskDone(task: TaskModel) {
+    task
+      ? task?.currentStatus! >= 4
+        ? (task.currentStatus = 1)
+        : task.currentStatus!++
+      : '';
   }
 
   deleteTask(event: any) {
