@@ -1,9 +1,20 @@
 .task {
-  padding: 2vh 5vw;
-  margin: 5px 1vw;
+  padding: 6px 25px;
+  margin: 10px auto;
+  width: 300px;
+  border-radius: 30px;
+  height: 20px;
+  overflow: hidden;
+  transition: 0.3s height ease-in-out;
+  position: relative;
+  &.extend {
+    height: 65px;
+  }
 
   .close {
-    position: relative;
+    position: absolute;
+    top: 11px;
+    right: 15px;
     font-size: 12px;
     font-weight: 600;
     width: fit-content;
@@ -15,23 +26,33 @@
   }
 
   .task-name {
-    font-size: 22px;
+    font-size: 18px;
     margin-bottom: 1vh;
+    pointer-events: none;
   }
   .descripption-task {
     display: flex;
+    align-items: center;
+    justify-content: center;
     gap: 20px;
-    font-size: 18px;
+    font-size: 12px;
     .auther-task {
+      display: flex;
+      flex-direction: column;
     }
     .date-task {
+      display: flex;
+      flex-direction: column;
     }
     .status-task {
+      display: flex;
+      flex-direction: column;
       .status-state {
         cursor: pointer;
         transition: color 0.3s ease-in-out;
         &:hover {
-          color: var(--c-dark-blue);
+          color: var(--c-silver);
+          text-shadow: 1px 1px 30px var(--c-silver);
         }
       }
     }
@@ -44,4 +65,5 @@
 
 .even {
   background-color: var(--c-silver);
+  border: 1px solid var(--c-dark-blue);
 }

@@ -11,6 +11,8 @@ import { DataService } from '../../../../shared/services/data.service';
 export class TaskComponent implements OnInit {
   taskList: TaskModel[] = [];
   shownList: TaskModel[] = [];
+  expandTask: boolean = false;
+  lastexpandTask: any = null;
 
   constructor(private readonly dataSrv: DataService) {
     this.dataSrv.taskList$.subscribe((listupdatas) => {
@@ -23,15 +25,16 @@ export class TaskComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  expand(event: any) {
+    if (event.target?.classList?.contains('task')) {
+      this.lastexpandTask?.target?.classList?.remove('extend');
+      event.target.classList.add('extend');
+      this.lastexpandTask = event;
+    }
+  }
+
   taskDone(event: any) {
-    // this.taskList.map((x) =>
-    //   x.taskData.id == id
-    //     ? x.taskData.status == 'done'
-    //       ? (x.taskData.status = "don't you forget")
-    //       : (x.taskData.status = 'done')
-    //     : ''
-    // );
-    // this.dataSrv.afterChangeTaskListUpdate(this.taskList);
+    console.log(event);
   }
 
   deleteTask(event: any) {

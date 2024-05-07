@@ -1,13 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormControl,
-  FormGroup,
-  FormsModule,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PopUpService } from '../../../../shared/services/popups.service';
-import { CommonModule } from '@angular/common';
 import { DataService } from '../../../../shared/services/data.service';
 import { TaskModel } from '../../../../shared/models/task.model';
 

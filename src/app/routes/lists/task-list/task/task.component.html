@@ -2,9 +2,10 @@
   *ngFor="let task of shownList; let i = index"
   class="task"
   [ngClass]="i % 2 == 1 ? 'even' : 'odd'"
+  (click)="expand($event)"
 >
   <div [attr.taskId]="task.id" class="close" (click)="deleteTask($event)">
-    delete
+    X
   </div>
   <div class="task-name">{{ task.task }}</div>
   <div class="descripption-task">
@@ -18,4 +19,3 @@
     </div>
   </div>
 </section>
-
