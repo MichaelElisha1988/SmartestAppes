@@ -15,15 +15,18 @@
     >
       {{ list.name }}
     </div>
-
   </section>
-  <div class="add-section" [ngClass]="{ 'new-add': addActive }">
-    <input
-    type="text"
-    class="add-list-input"
+  <div
+    *ngIf="getSelectedListId()"
+    class="add-section"
     [ngClass]="{ 'new-add': addActive }"
-    #addInput
-  />
+  >
+    <input
+      type="text"
+      class="add-list-input"
+      [ngClass]="{ 'new-add': addActive }"
+      #addInput
+    />
     <div (click)="addListId($event)" class="add-list">
       {{ addActive ? "Ok" : "Add List" }}
     </div>

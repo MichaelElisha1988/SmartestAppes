@@ -2,11 +2,11 @@
   padding: 6px 25px;
   margin: 10px auto;
   width: 300px;
-  border-radius: 30px;
   height: 20px;
   overflow: hidden;
   transition: 0.3s height ease-in-out;
   position: relative;
+  border-radius: 6px;
   &.extend {
     height: 65px;
   }
@@ -61,9 +61,13 @@
 
 .odd {
   background-color: var(--c-dark-blue);
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 10px;
 }
 
 .even {
   background-color: var(--c-silver);
   border: 1px solid var(--c-dark-blue);
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 10px;
 }
