@@ -11,10 +11,22 @@ import { TaskModel } from '../../../../shared/models/task.model';
 })
 export class AddTaskPopupComponent implements OnInit {
   taskform = new FormGroup({
-    task: new FormControl('', [Validators.required]),
-    author: new FormControl('', [Validators.required]),
-    date: new FormControl('', [Validators.required]),
-    status: new FormControl("don't you forget", [Validators.required]),
+    task: new FormControl('', {
+      updateOn: 'change',
+      validators: [Validators.required],
+    }),
+    author: new FormControl('', {
+      updateOn: 'change',
+      validators: [Validators.required],
+    }),
+    date: new FormControl('', {
+      updateOn: 'change',
+      validators: [Validators.required],
+    }),
+    status: new FormControl("don't you forget", {
+      updateOn: 'change',
+      validators: [Validators.required],
+    }),
   });
 
   hidden: boolean = true;
@@ -24,6 +36,8 @@ export class AddTaskPopupComponent implements OnInit {
     private readonly dataSrv: DataService
   ) {
     this.popupSrv.addTask$.subscribe((data: boolean) => {
+      this.taskform.controls.date.setValue(this.dataSrv.getDateString());
+      this.taskform.controls.author.setValue(this.dataSrv.getLoginName());
       this.onPopup(data);
     });
   }

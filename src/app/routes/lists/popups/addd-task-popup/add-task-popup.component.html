@@ -80,7 +80,9 @@
         </div>
       </div>
 
-      <button class="sbm-btn">Add task</button>
+      <button type="submit" class="sbm-btn" [disabled]="this.taskform.invalid">
+        Add task
+      </button>
     </form>
   </div>
 </div>

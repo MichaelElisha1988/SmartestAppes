@@ -5,10 +5,8 @@ import { ListId } from '../models/list-id.model';
 import { FirebaseApp, initializeApp } from 'firebase/app';
 import {
   CollectionReference,
-  Firestore,
   addDoc,
   collection,
-  collectionGroup,
   deleteDoc,
   doc,
   getDocs,
@@ -27,6 +25,8 @@ export class DataService {
   DataBaseApp: any;
   listIdRef: CollectionReference;
   taskListRef: CollectionReference;
+  loginName: string = 'Login User Name';
+  todayDate: string = '';
 
   private readonly firebaseConfig = {
     apiKey: environment.apiKey,
@@ -61,7 +61,20 @@ export class DataService {
     this.getListId();
     this.getTaskList();
   }
+  getLoginName(): string {
+    return this.loginName;
+  }
 
+  setLoginName(logUser: string) {
+    this.loginName = logUser;
+  }
+
+  getDateString(): string {
+    return this.todayDate;
+  }
+  setDateString(todayDate: string) {
+    this.todayDate = todayDate;
+  }
   getSelectedListId(): number {
     return this.selectedId;
   }
@@ -107,7 +120,7 @@ export class DataService {
   }
 
   deleteList(id: number, taskIds: TaskModel[]) {
-    taskIds.forEach(x=>this.deleteTask(x.id))
+    taskIds.forEach((x) => this.deleteTask(x.id));
     const dbId = this.listId.find((x) => x.id == id)
       ? this.listId.find((x) => x.id == id)?.dbId
       : '';

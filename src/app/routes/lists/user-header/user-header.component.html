@@ -1,7 +1,7 @@
 <section class="header-panel">
   <div class="date-info">
     <div class="day">Today</div>
-    <div class="date">{{ dayDate }}</div>
+    <div class="date" #dateString>{{ todayDate | date : "dd.MM.yy" }}</div>
   </div>
   <!-- <div class="app-info">
     <div class="app-logo">KOKO's</div>
@@ -14,6 +14,6 @@
         alt="Ppic"
       />
     </div> -->
-    <div class="user-name">Michael Elisha</div>
+    <div class="user-name">{{ loginName }}</div>
   </div>
 </section>

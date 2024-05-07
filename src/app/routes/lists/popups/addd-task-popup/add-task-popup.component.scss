@@ -29,9 +29,9 @@
       top: 0;
       padding: 12px 0 0 12px;
       cursor: pointer;
-      &:hover{
+      &:hover {
         color: var(--c-dark-blue);
-        transition: .2s color ease-in-out;
+        transition: 0.2s color ease-in-out;
       }
     }
     .title {
@@ -89,19 +89,31 @@
         .error {
           position: absolute;
           bottom: -15px;
-          color: var(--dark);
+          color: var(--c-dark-blue);
           font-size: 12px;
           font-weight: 600;
           left: 15px;
         }
       }
       .sbm-btn {
-        background-color: var(--dark);
+        background-color: var(--c-dark);
         border: 0px transparent;
         border-radius: 30px;
         padding: 12px 30px;
         font-size: 16px;
         transition: all 0.3s ease-in-out;
+        color: var(--c-dark-blue);
+
+        &:disabled {
+          background-color: transparent;
+          border: 1px solid var(--c-dark-blue);
+
+          &:hover {
+            background-color: transparent;
+            border: 1px solid var(--c-dark-blue);
+            box-shadow: 1px 1px 15px transparent;
+          }
+        }
 
         &:hover {
           box-shadow: 1px 1px 15px var(--c-dark);
