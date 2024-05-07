@@ -16,17 +16,29 @@
     </ul>
   </div>
 </div>
-<div class="last-measurement-result" *ngIf="lastMeasurement[0]?.topic && !measureDataToShow">
+<div
+  class="last-measurement-result"
+  *ngIf="lastMeasurement[0]?.topic && !measureDataToShow"
+>
   <h2>last measurment:</h2>
-   {{lastMeasurement[0]?.topic}}, Measured from: {{lastMeasurement[0]?.measureFrom}}
-  <span *ngIf="lastMeasurement[0]?.Density">With Density of: {{lastMeasurement[0]?.Density}}</span>
-  <span class="moreInfo" *ngIf="!showResults; else results" (click)="showLastResults()">click to see results...</span>
+  {{ lastMeasurement[0]?.topic }}, Measured from:
+  {{ lastMeasurement[0]?.measureFrom }}
+  <span *ngIf="lastMeasurement[0]?.Density"
+    >With Density of: {{ lastMeasurement[0]?.Density }}</span
+  >
+  <span
+    class="moreInfo"
+    *ngIf="!showResults; else results"
+    (click)="showLastResults()"
+    >click to see results...</span
+  >
   <ng-template #results>
-    <div class="last-results" >
+    <div class="last-results">
       <div class="result" *ngFor="let result of lastMeasurement">
-        {{result?.measureTo}}: {{result?.tmpValue}}
+        {{ result?.measureTo }}: {{ result?.tmpValue }}
       </div>
     </div>
+    <div class="close moreInfo" (click)="showLastResults()">Close Result</div>
   </ng-template>
 </div>
 

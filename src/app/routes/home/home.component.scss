@@ -13,7 +13,6 @@
 
   &.inMenu {
     position: unset;
-
   }
 
   .measuresOpen:ng-deep {
@@ -128,9 +127,9 @@
     cursor: pointer;
   }
 }
-.last-measurement-result{
+.last-measurement-result {
   text-align: center;
-  font-size: 26px;
+  font-size: 16px;
   margin: 20px 0;
 
   padding: 10px 30px;
@@ -139,24 +138,30 @@
   border-radius: 30px;
   background-color: var(--c-blue);
   box-shadow: 1px 1px 15px var(--c-blue);
+  transition: 0.3s all ease-in-out;
 
-  h2{
+  h2 {
     display: flex;
-    font-size: 26px;
+    font-size: 18px;
     font-weight: 600;
     margin-bottom: 10px;
   }
 
-  .moreInfo{
+  .moreInfo {
     margin: 10px;
+    cursor: pointer;
+    &.close {
+      text-decoration: underline;
+      cursor: pointer;
+    }
   }
 
-  .last-results{
+  .last-results {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
     margin: 10px 0;
-    .result{
+    .result {
       border: 1px solid var(--c-dark);
       padding: 10px 15px;
       border-radius: 30px;

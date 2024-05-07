@@ -52,30 +52,35 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       })
     );
     this.$Subs.add(
-      this.dataSavingSrv.lastMeasurement.subscribe((data)=>{
-        if(data){
-          if(this.lastMeasurement.length > 0 && this.lastMeasurement[0].topic){
-            if(
-              data.topic == this.lastMeasurement[this.lastMeasurement.length-1].topic &&
-              data.value == this.lastMeasurement[this.lastMeasurement.length-1].value &&
-              data.measureFrom == this.lastMeasurement[this.lastMeasurement.length-1].measureFrom &&
-              data.Density == this.lastMeasurement[this.lastMeasurement.length-1].Density 
-              
-              ){
-                Number(data.tmpValue) ? this.lastMeasurement.push(data) : '';
-              }
-              else{
-                this.lastMeasurement = []
-                Number(data.tmpValue) ? this.lastMeasurement.push(data) : '';
-              }
-          }
-          else{
-            this.lastMeasurement = []
-            Number(data.tmpValue) ? this.lastMeasurement.push(data) : ''
+      this.dataSavingSrv.lastMeasurement.subscribe((data) => {
+        if (data) {
+          if (
+            this.lastMeasurement.length > 0 &&
+            this.lastMeasurement[0].topic
+          ) {
+            if (
+              data.topic ==
+                this.lastMeasurement[this.lastMeasurement.length - 1].topic &&
+              data.value ==
+                this.lastMeasurement[this.lastMeasurement.length - 1].value &&
+              data.measureFrom ==
+                this.lastMeasurement[this.lastMeasurement.length - 1]
+                  .measureFrom &&
+              data.Density ==
+                this.lastMeasurement[this.lastMeasurement.length - 1].Density
+            ) {
+              Number(data.tmpValue) ? this.lastMeasurement.push(data) : '';
+            } else {
+              this.lastMeasurement = [];
+              Number(data.tmpValue) ? this.lastMeasurement.push(data) : '';
+            }
+          } else {
+            this.lastMeasurement = [];
+            Number(data.tmpValue) ? this.lastMeasurement.push(data) : '';
           }
         }
       })
-    )
+    );
 
     this.$Subs.add(
       this.dataSavingSrv.settingsEdit.subscribe((data) => {
@@ -100,12 +105,12 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     }, 300);
   }
 
-  showLastResults(){
-    this.showResults = !this.showResults
+  showLastResults() {
+    this.showResults = !this.showResults;
   }
 
   showMeasures(event: any) {
-    this.showResults = false
+    this.showResults = false;
     this.measureData = JSON.parse(
       JSON.stringify(
         this.homeData?.actions.filter(
