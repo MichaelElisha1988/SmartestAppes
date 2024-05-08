@@ -1,9 +1,11 @@
 .scroll-bar {
   position: sticky;
-  top: 90px;
+  top: 75px;
   overflow: hidden;
   width: auto;
-  padding: 0 35px;
+  padding: 10px 35px 0 35px;
+  z-index: 99;
+  background: var(--c-silver);
   .list-menu {
     display: flex;
     align-items: center;

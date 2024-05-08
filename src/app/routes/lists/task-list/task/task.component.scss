@@ -1,6 +1,7 @@
 .task {
   padding: 6px 25px;
   margin: 10px auto;
+  min-width: 150px;
   width: 300px;
   height: 20px;
   overflow: hidden;
@@ -27,6 +28,7 @@
 
   .task-name {
     font-size: 18px;
+    padding-top: 2px;
     margin-bottom: 1vh;
     pointer-events: none;
   }

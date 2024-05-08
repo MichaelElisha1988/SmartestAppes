@@ -21,6 +21,7 @@ export class MainFooterComponent implements OnInit {
   }
 
   openAddTask() {
+    document.body.style.overflow = 'hidden'
     this.popupSrv.addTaskOCPopUp(false);
   }
 }
