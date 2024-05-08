@@ -12,6 +12,11 @@ import {
   getDocs,
   getFirestore,
 } from 'firebase/firestore';
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from 'firebase/auth';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -38,6 +43,12 @@ export class DataService {
     measurementId: environment.measurementId,
   };
 
+  private readonly LoginSubject = new BehaviorSubject<any>(null);
+  readonly login$ = this.LoginSubject.asObservable();
+
+  private readonly LoginErrorSubject = new BehaviorSubject<any>(null);
+  readonly loginError$ = this.LoginErrorSubject.asObservable();
+
   private readonly TaskListSubject = new BehaviorSubject<TaskModel[]>([]);
   readonly taskList$ = this.TaskListSubject.asObservable();
 
@@ -53,8 +64,14 @@ export class DataService {
     this.DataBaseApp = getFirestore(this.fbDataBase);
     /////////////////////////////////
     // CALLING DATABASE
-    this.listIdRef = collection(this.DataBaseApp, 'listId');
-    this.taskListRef = collection(this.DataBaseApp, 'taskList');
+    this.listIdRef = collection(
+      this.DataBaseApp,
+      `listId${JSON.parse(sessionStorage.getItem('UserDataLogin')!).uid}`
+    );
+    this.taskListRef = collection(
+      this.DataBaseApp,
+      `taskList${JSON.parse(sessionStorage.getItem('UserDataLogin')!).uid}`
+    );
     /////////////////////////////////////
 
     // GET FIRST DATA FIREBASE/SESSION
@@ -86,7 +103,7 @@ export class DataService {
 
   updateListId(name: string) {
     const listItem: ListId = {
-      id: this.listId.length,
+      id: new Date().valueOf() * 2,
       name: name,
     };
     addDoc(this.listIdRef, listItem);
@@ -109,7 +126,11 @@ export class DataService {
     const dbId = this.taskList.find((x) => x.id == id)
       ? this.taskList.find((x) => x.id == id)?.dbId
       : '';
-    const docRef = doc(this.DataBaseApp, 'taskList', '' + dbId);
+    const docRef = doc(
+      this.DataBaseApp,
+      `taskList${JSON.parse(sessionStorage.getItem('UserDataLogin')!).uid}`,
+      '' + dbId
+    );
     deleteDoc(docRef);
     this.taskList = this.taskList.filter((x) => x.id != id);
     this.TaskListSubject.next(this.taskList);
@@ -121,7 +142,11 @@ export class DataService {
     const dbId = this.listId.find((x) => x.id == id)
       ? this.listId.find((x) => x.id == id)?.dbId
       : '';
-    const docRef = doc(this.DataBaseApp, 'listId', '' + dbId);
+    const docRef = doc(
+      this.DataBaseApp,
+      `listId${JSON.parse(sessionStorage.getItem('UserDataLogin')!).uid}`,
+      '' + dbId
+    );
     deleteDoc(docRef);
     this.listId = this.listId.filter((x) => x.id != id);
     this.ListIdSubject.next(this.listId);
@@ -157,6 +182,36 @@ export class DataService {
       .then(() => {
         this.taskList = tmpTaskList;
         this.TaskListSubject.next(this.taskList);
+      });
+  }
+
+  // createAccount() {
+  //   const auth = getAuth();
+  //   createUserWithEmailAndPassword(auth, '@gmail.com', '')
+  //     .then((userCredential: any) => {
+  //       // Signed up
+  //       const user = userCredential?.user;
+  //       // ...
+  //     })
+  //     .catch((error: any) => {
+  //       const errorCode = error.code;
+  //       const errorMessage = error.message;
+  //       // ..
+  //     });
+  // }
+
+  signIn(email: string, password: string) {
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential: any) => {
+        // Signed up
+        this.LoginSubject.next(userCredential?.user);
+        // ...
+      })
+      .catch((error: any) => {
+        const errorCode = error.code;
+        this.LoginErrorSubject.next(error.message);
+        // ..
       });
   }
 }

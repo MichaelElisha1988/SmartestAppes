@@ -7,9 +7,9 @@ import { PolicyComponent } from './routes/policy/policy.component';
 import { ListsComponent } from './routes/lists/lists.component';
 
 const routes: Routes = [
-  // { path: '', component: LoginComponent },
+  { path: '', component: LoginComponent },
   {
-    path: '',
+    path: 'home',
     component: HomeComponent,
   },
   { path: 'lists', component: ListsComponent },

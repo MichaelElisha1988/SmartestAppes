@@ -9,7 +9,7 @@
   .wrap {
     position: relative;
     width: 70%;
-    height: 70%;
+    height: 60%;
     background-color: var(--c-grey);
     color: var(--c-dark-blue);
 
@@ -78,16 +78,21 @@
         color: var(--c-blue);
 
         animation: 3s infinite glowing;
+        &:disabled {
+          border: 3px solid var(--c-silver);
+          color: var(--c-silver);
+          animation: none;
+        }
       }
     }
     .coming-soon {
-      width: 70%;
+      width: 90%;
       font-size: 16px;
       font-weight: 500;
 
       line-height: normal;
 
-      margin: 50px auto;
+      margin: 10px auto;
       text-align: center;
     }
   }

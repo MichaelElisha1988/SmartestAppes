@@ -34,7 +34,7 @@ export class TaskListComponent implements OnInit, AfterViewInit {
         Number(
           document
             .querySelector('.list-menu')
-            ?.children[0].attributes.getNamedItem('listid')?.value
+            ?.children[0]?.attributes.getNamedItem('listid')?.value
         )
       );
     }, 1000);

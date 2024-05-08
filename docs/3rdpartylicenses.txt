@@ -66,6 +66,9 @@ MIT
 @firebase/app
 Apache-2.0
 
+@firebase/auth
+Apache-2.0
+
 @firebase/component
 Apache-2.0
 
@@ -85,6 +88,8 @@ angular-gtag
 MIT
 
 firebase/app
+
+firebase/auth
 
 firebase/firestore
 

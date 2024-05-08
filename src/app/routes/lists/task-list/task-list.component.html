@@ -16,11 +16,7 @@
       {{ list.name }}
     </div>
   </section>
-  <div
-    *ngIf="getSelectedListId()"
-    class="add-section"
-    [ngClass]="{ 'new-add': addActive }"
-  >
+  <div class="add-section" [ngClass]="{ 'new-add': addActive }">
     <input
       type="text"
       class="add-list-input"

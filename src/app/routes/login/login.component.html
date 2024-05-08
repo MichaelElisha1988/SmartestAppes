@@ -10,6 +10,7 @@
         type="text"
         formControlName="usenName"
         placeholder=" "
+        autocomplete="current-password"
       />
       <label class="l-name" for="usenName">User Name: </label>
 
@@ -19,14 +20,17 @@
         type="password"
         formControlName="password"
         placeholder=" "
+        autocomplete="current-password"
       />
       <label class="l-pass" for="password">Password: </label>
 
-      <button type="submit">Enter</button>
+      <button type="submit" [disabled]="loginForm.status == 'INVALID'">
+        Enter
+      </button>
     </form>
 
     <div class="coming-soon">
-      Login is now free for triel, just click on "Enter"
+      {{ errorMsg }}
     </div>
   </div>
 </section>
