@@ -18,6 +18,7 @@ import {
   signInWithEmailAndPassword,
 } from 'firebase/auth';
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -26,10 +27,10 @@ export class DataService {
   taskList: TaskModel[] = [];
   listId: ListId[] = [];
   selectedId: number = 0;
-  fbDataBase: FirebaseApp;
+  fbDataBase: FirebaseApp | null = null;
   DataBaseApp: any;
-  listIdRef: CollectionReference;
-  taskListRef: CollectionReference;
+  listIdRef: CollectionReference | null = null;
+  taskListRef: CollectionReference | null = null;
   loginName: string = 'Login User Name';
   todayDate: string = '';
 
@@ -58,25 +59,30 @@ export class DataService {
   private readonly ListIdChgSubject = new BehaviorSubject<number>(0);
   readonly ListIdChg$ = this.ListIdChgSubject.asObservable();
 
-  constructor() {
-    // FIREBASE INITIALIZER
-    this.fbDataBase = initializeApp(this.firebaseConfig);
-    this.DataBaseApp = getFirestore(this.fbDataBase);
-    /////////////////////////////////
-    // CALLING DATABASE
-    this.listIdRef = collection(
-      this.DataBaseApp,
-      `listId${JSON.parse(sessionStorage.getItem('UserDataLogin')!).uid}`
-    );
-    this.taskListRef = collection(
-      this.DataBaseApp,
-      `taskList${JSON.parse(sessionStorage.getItem('UserDataLogin')!).uid}`
-    );
-    /////////////////////////////////////
+  constructor(private router: Router) {
+    sessionStorage.getItem('UserDataLogin') ? '' : this.router.navigate(['']);
+    this.login$.subscribe((data) => {
+      // FIREBASE INITIALIZER
+      this.fbDataBase = initializeApp(this.firebaseConfig);
+      this.DataBaseApp = getFirestore(this.fbDataBase);
+      /////////////////////////////////
+      if (data != null && !sessionStorage.getItem('UserDataLogin')) {
+        // CALLING DATABASE
+        this.listIdRef = collection(
+          this.DataBaseApp,
+          `listId${JSON.parse(sessionStorage.getItem('UserDataLogin')!).uid}`
+        );
+        this.taskListRef = collection(
+          this.DataBaseApp,
+          `taskList${JSON.parse(sessionStorage.getItem('UserDataLogin')!).uid}`
+        );
+        /////////////////////////////////////
 
-    // GET FIRST DATA FIREBASE/SESSION
-    this.getListId();
-    this.getTaskList();
+        // GET FIRST DATA FIREBASE/SESSION
+        this.getListId();
+        this.getTaskList();
+      }
+    });
   }
   getLoginName(): string {
     return this.loginName;
@@ -106,7 +112,7 @@ export class DataService {
       id: new Date().valueOf() * 2,
       name: name,
     };
-    addDoc(this.listIdRef, listItem);
+    addDoc(this.listIdRef!, listItem);
     this.listId.push(listItem);
     sessionStorage.setItem('listId', JSON.stringify(this.listId));
     this.ListIdSubject.next(this.listId);
@@ -116,7 +122,7 @@ export class DataService {
   updateTaskList(task: TaskModel) {
     task.id = new Date().valueOf();
     task.listID = this.selectedId;
-    addDoc(this.taskListRef, task);
+    addDoc(this.taskListRef!, task);
     this.taskList.push(task);
     this.TaskListSubject.next(this.taskList);
     this.ListIdChgSubject.next(this.selectedId);
@@ -156,7 +162,7 @@ export class DataService {
   getListId() {
     let tmpListId: ListId[] = [];
 
-    getDocs(this.listIdRef)
+    getDocs(this.listIdRef!)
       .then((data) => {
         data.docs.forEach((data) => {
           tmpListId.push({ ...(data.data() as ListId), dbId: data.id });
@@ -173,7 +179,7 @@ export class DataService {
   getTaskList() {
     let tmpTaskList: TaskModel[] = [];
 
-    getDocs(this.taskListRef)
+    getDocs(this.taskListRef!)
       .then((data) => {
         data.docs.forEach((data) => {
           tmpTaskList.push({ ...(data.data() as TaskModel), dbId: data.id });
