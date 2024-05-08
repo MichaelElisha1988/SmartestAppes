@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 import { TaskModel } from '../models/task.model';
 import { ListId } from '../models/list-id.model';
 import { FirebaseApp, initializeApp } from 'firebase/app';
@@ -59,30 +59,40 @@ export class DataService {
   private readonly ListIdChgSubject = new BehaviorSubject<number>(0);
   readonly ListIdChg$ = this.ListIdChgSubject.asObservable();
 
+  Sub$ = new Subscription();
+
   constructor(private router: Router) {
     sessionStorage.getItem('UserDataLogin') ? '' : this.router.navigate(['']);
-    this.login$.subscribe((data) => {
-      // FIREBASE INITIALIZER
-      this.fbDataBase = initializeApp(this.firebaseConfig);
-      this.DataBaseApp = getFirestore(this.fbDataBase);
-      /////////////////////////////////
-      if (data != null && !sessionStorage.getItem('UserDataLogin')) {
-        // CALLING DATABASE
-        this.listIdRef = collection(
-          this.DataBaseApp,
-          `listId${JSON.parse(sessionStorage.getItem('UserDataLogin')!).uid}`
-        );
-        this.taskListRef = collection(
-          this.DataBaseApp,
-          `taskList${JSON.parse(sessionStorage.getItem('UserDataLogin')!).uid}`
-        );
-        /////////////////////////////////////
+    this.Sub$.add(
+      this.login$.subscribe((data) => {
+        setTimeout(() => {
+          // FIREBASE INITIALIZER
+          this.fbDataBase = initializeApp(this.firebaseConfig);
+          this.DataBaseApp = getFirestore(this.fbDataBase);
+          /////////////////////////////////
+          if (data != null && !sessionStorage.getItem('UserDataLogin')) {
+            // CALLING DATABASE
+            this.listIdRef = collection(
+              this.DataBaseApp,
+              `listId${
+                JSON.parse(sessionStorage.getItem('UserDataLogin')!).uid
+              }`
+            );
+            this.taskListRef = collection(
+              this.DataBaseApp,
+              `taskList${
+                JSON.parse(sessionStorage.getItem('UserDataLogin')!).uid
+              }`
+            );
+            /////////////////////////////////////
 
-        // GET FIRST DATA FIREBASE/SESSION
-        this.getListId();
-        this.getTaskList();
-      }
-    });
+            // GET FIRST DATA FIREBASE/SESSION
+            this.getListId();
+            this.getTaskList();
+          }
+        }, 500);
+      })
+    );
   }
   getLoginName(): string {
     return this.loginName;

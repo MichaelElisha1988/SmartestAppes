@@ -24,6 +24,9 @@ export class LoginComponent implements OnInit, OnDestroy {
   errorMsg: string | null = null;
 
   constructor(private router: Router, private dataSrv: DataService) {
+    sessionStorage.getItem('UserDataLogin')
+      ? this.router.navigate(['home'])
+      : '';
     this.Sub$.add(
       this.dataSrv.login$.subscribe((data) => {
         data != null
