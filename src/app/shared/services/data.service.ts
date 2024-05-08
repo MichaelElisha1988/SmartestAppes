@@ -97,10 +97,7 @@ export class DataService {
   }
 
   updateTaskList(task: TaskModel) {
-    task.id =
-      this.taskList.length > 0
-        ? this.taskList[this.taskList.length - 1].id + 1
-        : 0;
+    task.id = new Date().valueOf();
     task.listID = this.selectedId;
     addDoc(this.taskListRef, task);
     this.taskList.push(task);
