@@ -46,11 +46,13 @@ export class AddTaskPopupComponent implements OnInit {
 
   addTask(ev: any) {
     this.dataSrv.updateTaskList(this.createTaskModel());
-    document.body.style.overflow = ''
     this.onPopup(true);
   }
 
   onPopup(OC: boolean) {
+    if (OC) {
+      document.body.style.overflow = '';
+    }
     this.hidden = OC;
   }
 

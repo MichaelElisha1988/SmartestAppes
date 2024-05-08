@@ -1,11 +1,12 @@
 .popup-background {
   transition: 0.3s all ease-in-out;
   opacity: 1;
-  position: absolute;
+  position: fixed;
   background-color: rgba(0, 0, 0, 0.384);
   top: 0;
   height: 100%;
   width: 100%;
+  max-width: 490px;
   z-index: 999;
 
   &.hidden {
