@@ -12,13 +12,9 @@ import {
   getDocs,
   getFirestore,
 } from 'firebase/firestore';
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-} from 'firebase/auth';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
+import { LoginService } from './login.service';
 
 @Injectable({
   providedIn: 'root',
@@ -27,10 +23,10 @@ export class DataService {
   taskList: TaskModel[] = [];
   listId: ListId[] = [];
   selectedId: number = 0;
-  fbDataBase: FirebaseApp | null = null;
+  fbDataBase: FirebaseApp;
   DataBaseApp: any;
-  listIdRef: CollectionReference | null = null;
-  taskListRef: CollectionReference | null = null;
+  listIdRef: CollectionReference;
+  taskListRef: CollectionReference;
   loginName: string = 'Login User Name';
   todayDate: string = '';
 
@@ -44,12 +40,6 @@ export class DataService {
     measurementId: environment.measurementId,
   };
 
-  private readonly LoginSubject = new BehaviorSubject<any>(null);
-  readonly login$ = this.LoginSubject.asObservable();
-
-  private readonly LoginErrorSubject = new BehaviorSubject<any>(null);
-  readonly loginError$ = this.LoginErrorSubject.asObservable();
-
   private readonly TaskListSubject = new BehaviorSubject<TaskModel[]>([]);
   readonly taskList$ = this.TaskListSubject.asObservable();
 
@@ -61,38 +51,26 @@ export class DataService {
 
   Sub$ = new Subscription();
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private loginSrv: LoginService) {
     sessionStorage.getItem('UserDataLogin') ? '' : this.router.navigate(['']);
-    this.Sub$.add(
-      this.login$.subscribe((data) => {
-        setTimeout(() => {
-          // FIREBASE INITIALIZER
-          this.fbDataBase = initializeApp(this.firebaseConfig);
-          this.DataBaseApp = getFirestore(this.fbDataBase);
-          /////////////////////////////////
-          if (data != null && !sessionStorage.getItem('UserDataLogin')) {
-            // CALLING DATABASE
-            this.listIdRef = collection(
-              this.DataBaseApp,
-              `listId${
-                JSON.parse(sessionStorage.getItem('UserDataLogin')!).uid
-              }`
-            );
-            this.taskListRef = collection(
-              this.DataBaseApp,
-              `taskList${
-                JSON.parse(sessionStorage.getItem('UserDataLogin')!).uid
-              }`
-            );
-            /////////////////////////////////////
-
-            // GET FIRST DATA FIREBASE/SESSION
-            this.getListId();
-            this.getTaskList();
-          }
-        }, 500);
-      })
+    // FIREBASE INITIALIZER
+    this.fbDataBase = this.loginSrv.getfbDataBase();
+    this.DataBaseApp = this.loginSrv.getDataBaseApp();
+    /////////////////////////////////
+    // CALLING DATABASE
+    this.listIdRef = collection(
+      this.DataBaseApp,
+      `listId${JSON.parse(sessionStorage.getItem('UserDataLogin')!).uid}`
     );
+    this.taskListRef = collection(
+      this.DataBaseApp,
+      `taskList${JSON.parse(sessionStorage.getItem('UserDataLogin')!).uid}`
+    );
+    /////////////////////////////////////
+
+    // GET FIRST DATA FIREBASE/SESSION
+    this.getListId();
+    this.getTaskList();
   }
   getLoginName(): string {
     return this.loginName;
@@ -124,7 +102,10 @@ export class DataService {
     };
     addDoc(this.listIdRef!, listItem);
     this.listId.push(listItem);
-    sessionStorage.setItem('listId', JSON.stringify(this.listId));
+    sessionStorage.setItem(
+      `listId${JSON.parse(sessionStorage.getItem('UserDataLogin')!).uid}`,
+      JSON.stringify(this.listId)
+    );
     this.ListIdSubject.next(this.listId);
     this.getListId();
   }
@@ -198,36 +179,6 @@ export class DataService {
       .then(() => {
         this.taskList = tmpTaskList;
         this.TaskListSubject.next(this.taskList);
-      });
-  }
-
-  // createAccount() {
-  //   const auth = getAuth();
-  //   createUserWithEmailAndPassword(auth, '@gmail.com', '')
-  //     .then((userCredential: any) => {
-  //       // Signed up
-  //       const user = userCredential?.user;
-  //       // ...
-  //     })
-  //     .catch((error: any) => {
-  //       const errorCode = error.code;
-  //       const errorMessage = error.message;
-  //       // ..
-  //     });
-  // }
-
-  signIn(email: string, password: string) {
-    const auth = getAuth();
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential: any) => {
-        // Signed up
-        this.LoginSubject.next(userCredential?.user);
-        // ...
-      })
-      .catch((error: any) => {
-        const errorCode = error.code;
-        this.LoginErrorSubject.next(error.message);
-        // ..
       });
   }
 }
