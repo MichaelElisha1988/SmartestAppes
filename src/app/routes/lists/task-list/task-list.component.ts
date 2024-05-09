@@ -64,7 +64,7 @@ export class TaskListComponent implements OnInit, AfterViewInit {
       const id = '' + list.id;
       setTimeout(() => {
         (event.target.children[0] as HTMLInputElement).focus();
-      });
+      }, 500);
     } else {
       this.dataSrv.setSelectedListId(event.target.attributes['listId']?.value);
     }
