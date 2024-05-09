@@ -7,4 +7,5 @@ export interface TaskModel {
   author: string;
   status: string;
   currentStatus: number;
+  editMode: boolean;
 }

@@ -2,6 +2,7 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  Input,
   OnInit,
   ViewChild,
 } from '@angular/core';
@@ -16,6 +17,7 @@ import { DataService } from '../../../shared/services/data.service';
 export class TaskListComponent implements OnInit, AfterViewInit {
   listId: ListId[] = [];
   addActive: boolean = false;
+  listEdit: boolean = false;
   movearound: number = 0;
   @ViewChild('addInput') addInput: ElementRef | undefined;
   @ViewChild('ListId') ListId: ElementRef | undefined;
@@ -56,8 +58,25 @@ export class TaskListComponent implements OnInit, AfterViewInit {
     return this.dataSrv.getSelectedListId();
   }
 
-  selectListId(event: any) {
-    this.dataSrv.setSelectedListId(event.target.attributes['listId'].value);
+  selectListId(event: any, list: ListId) {
+    if (event.target.attributes['listId']?.value == this.getSelectedListId()) {
+      list.editMode = true;
+      const id = '' + list.id;
+      setTimeout(() => {
+        (event.target.children[0] as HTMLInputElement).focus();
+      });
+    } else {
+      this.dataSrv.setSelectedListId(event.target.attributes['listId']?.value);
+    }
+  }
+  updateListName(event: any, list: ListId) {
+    if (list.name != event.target.value && event.target.value != '') {
+      list.name = event.target.value;
+      list.editMode = false;
+      this.dataSrv.updateListData(list);
+    } else {
+      list.editMode = false;
+    }
   }
 
   deleteList(event: any) {

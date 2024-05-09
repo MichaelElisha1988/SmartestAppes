@@ -3,13 +3,14 @@
   margin: 10px auto;
   min-width: 150px;
   width: 300px;
-  height: 20px;
+  height: max-content;
   overflow: hidden;
   transition: 0.3s height ease-in-out;
   position: relative;
   border-radius: 6px;
+  line-height: normal;
   &.extend {
-    height: 65px;
+    height: max-content;
   }
 
   .close {
@@ -25,19 +26,31 @@
       color: red;
     }
   }
-
-  .task-name {
+  .task {
     font-size: 18px;
-    padding-top: 2px;
-    margin-bottom: 1vh;
-    pointer-events: none;
+    padding: 5px;
+    margin-bottom: 5px;
+    letter-spacing: normal;
+    .task-name {
+      pointer-events: none;
+      &.edit {
+        font-size: 18px;
+        letter-spacing: normal;
+        background-color: transparent;
+        border: transparent;
+        color: var(--c-gray);
+        width: -webkit-fill-available;
+      }
+    }
   }
   .descripption-task {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
     font-size: 12px;
+    position: relative;
+    bottom: 0px;
+    margin-bottom: 10px;
+    width: -webkit-fill-available;
+    justify-content: space-between;
     .auther-task {
     }
     .date-task {

@@ -6,6 +6,7 @@ import { FirebaseApp, initializeApp } from 'firebase/app';
 import {
   CollectionReference,
   addDoc,
+  updateDoc,
   collection,
   deleteDoc,
   doc,
@@ -101,6 +102,7 @@ export class DataService {
     const listItem: ListId = {
       id: new Date().valueOf() * 2,
       name: name,
+      editMode: false,
     };
     addDoc(this.listIdRef!, listItem);
     this.listId.push(listItem);
@@ -182,5 +184,29 @@ export class DataService {
         this.taskList = tmpTaskList;
         this.TaskListSubject.next(this.taskList);
       });
+  }
+
+  updateTaskData(task: TaskModel) {
+    const dbId = this.taskList.find((x) => x.id == task.id)
+      ? this.taskList.find((x) => x.id == task.id)?.dbId
+      : '';
+    const docRef = doc(
+      this.DataBaseApp,
+      `taskList${JSON.parse(sessionStorage.getItem('UserDataLogin')!).uid}`,
+      '' + dbId
+    );
+    updateDoc(docRef, { ...task });
+  }
+
+  updateListData(list: ListId) {
+    const dbId = this.listId.find((x) => x.id == list.id)
+      ? this.listId.find((x) => x.id == list.id)?.dbId
+      : '';
+    const docRef = doc(
+      this.DataBaseApp,
+      `listId${JSON.parse(sessionStorage.getItem('UserDataLogin')!).uid}`,
+      '' + dbId
+    );
+    updateDoc(docRef, { ...list });
   }
 }

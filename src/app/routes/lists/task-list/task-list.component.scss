@@ -13,6 +13,16 @@
     overflow-x: auto;
     transition: 0.6s left ease-in-out;
     border-bottom: 2px solid var(--c-dark-blue);
+
+    .list-name {
+      pointer-events: none;
+    }
+    .edit-list-name {
+      max-width: min-content;
+      background-color: transparent;
+      border: transparent;
+      pointer-events: none;
+    }
     .list {
       padding: 10px 10px;
       border-right: 1px solid var(--c-silver);

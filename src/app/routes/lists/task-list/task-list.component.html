@@ -10,10 +10,20 @@
       *ngFor="let list of listId; let i = index"
       class="list"
       [ngClass]="getSelectedListId() == +list.id ? 'selected' : ''"
-      (click)="selectListId($event)"
+      (click)="selectListId($event, list)"
       [attr.listId]="list.id"
     >
-      {{ list.name }}
+      <span class="list-name" *ngIf="!list.editMode; else ListEditInput">{{
+        list.name
+      }}</span>
+      <ng-template #ListEditInput>
+        <input
+          type="text"
+          (blur)="updateListName($event, list)"
+          [value]="list.name"
+          class="edit-list-name"
+        />
+      </ng-template>
     </div>
   </section>
   <div class="add-section" [ngClass]="{ 'new-add': addActive }">
