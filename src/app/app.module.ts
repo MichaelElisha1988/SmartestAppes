@@ -10,6 +10,7 @@ import { LoginComponent } from './routes/login/login.component';
 import { HomeComponent } from './routes/home/home.component';
 
 import { GtagModule } from 'angular-gtag';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -51,7 +52,7 @@ import { AddTaskPopupComponent } from './routes/lists/popups/addd-task-popup/add
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
