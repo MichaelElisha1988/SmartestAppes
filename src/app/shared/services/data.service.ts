@@ -27,7 +27,7 @@ export class DataService {
   DataBaseApp: any;
   listIdRef: CollectionReference;
   taskListRef: CollectionReference;
-  loginName: string = 'Login User Name';
+  loginName: string = '';
   todayDate: string = '';
 
   private readonly firebaseConfig = {
@@ -73,7 +73,9 @@ export class DataService {
     this.getTaskList();
   }
   getLoginName(): string {
-    return this.loginName;
+    return JSON.parse(sessionStorage.getItem('UserDataLogin')!).email.split(
+      '@'
+    )[0];
   }
 
   setLoginName(logUser: string) {
