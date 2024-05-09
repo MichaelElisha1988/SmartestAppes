@@ -71,6 +71,10 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
         this.isOpenMenu ? (this.isOpenMenu = false) : '';
         this.router.navigate(['/lists']);
         break;
+      case 'recipies':
+        this.isOpenMenu ? (this.isOpenMenu = false) : '';
+        this.router.navigate(['/recipies']);
+        break;
 
       default:
         break;

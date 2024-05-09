@@ -53,6 +53,9 @@
       >
         Measurements
       </li>
+      <li (click)="close('recipies')" class="list-item" *ngIf="isAfterLogin">
+        My Recipies Book
+      </li>
       <li (click)="close('lists')" class="list-item" *ngIf="isAfterLogin">
         Todo List
       </li>

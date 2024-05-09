@@ -6,6 +6,7 @@ import { MeasurementsComponent } from './comp/measurements/measurements.componen
 import { PolicyComponent } from './routes/policy/policy.component';
 import { ListsComponent } from './routes/lists/lists.component';
 import { LoginGuard } from './shared/guards/login.guard';
+import { MyRecepiesBookComponent } from './routes/my-recepies-book/my-recepies-book.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -18,6 +19,10 @@ const routes: Routes = [
   {
     path: 'policy',
     component: PolicyComponent,
+  },
+  {
+    path: 'recipies',
+    component: MyRecepiesBookComponent,
   },
   {
     path: '**',

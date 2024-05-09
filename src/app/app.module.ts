@@ -25,6 +25,7 @@ import { TaskListComponent } from './routes/lists/task-list/task-list.component'
 import { TaskComponent } from './routes/lists/task-list/task/task.component';
 import { MainFooterComponent } from './routes/lists/main-footer/main-footer.component';
 import { AddTaskPopupComponent } from './routes/lists/popups/addd-task-popup/add-task-popup.component';
+import { MyRecepiesBookComponent } from './routes/my-recepies-book/my-recepies-book.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { AddTaskPopupComponent } from './routes/lists/popups/addd-task-popup/add
     TaskComponent,
     MainFooterComponent,
     AddTaskPopupComponent,
+    MyRecepiesBookComponent,
   ],
   imports: [
     BrowserModule,

@@ -65,8 +65,8 @@ export class TaskListComponent implements OnInit, AfterViewInit {
     }
     if (
       event.target.attributes['listId']?.value == this.getSelectedListId() ||
-      +(listParent as HTMLElement).attributes.getNamedItem('listId')?.value! ==
-        this.getSelectedListId()
+      +(listParent as HTMLElement)?.attributes?.getNamedItem('listId')
+        ?.value! == this.getSelectedListId()
     ) {
       list.editMode = true;
       setTimeout(() => {
@@ -79,7 +79,8 @@ export class TaskListComponent implements OnInit, AfterViewInit {
     } else {
       if ((listParent as HTMLElement)?.children != undefined) {
         this.dataSrv.setSelectedListId(
-          +(listParent as HTMLElement).attributes.getNamedItem('listId')?.value!
+          +(listParent as HTMLElement)?.attributes?.getNamedItem('listId')
+            ?.value!
         );
       } else {
         this.dataSrv.setSelectedListId(
