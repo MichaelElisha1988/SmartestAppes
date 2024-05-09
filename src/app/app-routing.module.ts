@@ -7,15 +7,22 @@ import { PolicyComponent } from './routes/policy/policy.component';
 import { ListsComponent } from './routes/lists/lists.component';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
   {
-    path: 'home',
-    component: HomeComponent,
-  },
-  { path: 'lists', component: ListsComponent },
-  {
-    path: 'policy',
-    component: PolicyComponent,
+    path: '',
+    component: LoginComponent,
+    children: [
+      {
+        path: 'home',
+        component: HomeComponent,
+        pathMatch: 'full',
+      },
+      { path: 'lists', component: ListsComponent, pathMatch: 'full' },
+      {
+        path: 'policy',
+        component: PolicyComponent,
+        pathMatch: 'full',
+      },
+    ],
   },
 ];
 
