@@ -35,7 +35,9 @@ export class LoginService {
   private readonly LoginErrorSubject = new BehaviorSubject<any>(null);
   readonly loginError$ = this.LoginErrorSubject.asObservable();
 
-  private readonly afterLoginSubject = new BehaviorSubject<boolean>(false);
+  private readonly afterLoginSubject = new BehaviorSubject<boolean>(
+    sessionStorage.getItem('UserDataLogin') != null
+  );
   readonly afterlogin$ = this.afterLoginSubject.asObservable();
 
   constructor(private http: HttpClient) {
