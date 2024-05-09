@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   functionScript: any;
   jsSrvScript: any;
   stylesEl: any;
-  isAfterLogin: boolean = false;
+  isAfterLogin: boolean = sessionStorage.getItem('UserDataLogin') != null;
 
   innerHeaderData: Header | undefined;
 
