@@ -35,6 +35,9 @@ export class LoginService {
   private readonly LoginErrorSubject = new BehaviorSubject<any>(null);
   readonly loginError$ = this.LoginErrorSubject.asObservable();
 
+  private readonly afterLoginSubject = new BehaviorSubject<boolean>(false);
+  readonly afterlogin$ = this.afterLoginSubject.asObservable();
+
   constructor(private http: HttpClient) {
     this.http.get<Header>('assets/headerInnerDate.json').subscribe((data) => {
       this.headerInnerData.next(data);
@@ -44,6 +47,11 @@ export class LoginService {
     this.DataBaseApp = getFirestore(this.fbDataBase);
     /////////////////////////////////
   }
+  setAfterLogin() {
+    this.afterLoginSubject.next(
+      sessionStorage.getItem('UserDataLogin') != null
+    );
+  }
 
   getfbDataBase(): FirebaseApp {
     return this.fbDataBase;
@@ -52,20 +60,20 @@ export class LoginService {
     return this.DataBaseApp;
   }
 
-  // createAccount() {
-  //   const auth = getAuth();
-  //   createUserWithEmailAndPassword(auth, '@gmail.com', '')
-  //     .then((userCredential: any) => {
-  //       // Signed up
-  //       const user = userCredential?.user;
-  //       // ...
-  //     })
-  //     .catch((error: any) => {
-  //       const errorCode = error.code;
-  //       const errorMessage = error.message;
-  //       // ..
-  //     });
-  // }
+  createAccount(email: string, password: string) {
+    const auth = getAuth();
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential: any) => {
+        // Signed up
+        const user = userCredential?.user;
+        // ...
+      })
+      .catch((error: any) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
+      });
+  }
 
   signIn(email: string, password: string) {
     const auth = getAuth();
@@ -73,6 +81,8 @@ export class LoginService {
       .then((userCredential: any) => {
         // Signed up
         this.LoginSubject.next(userCredential?.user);
+        this.setAfterLogin();
+
         // ...
       })
       .catch((error: any) => {

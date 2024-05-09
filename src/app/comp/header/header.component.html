@@ -45,11 +45,21 @@
 >
   <div class="options-list">
     <ul class="list">
-      <h1 class="list-title">Applications</h1>
-      <li (click)="close('measurements')" class="list-item">Measurements</li>
-      <li (click)="close('lists')" class="list-item">Todo List</li>
-      <h1 class="list-title">General</h1>
-      <li (click)="close('menu')" class="list-item">Add/Remove Measurements</li>
+      <h1 class="list-title" *ngIf="isAfterLogin">Applications</h1>
+      <li
+        (click)="close('measurements')"
+        class="list-item"
+        *ngIf="isAfterLogin"
+      >
+        Measurements
+      </li>
+      <li (click)="close('lists')" class="list-item" *ngIf="isAfterLogin">
+        Todo List
+      </li>
+      <h1 class="list-title" *ngIf="isAfterLogin">General</h1>
+      <li (click)="close('menu')" class="list-item" *ngIf="isAfterLogin">
+        Add/Remove Measurements
+      </li>
       <h1 class="list-title">Policies</h1>
       <li (click)="close('policy')" class="list-item">Privacy Policy</li>
     </ul>

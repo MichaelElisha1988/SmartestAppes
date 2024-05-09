@@ -21,6 +21,7 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   functionScript: any;
   jsSrvScript: any;
   stylesEl: any;
+  isAfterLogin: boolean = false;
 
   innerHeaderData: Header | undefined;
 
@@ -30,6 +31,11 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
     private router: Router
   ) {
     this.editMode = sessionStorage.getItem('editMode') == 'true';
+    this.$Subs.add(
+      this.loginService.afterlogin$.subscribe((data) => {
+        this.isAfterLogin = data;
+      })
+    );
     this.$Subs.add(
       this.loginService.headerInnerData.subscribe((data) => {
         this.innerHeaderData = data;
@@ -62,9 +68,9 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
         this.router.navigate(['..']);
         break;
       case 'lists':
-          this.isOpenMenu ? (this.isOpenMenu = false) : '';
-          this.router.navigate(['/lists']);
-          break;
+        this.isOpenMenu ? (this.isOpenMenu = false) : '';
+        this.router.navigate(['/lists']);
+        break;
 
       default:
         break;
