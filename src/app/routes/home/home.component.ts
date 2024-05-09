@@ -214,6 +214,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.$Subs.unsubscribe();
-    this.lastMeasurement = [];
+    this.dataSavingSrv.setLastMeasurement([]);
   }
 }
