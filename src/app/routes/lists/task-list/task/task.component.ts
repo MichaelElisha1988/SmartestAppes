@@ -55,6 +55,7 @@ export class TaskComponent implements OnInit {
   }
 
   editTaskName(event: any, task: TaskModel) {
+    console.log(event);
     setTimeout(() => {
       (event.target.children[0] as HTMLInputElement).focus();
     }, 500);
