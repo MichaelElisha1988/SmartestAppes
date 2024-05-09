@@ -34,9 +34,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   notInList: Home | null = null;
 
   ngOnInit() {
-    localStorage.getItem('notInList')
-      ? (this.notInList = JSON.parse(localStorage.getItem('notInList')!))
-      : '';
     this.$Subs.add(
       this.generalDataSrvice.homeInnerData.subscribe((data) => {
         this.homeData = data;
@@ -69,14 +66,32 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
               data.Density ==
                 this.lastMeasurement[this.lastMeasurement.length - 1].Density
             ) {
-              Number(data.tmpValue) ? this.lastMeasurement.push(data) : '';
+              Number(data.tmpValue)
+                ? (this.lastMeasurement.push(data),
+                  sessionStorage.setItem(
+                    'lastMeasure',
+                    JSON.stringify(this.lastMeasurement)
+                  ))
+                : '';
             } else {
               this.lastMeasurement = [];
-              Number(data.tmpValue) ? this.lastMeasurement.push(data) : '';
+              Number(data.tmpValue)
+                ? (this.lastMeasurement.push(data),
+                  sessionStorage.setItem(
+                    'lastMeasure',
+                    JSON.stringify(this.lastMeasurement)
+                  ))
+                : '';
             }
           } else {
             this.lastMeasurement = [];
-            Number(data.tmpValue) ? this.lastMeasurement.push(data) : '';
+            Number(data.tmpValue)
+              ? (this.lastMeasurement.push(data),
+                sessionStorage.setItem(
+                  'lastMeasure',
+                  JSON.stringify(this.lastMeasurement)
+                ))
+              : '';
           }
         }
       })
@@ -91,6 +106,14 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
       })
     );
     this.generalDataSrvice.getDataFromJson();
+    localStorage.getItem('notInList')
+      ? (this.notInList = JSON.parse(localStorage.getItem('notInList')!))
+      : '';
+    if (sessionStorage.getItem('lastMeasure')) {
+      JSON.parse(sessionStorage.getItem('lastMeasure')!).forEach((x: any) =>
+        this.dataSavingSrv.setLastMeasurement(x)
+      );
+    }
   }
 
   initDisabledList() {
@@ -191,5 +214,6 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.$Subs.unsubscribe();
+    this.lastMeasurement = [];
   }
 }
