@@ -59,14 +59,33 @@ export class TaskListComponent implements OnInit, AfterViewInit {
   }
 
   selectListId(event: any, list: ListId) {
-    if (event.target.attributes['listId']?.value == this.getSelectedListId()) {
+    let listParent: any = event;
+    if (event.target.classList.contains('list-name')) {
+      listParent = event.target.parentElement;
+    }
+    if (
+      event.target.attributes['listId']?.value == this.getSelectedListId() ||
+      +(listParent as HTMLElement).attributes.getNamedItem('listId')?.value! ==
+        this.getSelectedListId()
+    ) {
       list.editMode = true;
-      const id = '' + list.id;
       setTimeout(() => {
-        (event.target.children[0] as HTMLInputElement).focus();
-      }, 500);
+        if ((listParent as HTMLElement)?.children != undefined) {
+          ((listParent as HTMLElement).children[0] as HTMLInputElement).focus();
+        } else {
+          (listParent.target.children[0] as HTMLInputElement).focus();
+        }
+      });
     } else {
-      this.dataSrv.setSelectedListId(event.target.attributes['listId']?.value);
+      if ((listParent as HTMLElement)?.children != undefined) {
+        this.dataSrv.setSelectedListId(
+          +(listParent as HTMLElement).attributes.getNamedItem('listId')?.value!
+        );
+      } else {
+        this.dataSrv.setSelectedListId(
+          event.target.attributes['listId']?.value
+        );
+      }
     }
   }
   updateListName(event: any, list: ListId) {

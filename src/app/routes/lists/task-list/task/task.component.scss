@@ -26,13 +26,12 @@
       color: red;
     }
   }
-  .task {
+  .task-item {
     font-size: 18px;
     padding: 5px;
     margin-bottom: 5px;
     letter-spacing: normal;
     .task-name {
-      pointer-events: none;
       &.edit {
         font-size: 18px;
         letter-spacing: normal;
@@ -40,7 +39,6 @@
         border: transparent;
         color: var(--c-gray);
         width: -webkit-fill-available;
-        pointer-events: all;
       }
     }
   }

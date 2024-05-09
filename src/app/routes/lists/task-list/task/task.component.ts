@@ -55,10 +55,18 @@ export class TaskComponent implements OnInit {
   }
 
   editTaskName(event: any, task: TaskModel) {
-    console.log(event);
+    let taskParent: any = event;
+    if (event.target.classList.contains('task-name')) {
+      taskParent = event.target.parentElement;
+    }
+
     setTimeout(() => {
-      (event.target.children[0] as HTMLInputElement).focus();
-    }, 500);
+      if ((taskParent as HTMLElement)?.children != undefined) {
+        ((taskParent as HTMLElement).children[0] as HTMLInputElement).focus();
+      } else {
+        (taskParent.target.children[0] as HTMLInputElement).focus();
+      }
+    });
     task.editMode = true;
   }
 
