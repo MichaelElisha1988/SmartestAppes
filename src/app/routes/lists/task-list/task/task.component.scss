@@ -1,74 +1,89 @@
 .task {
   padding: 6px 25px;
   margin: 10px auto;
-  min-width: 150px;
   width: 300px;
+  min-width: 250px;
   height: max-content;
-  overflow: hidden;
-  transition: 0.3s height ease-in-out;
+  min-height: 100px;
+  // transition: 0.3s height ease-in-out;
   position: relative;
-  border-radius: 6px;
+  border-radius: 15px;
   line-height: normal;
+  animation: appear 0.3s;
+  background-color: var(--c-grey);
+
   &.extend {
     height: max-content;
   }
-
-  .close {
+  .effect-section {
     position: absolute;
-    top: 11px;
-    right: 15px;
-    font-size: 12px;
-    font-weight: 600;
-    width: fit-content;
-    transition: 0.3s color ease-in-out;
-    cursor: pointer;
-    &:hover {
-      color: red;
-    }
+    top: 0;
+    left: 0;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    height: 100%;
+    width: 17px;
+    transition: all 0.3s ease;
   }
-  .task-item {
-    font-size: 18px;
-    padding: 5px;
-    margin-bottom: 5px;
-    letter-spacing: normal;
-    .task-name {
-      &.edit {
-        font-size: 18px;
-        letter-spacing: normal;
-        background-color: transparent;
-        border: transparent;
-        color: var(--c-gray);
-        width: -webkit-fill-available;
+  .info-section {
+    .close {
+      position: absolute;
+      top: 11px;
+      right: 15px;
+      font-size: 12px;
+      font-weight: 600;
+      width: fit-content;
+      transition: 0.3s color ease-in-out;
+      cursor: pointer;
+      color: var(--c-silver);
+      &:hover {
+        color: red;
       }
     }
-  }
-  .descripption-task {
-    display: flex;
-    font-size: 12px;
-    position: relative;
-    bottom: 0px;
-    margin-bottom: 10px;
-    width: -webkit-fill-available;
-    justify-content: space-between;
-    .auther-task {
+    .task-item {
+      font-size: 18px;
+      padding: 10px 25px;
+      margin-bottom: 5px;
+      letter-spacing: normal;
+      color: var(--c-dark-blue);
+      .task-name {
+        &.edit {
+          font-size: 18px;
+          letter-spacing: normal;
+          background-color: transparent;
+          border: transparent;
+          color: var(--c-gray);
+          width: -webkit-fill-available;
+        }
+      }
     }
-    .date-task {
-    }
-    .status-task {
-      width: 100px;
-      .status-state {
-        cursor: pointer;
-        transition: color 0.3s ease-in-out;
+    .descripption-task {
+      font-size: 12px;
+      position: relative;
+      bottom: 0px;
+      padding: 0 25px;
+      width: -webkit-fill-available;
+      color: var(--c-dark-blue);
+      .auther-task {
+      }
+      .date-task {
+      }
+      .status-task {
+        width: 100px;
+        .status-state {
+          cursor: pointer;
+          transition: color 0.3s ease-in-out;
+        }
       }
     }
   }
 }
-
 .odd {
-  background-color: var(--c-dark-blue);
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 10px;
+  // background-color: var(--c-grey);
+  // border-top-left-radius: 20px;
+  // border-bottom-left-radius: 10px;
   .status-task {
+    margin-top: 15px;
     .status-state {
       color: var(--c-silver);
     }
@@ -76,13 +91,22 @@
 }
 
 .even {
-  background-color: var(--c-silver);
-  border: 1px solid var(--c-dark-blue);
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 10px;
+  // background-color: var(--c-grey);
+  // border: 1px solid var(--c-blue);
+  // border-top-right-radius: 20px;
+  // border-bottom-right-radius: 10px;
   .status-task {
+    margin-top: 15px;
     .status-state {
-      color: var(--c-dark-blue);
+      color: var(--c-silver);
     }
+  }
+}
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

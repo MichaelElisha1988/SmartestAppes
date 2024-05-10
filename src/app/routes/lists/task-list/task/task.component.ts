@@ -1,4 +1,3 @@
-import { CommonModule, NgSwitch } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { TaskModel } from '../../../../shared/models/task.model';
 import { DataService } from '../../../../shared/services/data.service';
@@ -29,6 +28,17 @@ export class TaskComponent implements OnInit {
     });
     this.dataSrv.ListIdChg$.subscribe((onChgSelection) => {
       this.shownList = this.taskList.filter((x) => x.listID == onChgSelection);
+      setTimeout(() => {
+        document
+          .querySelectorAll<HTMLElement>('.effect-section')
+          .forEach((task) => {
+            const taskObj: TaskModel[] = this.taskList.filter((x) =>
+              task.parentElement!.classList.contains(x.id + '')
+            );
+            task.style.backgroundColor = '#' + taskObj[0].color;
+            task.style.boxShadow = `0px 0px 35px #${taskObj[0].color}`;
+          });
+      });
     });
   }
 

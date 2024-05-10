@@ -8,4 +8,5 @@ export interface TaskModel {
   status: string;
   currentStatus: number;
   editMode: boolean;
+  color: string;
 }
