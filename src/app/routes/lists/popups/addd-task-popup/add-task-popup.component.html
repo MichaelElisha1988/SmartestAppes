@@ -22,7 +22,7 @@
           * task name input cannot be empty
         </div>
       </div>
-      <div class="input-div">
+      <!-- <div class="input-div">
         <input
           placeholder=" "
           type="text"
@@ -40,27 +40,19 @@
         >
           * author name input cannot be empty
         </div>
-      </div>
+      </div> -->
       <div class="input-div">
         <input
           placeholder=" "
-          type="text"
+          type="date"
           id="date"
           name="date"
           formControlName="date"
         />
-        <label for="date">date</label>
-        <div
-          class="error"
-          *ngIf="
-            taskform.controls['date'].errors &&
-            taskform.controls['date'].touched
-          "
-        >
-          * date name input cannot be empty
-        </div>
+        <label for="date">Due date</label>
+        <div class="error">* Leave empty if the due date is today</div>
       </div>
-      <div class="input-div">
+      <!-- <div class="input-div">
         <input
           placeholder=" "
           type="text"
@@ -78,7 +70,7 @@
         >
           * status name input cannot be empty
         </div>
-      </div>
+      </div> -->
 
       <button type="submit" class="sbm-btn" [disabled]="this.taskform.invalid">
         Add task

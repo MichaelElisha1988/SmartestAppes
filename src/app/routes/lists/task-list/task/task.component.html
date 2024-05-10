@@ -27,7 +27,9 @@
     </div>
     <div class="descripption-task">
       <!-- <div class="auther-task">author: {{ task.author }}</div> -->
-      <div class="date-task">due date: {{ task.date }}</div>
+      <div class="date-task">
+        due date: {{ task.date | date : "dd MM YYYY" }}
+      </div>
       <div class="status-task">
         <span
           *ngIf="task.currentStatus == 1"

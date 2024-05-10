@@ -20,7 +20,8 @@
     background-color: var(--c-silver);
     top: 100px;
     width: 85%;
-    height: 60%;
+    height: fit-content;
+    max-height: 400px;
     max-width: 500px;
     border-radius: 10px;
     box-shadow: 1px 1px 15px black;
@@ -31,12 +32,14 @@
     .close-btn {
       position: sticky;
       top: 0;
-      padding: 12px 0 0 12px;
+      padding: 12px 12px;
       cursor: pointer;
-      background: var(--c-silver);
+      background: var(--c-grey);
       z-index: 9;
+      color: var(--c-dark-blue);
+      text-align: right;
       &:hover {
-        color: var(--c-dark-blue);
+        color: var(--c-silver);
         transition: 0.2s color ease-in-out;
       }
     }
@@ -132,14 +135,15 @@
   }
 }
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 0px;
 }
 ::-webkit-scrollbar-thumb {
+  position: absolute;
   border-radius: 15px;
   background-color: transparent;
-  border-top: 230px solid var(--c-blue) /*or any height and color you want*/;
+  /*or any height and color you want*/
 }
 ::-webkit-scrollbar-track {
-  background-color: transparent;
+  background-color: var(--c-grey);
   border-radius: 15px;
 }

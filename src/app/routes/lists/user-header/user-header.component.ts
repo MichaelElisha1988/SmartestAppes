@@ -28,8 +28,6 @@ export class UserHeaderComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.dataSrv.setDateString(
-      this.dateString?.nativeElement.innerHTML as string
-    );
+    this.dataSrv.setDateString(new Date().toString());
   }
 }
