@@ -5,7 +5,8 @@
   width: auto;
   padding: 10px 35px 0 35px;
   z-index: 99;
-  background: var(--c-silver);
+  background: var(--c-grey);
+  box-shadow: 0 0 15px var(--c-blue);
   .list-menu {
     display: flex;
     align-items: center;
@@ -23,12 +24,12 @@
     }
     .list {
       padding: 10px 10px;
-      border-right: 1px solid var(--c-silver);
-      border-left: 1px solid var(--c-silver);
       cursor: pointer;
       flex-shrink: 0;
       transition: 0.3s all ease-in-out;
+      color: var(--c-blue);
       &.selected {
+        color: var(--c-grey);
         background-color: var(--c-dark-blue);
         border-top-left-radius: 13px;
         border-top-right-radius: 13px;

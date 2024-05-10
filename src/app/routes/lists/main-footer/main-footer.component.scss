@@ -35,6 +35,7 @@
     top: -30px;
 
     z-index: 99;
+    border: 3px solid var(--c-dark-blue);
     &:disabled {
       .line {
         background-color: var(--c-blue);
@@ -62,42 +63,42 @@
       }
     }
 
-    &:before {
-      width: 1200px;
-      height: 15px;
-      border-top: 10px solid var(--c-silver);
-      border-right: 10px solid var(--c-silver);
-      border-bottom: 10px solid transparent;
-      border-left: 10px solid transparent;
-      content: "";
-      position: absolute;
-      top: 20px;
-      left: -1205px;
-      z-index: -1;
-      border-radius: 0 30px 0 0;
-      pointer-events: none;
-    }
-    &:after {
-      width: 1200px;
-      height: 15px;
-      border-top: 10px solid var(--c-silver);
-      border-right: 10px solid transparent;
-      border-bottom: 10px solid transparent;
-      border-left: 10px solid var(--c-silver);
-      content: "";
-      position: absolute;
-      top: 20px;
-      right: -1205px;
-      z-index: -1;
-      border-radius: 30px 0 0 0;
-      pointer-events: none;
-    }
+    // &:before {
+    //   width: 1200px;
+    //   height: 15px;
+    //   border-top: 10px solid var(--c-silver);
+    //   border-right: 10px solid var(--c-silver);
+    //   border-bottom: 10px solid transparent;
+    //   border-left: 10px solid transparent;
+    //   content: "";
+    //   position: absolute;
+    //   top: 20px;
+    //   left: -1205px;
+    //   z-index: -1;
+    //   border-radius: 0 30px 0 0;
+    //   pointer-events: none;
+    // }
+    // &:after {
+    //   width: 1200px;
+    //   height: 15px;
+    //   border-top: 10px solid var(--c-silver);
+    //   border-right: 10px solid transparent;
+    //   border-bottom: 10px solid transparent;
+    //   border-left: 10px solid var(--c-silver);
+    //   content: "";
+    //   position: absolute;
+    //   top: 20px;
+    //   right: -1205px;
+    //   z-index: -1;
+    //   border-radius: 30px 0 0 0;
+    //   pointer-events: none;
+    // }
 
     .line {
       position: absolute;
       width: 18px;
       height: 3px;
-      background-color: var(--c-dark);
+      background-color: var(--c-grey);
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
