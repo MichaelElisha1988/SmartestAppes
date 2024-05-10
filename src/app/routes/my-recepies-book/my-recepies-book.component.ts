@@ -24,7 +24,6 @@ export class MyRecepiesBookComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.Sub$.unsubscribe();
-    throw new Error('Method not implemented.');
   }
 
   ngOnInit(): void {}
