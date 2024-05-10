@@ -49,8 +49,9 @@
     }
     .lier-one {
       background-color: var(--c-blue);
-      width: 400px;
+      max-width: 400px;
       height: 255px;
+      width: 80vw;
       position: absolute;
       z-index: 0;
       transform: translateX(-50%);
@@ -60,7 +61,8 @@
     }
     .lier-two {
       background-color: var(--c-dark-blue);
-      width: 420px;
+      max-width: 420px;
+      width: 85vw;
       height: 245px;
       position: absolute;
       z-index: 0;
