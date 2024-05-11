@@ -42,6 +42,10 @@ export class MyRecepiesBookComponent implements OnInit, OnDestroy {
     }
   }
 
+  selectMeal(meal: MealModel) {
+    this.selectedMeal = meal;
+  }
+
   ngOnDestroy(): void {
     this.Sub$.unsubscribe();
   }

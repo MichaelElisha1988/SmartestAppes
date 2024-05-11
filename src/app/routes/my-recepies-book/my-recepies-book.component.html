@@ -28,11 +28,25 @@
   <div class="favorite-list-wrapper" *ngIf="tenMealsInStok">
     <h2 class="favorite">Favorite :</h2>
     <div class="favorite-list">
+      <div class="recipie-item-small">
+        <div class="msgNoFavorite">No Favorite Added</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="favorite-list-wrapper" *ngIf="tenMealsInStok">
+    <h2 class="favorite">Random Recipies :</h2>
+    <div class="favorite-list">
       <div
         class="recipie-item-small"
         *ngFor="let meal of tenMealsInStok; let index = index"
       >
-        <img class="back-img" src="{{ meal.strMealThumb }}" alt="steak" />
+        <img
+          class="back-img"
+          (click)="selectMeal(meal)"
+          src="{{ meal.strMealThumb }}"
+          alt="steak"
+        />
       </div>
     </div>
   </div>
