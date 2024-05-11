@@ -54,6 +54,7 @@ export class TaskComponent implements OnInit {
   }
   didIt(event: any, task: TaskModel) {
     task.didIt = !task.didIt;
+    this.dataSrv.updateTaskData(task);
   }
 
   taskDone(task: TaskModel) {
