@@ -15,6 +15,10 @@
   &.extend {
     height: max-content;
   }
+  &.isCheckBox {
+    min-height: 40px;
+    height: min-content;
+  }
   .effect-section {
     position: absolute;
     top: 0;
@@ -24,6 +28,13 @@
     height: 100%;
     width: 17px;
     transition: all 0.3s ease;
+    &.checkbox {
+      width: 35px;
+      opacity: 0.1;
+      &.didIt {
+        opacity: 1;
+      }
+    }
   }
   .info-section {
     .close {
@@ -43,7 +54,6 @@
     .task-item {
       font-size: 18px;
       padding: 10px 25px;
-      margin-bottom: 5px;
       letter-spacing: normal;
       color: var(--c-dark-blue);
       .task-name {
@@ -70,35 +80,13 @@
       }
       .status-task {
         width: 100px;
+        margin-top: 15px;
         .status-state {
           cursor: pointer;
           transition: color 0.3s ease-in-out;
+          color: var(--c-silver);
         }
       }
-    }
-  }
-}
-.odd {
-  // background-color: var(--c-grey);
-  // border-top-left-radius: 20px;
-  // border-bottom-left-radius: 10px;
-  .status-task {
-    margin-top: 15px;
-    .status-state {
-      color: var(--c-silver);
-    }
-  }
-}
-
-.even {
-  // background-color: var(--c-grey);
-  // border: 1px solid var(--c-blue);
-  // border-top-right-radius: 20px;
-  // border-bottom-right-radius: 10px;
-  .status-task {
-    margin-top: 15px;
-    .status-state {
-      color: var(--c-silver);
     }
   }
 }

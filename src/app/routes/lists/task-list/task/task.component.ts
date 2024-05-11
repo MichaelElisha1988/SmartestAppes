@@ -13,6 +13,7 @@ export class TaskComponent implements OnInit {
   shownList: TaskModel[] = [];
   expandTask: boolean = false;
   editTaskMode: boolean = false;
+  isCheckBox: boolean = false;
   lastexpandTask: any = null;
 
   taskNameEdit = new FormGroup({
@@ -50,6 +51,9 @@ export class TaskComponent implements OnInit {
     //   event.target.classList.add('extend');
     //   this.lastexpandTask = event;
     // }
+  }
+  didIt(event: any, task: TaskModel) {
+    task.didIt = !task.didIt;
   }
 
   taskDone(task: TaskModel) {

@@ -1,10 +1,16 @@
 <section
   *ngFor="let task of shownList; let i = index"
   class="task extend {{ task.id }}"
-  [ngClass]="i % 2 == 1 ? 'even' : 'odd'"
+  [ngClass]="!task.isCheckBox ? '' : 'isCheckBox'"
 >
   <!-- (click)="expand($event)" -->
-  <div class="effect-section"></div>
+  <div class="effect-section" *ngIf="!task.isCheckBox"></div>
+  <div
+    class="effect-section checkbox"
+    *ngIf="task.isCheckBox"
+    (click)="didIt($event, task)"
+    [ngClass]="task.didIt ? 'didIt' : ''"
+  ></div>
   <div class="info-section">
     <div [attr.taskId]="task.id" class="close" (click)="deleteTask($event)">
       X
@@ -25,7 +31,7 @@
         ></textarea>
       </ng-template>
     </div>
-    <div class="descripption-task">
+    <div class="descripption-task" *ngIf="!task.isCheckBox">
       <!-- <div class="auther-task">author: {{ task.author }}</div> -->
       <div class="date-task">
         due date: {{ task.date | date : "dd MM YYYY" }}

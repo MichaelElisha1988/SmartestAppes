@@ -71,7 +71,16 @@
           * status name input cannot be empty
         </div>
       </div> -->
-
+      <div class="input-div checkbox">
+        <input
+          type="checkbox"
+          id="isCheckBox"
+          name="isCheckBox"
+          formControlName="isCheckBox"
+        />
+        <label for="isCheckBox">Checkbox Style?</label>
+        <div class="error">Unchecked - task / Checked Checkbox</div>
+      </div>
       <button type="submit" class="sbm-btn" [disabled]="this.taskform.invalid">
         Add task
       </button>

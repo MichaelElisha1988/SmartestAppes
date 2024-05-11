@@ -9,4 +9,6 @@ export interface TaskModel {
   currentStatus: number;
   editMode: boolean;
   color: string;
+  isCheckBox: boolean;
+  didIt: boolean;
 }

@@ -27,6 +27,9 @@ export class AddTaskPopupComponent implements OnInit {
       updateOn: 'change',
       validators: [Validators.required],
     }),
+    isCheckBox: new FormControl(false, {
+      updateOn: 'change',
+    }),
   });
 
   hidden: boolean = true;
@@ -42,7 +45,9 @@ export class AddTaskPopupComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.onPopup(true);
+  }
 
   addTask(ev: any) {
     this.dataSrv.updateTaskList(this.createTaskModel());
@@ -67,6 +72,8 @@ export class AddTaskPopupComponent implements OnInit {
       currentStatus: 1,
       editMode: false,
       color: Math.floor(Math.random() * 16777215).toString(16),
+      isCheckBox: this.taskform.value.isCheckBox!,
+      didIt: false,
     };
   }
 }
