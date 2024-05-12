@@ -7,6 +7,7 @@ import { PolicyComponent } from './routes/policy/policy.component';
 import { ListsComponent } from './routes/lists/lists.component';
 import { LoginGuard } from './shared/guards/login.guard';
 import { MyRecepiesBookComponent } from './routes/my-recepies-book/my-recepies-book.component';
+import { SelectedRecipieInfoComponent } from './routes/my-recepies-book/selected-recipie-info/selected-recipie-info.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -24,10 +25,11 @@ const routes: Routes = [
     path: 'recipies',
     component: MyRecepiesBookComponent,
   },
-  {
-    path: '**',
-    redirectTo: '',
-  },
+  { path: 'recipies/:id', component: SelectedRecipieInfoComponent },
+  // {
+  //   path: '**',
+  //   redirectTo: '',
+  // },
 ];
 
 @NgModule({

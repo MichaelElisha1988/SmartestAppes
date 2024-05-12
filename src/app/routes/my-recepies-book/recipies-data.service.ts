@@ -10,6 +10,7 @@ export class RecipiesDataService {
   private baseURL: string = 'www.themealdb.com/api/json/v1/1/';
   private searchByNameOrLetters: string = 'search.php?s=';
   private searchByFirstLetter: string = 'search.php?f=';
+  private searchById: string = 'lookup.php?i=';
   private searchRandomMeals: string = 'random.php';
 
   constructor(private http: HttpClient) {}
@@ -29,6 +30,12 @@ export class RecipiesDataService {
   getSearchedByFirstLetter(letter: string): Observable<any> {
     return this.http.get(
       `https://www.themealdb.com/api/json/v1/1/${this.searchByFirstLetter}${letter}`
+    );
+  }
+
+  getSearchedById(id: string): Observable<any> {
+    return this.http.get(
+      `https://www.themealdb.com/api/json/v1/1/${this.searchById}${id}`
     );
   }
 }

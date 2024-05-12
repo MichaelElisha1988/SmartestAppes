@@ -51,29 +51,38 @@
         text-shadow: 1px 1px 10px var(--c-blue);
       }
     }
-    .lier-one {
-      background-color: var(--c-blue);
-      max-width: 400px;
-      height: 300px;
-      width: 80vw;
-      position: absolute;
-      z-index: 0;
-      transform: translateX(-50%);
-      left: 50%;
-      border-radius: 13px;
-      opacity: 0.3;
-    }
-    .lier-two {
-      background-color: var(--c-dark-blue);
-      max-width: 420px;
-      width: 85vw;
-      height: 290px;
-      position: absolute;
-      z-index: 0;
-      transform: translateX(-50%);
-      left: 50%;
-      border-radius: 13px;
-      opacity: 0.5;
+    // .lier-one {
+    //   background-color: var(--c-blue);
+    //   max-width: 400px;
+    //   height: 300px;
+    //   width: 80vw;
+    //   position: absolute;
+    //   z-index: 0;
+    //   transform: translateX(-50%);
+    //   left: 50%;
+    //   border-radius: 13px;
+    //   opacity: 0.3;
+    // }
+    // .lier-two {
+    //   background-color: var(--c-dark-blue);
+    //   max-width: 420px;
+    //   width: 85vw;
+    //   height: 290px;
+    //   position: absolute;
+    //   z-index: 0;
+    //   transform: translateX(-50%);
+    //   left: 50%;
+    //   border-radius: 13px;
+    //   opacity: 0.5;
+    // }
+    .read-more {
+      font-size: 22px;
+      color: var(--c-grey);
+      text-decoration: underline;
+      padding-left: 50%;
+      width: max-content;
+      text-shadow: 0 0 3px var(--c-dark-blue);
+      cursor: pointer;
     }
   }
   .recepies-search {

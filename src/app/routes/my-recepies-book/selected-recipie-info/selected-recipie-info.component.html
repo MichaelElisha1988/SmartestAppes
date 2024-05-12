@@ -1,0 +1,92 @@
+<section class="meal-deatails">
+  <img src="{{ recipie?.strMealThumb }}" alt="meak-pic" />
+  <div class="title">{{ recipie?.strMeal }}</div>
+  <div class="meal-cook-wrapper">
+    <div
+      class="meal-instructors"
+      [innerHTML]="recipie?.strInstructions | toOrder"
+    ></div>
+    <ul class="ingredients">
+      <li class="ingredien" *ngIf="recipie?.strIngredient1">
+        <div class="name">{{ recipie?.strIngredient1 }}</div>
+        <div class="amont">{{ recipie?.strMeasure1 }}</div>
+      </li>
+      <li class="ingredien" *ngIf="recipie?.strIngredient2">
+        <div class="name">{{ recipie?.strIngredient2 }}</div>
+        <div class="amont">{{ recipie?.strMeasure2 }}</div>
+      </li>
+      <li class="ingredien" *ngIf="recipie?.strIngredient3">
+        <div class="name">{{ recipie?.strIngredient3 }}</div>
+        <div class="amont">{{ recipie?.strMeasure3 }}</div>
+      </li>
+      <li class="ingredien" *ngIf="recipie?.strIngredient4">
+        <div class="name">{{ recipie?.strIngredient4 }}</div>
+        <div class="amont">{{ recipie?.strMeasure4 }}</div>
+      </li>
+      <li class="ingredien" *ngIf="recipie?.strIngredient5">
+        <div class="name">{{ recipie?.strIngredient5 }}</div>
+        <div class="amont">{{ recipie?.strMeasure5 }}</div>
+      </li>
+      <li class="ingredien" *ngIf="recipie?.strIngredient6">
+        <div class="name">{{ recipie?.strIngredient6 }}</div>
+        <div class="amont">{{ recipie?.strMeasure6 }}</div>
+      </li>
+      <li class="ingredien" *ngIf="recipie?.strIngredient7">
+        <div class="name">{{ recipie?.strIngredient7 }}</div>
+        <div class="amont">{{ recipie?.strMeasure7 }}</div>
+      </li>
+      <li class="ingredien" *ngIf="recipie?.strIngredient8">
+        <div class="name">{{ recipie?.strIngredient8 }}</div>
+        <div class="amont">{{ recipie?.strMeasure8 }}</div>
+      </li>
+      <li class="ingredien" *ngIf="recipie?.strIngredient9">
+        <div class="name">{{ recipie?.strIngredient9 }}</div>
+        <div class="amont">{{ recipie?.strMeasure9 }}</div>
+      </li>
+      <li class="ingredien" *ngIf="recipie?.strIngredient10">
+        <div class="name">{{ recipie?.strIngredient10 }}</div>
+        <div class="amont">{{ recipie?.strMeasure10 }}</div>
+      </li>
+      <li class="ingredien" *ngIf="recipie?.strIngredient11">
+        <div class="name">{{ recipie?.strIngredient11 }}</div>
+        <div class="amont">{{ recipie?.strMeasure11 }}</div>
+      </li>
+      <li class="ingredien" *ngIf="recipie?.strIngredient12">
+        <div class="name">{{ recipie?.strIngredient12 }}</div>
+        <div class="amont">{{ recipie?.strMeasure12 }}</div>
+      </li>
+      <li class="ingredien" *ngIf="recipie?.strIngredient13">
+        <div class="name">{{ recipie?.strIngredient13 }}</div>
+        <div class="amont">{{ recipie?.strMeasure13 }}</div>
+      </li>
+      <li class="ingredien" *ngIf="recipie?.strIngredient14">
+        <div class="name">{{ recipie?.strIngredient14 }}</div>
+        <div class="amont">{{ recipie?.strMeasure14 }}</div>
+      </li>
+      <li class="ingredien" *ngIf="recipie?.strIngredient15">
+        <div class="name">{{ recipie?.strIngredient15 }}</div>
+        <div class="amont">{{ recipie?.strMeasure15 }}</div>
+      </li>
+      <li class="ingredien" *ngIf="recipie?.strIngredient16">
+        <div class="name">{{ recipie?.strIngredient16 }}</div>
+        <div class="amont">{{ recipie?.strMeasure16 }}</div>
+      </li>
+      <li class="ingredien" *ngIf="recipie?.strIngredient17">
+        <div class="name">{{ recipie?.strIngredient17 }}</div>
+        <div class="amont">{{ recipie?.strMeasure17 }}</div>
+      </li>
+      <li class="ingredien" *ngIf="recipie?.strIngredient18">
+        <div class="name">{{ recipie?.strIngredient18 }}</div>
+        <div class="amont">{{ recipie?.strMeasure18 }}</div>
+      </li>
+      <li class="ingredien" *ngIf="recipie?.strIngredient19">
+        <div class="name">{{ recipie?.strIngredient19 }}</div>
+        <div class="amont">{{ recipie?.strMeasure19 }}</div>
+      </li>
+      <li class="ingredien" *ngIf="recipie?.strIngredient20">
+        <div class="name">{{ recipie?.strIngredient20 }}</div>
+        <div class="amont">{{ recipie?.strMeasure20 }}</div>
+      </li>
+    </ul>
+  </div>
+</section>

@@ -18,6 +18,7 @@ import { MeasurementsComponent } from './comp/measurements/measurements.componen
 import { MeasurmentsPipe } from './shared/pipes/measurments.pipe';
 import { ClickOutsideDirective } from './shared/directive/click-outside.directive';
 import { ToDotLimitPipe } from './shared/pipes/dotToLimit.pipe';
+import { ToOrderPipe } from './shared/pipes/instructorOrder.pipe';
 import { PolicyComponent } from './routes/policy/policy.component';
 import { ListsComponent } from './routes/lists/lists.component';
 import { UserHeaderComponent } from './routes/lists/user-header/user-header.component';
@@ -26,6 +27,7 @@ import { TaskComponent } from './routes/lists/task-list/task/task.component';
 import { MainFooterComponent } from './routes/lists/main-footer/main-footer.component';
 import { AddTaskPopupComponent } from './routes/lists/popups/addd-task-popup/add-task-popup.component';
 import { MyRecepiesBookComponent } from './routes/my-recepies-book/my-recepies-book.component';
+import { SelectedRecipieInfoComponent } from './routes/my-recepies-book/selected-recipie-info/selected-recipie-info.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,7 @@ import { MyRecepiesBookComponent } from './routes/my-recepies-book/my-recepies-b
     HomeComponent,
     MeasurementsComponent,
     MeasurmentsPipe,
+    ToOrderPipe,
     ToDotLimitPipe,
     ClickOutsideDirective,
     PolicyComponent,
@@ -45,6 +48,7 @@ import { MyRecepiesBookComponent } from './routes/my-recepies-book/my-recepies-b
     MainFooterComponent,
     AddTaskPopupComponent,
     MyRecepiesBookComponent,
+    SelectedRecipieInfoComponent,
   ],
   imports: [
     BrowserModule,
