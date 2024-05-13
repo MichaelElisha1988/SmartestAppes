@@ -56,7 +56,12 @@
       padding: 10px 25px;
       letter-spacing: normal;
       color: var(--c-dark-blue);
+
       .task-name {
+        &.overline {
+          text-decoration: line-through;
+          text-decoration-thickness: 3px;
+        }
         &.edit {
           font-size: 18px;
           letter-spacing: normal;

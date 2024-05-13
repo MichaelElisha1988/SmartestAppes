@@ -63,6 +63,8 @@ export class TaskComponent implements OnInit {
         ? (task.currentStatus = 1)
         : task.currentStatus!++
       : '';
+
+    this.dataSrv.updateTaskData(task);
   }
 
   deleteTask(event: any) {

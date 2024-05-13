@@ -19,9 +19,12 @@
       class="task-item"
       (click)="!task.editMode ? editTaskName($event, task) : ''"
     >
-      <span class="task-name" *ngIf="!task.editMode; else editTaskInput">{{
-        task.task
-      }}</span>
+      <span
+        class="task-name"
+        [ngClass]="task.currentStatus == 3 ? 'overline' : ''"
+        *ngIf="!task.editMode; else editTaskInput"
+        >{{ task.task }}</span
+      >
       <ng-template #editTaskInput>
         <textarea
           type="text"
