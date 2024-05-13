@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   loginForm = new FormGroup({
     usenName: new FormControl('', {
       updateOn: 'change',
-      validators: [Validators.required],
+      validators: [Validators.required, Validators.email],
     }),
     password: new FormControl('', {
       updateOn: 'change',
@@ -54,6 +54,12 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.loginForm.controls.usenName.value!,
       this.loginForm.controls.password.value!
     );
+    setTimeout(() => {
+      this.loginSrv.signIn(
+        this.loginForm.controls.usenName.value!,
+        this.loginForm.controls.password.value!
+      );
+    }, 1000);
   }
 
   onSubmit() {

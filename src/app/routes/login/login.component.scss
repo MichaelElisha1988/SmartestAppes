@@ -96,9 +96,12 @@
       margin: 10px auto;
       text-align: center;
 
-      span {
+      button {
         text-decoration: underline;
         cursor: pointer;
+        border: 0 transparent;
+        background-color: transparent;
+        color: var(--c-dark-blue);
       }
     }
   }

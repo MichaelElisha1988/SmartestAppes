@@ -6,6 +6,7 @@
     height: 400px;
     border-radius: 13px;
     transition: all 0.3 ease;
+    overflow: hidden;
 
     .back-img {
       position: absolute;
@@ -49,6 +50,7 @@
         font-weight: 600;
         color: var(--c-grey);
         text-shadow: 1px 1px 10px var(--c-blue);
+        width: 350px;
       }
     }
     // .lier-one {
@@ -80,7 +82,7 @@
       color: var(--c-grey);
       text-decoration: underline;
       padding-left: 50%;
-      width: max-content;
+      width: 240px;
       text-shadow: 0 0 3px var(--c-dark-blue);
       cursor: pointer;
     }

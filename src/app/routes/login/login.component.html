@@ -7,12 +7,12 @@
       <input
         class="i-name"
         id="usenName"
-        type="text"
+        type="email"
         formControlName="usenName"
         placeholder=" "
         autocomplete="current-password"
       />
-      <label class="l-name" for="usenName">User Name: </label>
+      <label class="l-name" for="usenName">Email :</label>
 
       <input
         class="i-pass"
@@ -31,7 +31,9 @@
 
     <div class="coming-soon">
       {{ errorMsg }}<br />
-      <span (click)="register()">Register With this mail</span>
+      <button [disabled]="loginForm.status == 'INVALID'" (click)="register()">
+        Register With this mail
+      </button>
     </div>
   </div>
 </section>
