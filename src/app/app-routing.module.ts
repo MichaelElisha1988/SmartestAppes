@@ -24,8 +24,13 @@ const routes: Routes = [
   {
     path: 'recipies',
     component: MyRecepiesBookComponent,
+    canActivate: [LoginGuard],
   },
-  { path: 'recipies/:id', component: SelectedRecipieInfoComponent },
+  {
+    path: 'recipies/:id',
+    component: SelectedRecipieInfoComponent,
+    canActivate: [LoginGuard],
+  },
   // {
   //   path: '**',
   //   redirectTo: '',

@@ -49,6 +49,13 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.Sub$.unsubscribe();
   }
 
+  register() {
+    this.loginSrv.createAccount(
+      this.loginForm.controls.usenName.value!,
+      this.loginForm.controls.password.value!
+    );
+  }
+
   onSubmit() {
     this.loginSrv.signIn(
       this.loginForm.controls.usenName.value!,

@@ -76,6 +76,7 @@
         background-color: transparent;
         border: 3px solid var(--c-blue);
         color: var(--c-blue);
+        cursor: pointer;
 
         animation: 3s infinite glowing;
         &:disabled {
@@ -94,6 +95,11 @@
 
       margin: 10px auto;
       text-align: center;
+
+      span {
+        text-decoration: underline;
+        cursor: pointer;
+      }
     }
   }
 }
