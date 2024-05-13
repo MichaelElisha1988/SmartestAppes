@@ -13,12 +13,14 @@ import { Router } from '@angular/router';
 export class MyRecepiesBookComponent implements OnInit, OnDestroy {
   searchForm = new FormGroup({
     search: new FormControl('', { updateOn: 'change' }),
+    searchMeal: new FormControl(null, { updateOn: 'change' }),
   });
 
   Sub$ = new Subscription();
 
   selectedMeal: MealModel | undefined;
   tenMealsInStok: MealModel[] = [];
+  searchMealsInStok: MealModel[] | null = null;
 
   constructor(
     private recipiesSrv: RecipiesDataService,
@@ -26,12 +28,31 @@ export class MyRecepiesBookComponent implements OnInit, OnDestroy {
   ) {
     this.Sub$.add(
       this.searchForm.controls.search.valueChanges.subscribe((value) => {
-        console.log((value as string)?.length > 3 ? value : '');
+        if ((value as string)?.length >= 2) {
+          this.recipiesSrv
+            .getMealByName(value as string)
+            .pipe(take(1))
+            .subscribe((data) => {
+              this.searchMealsInStok = data.meals;
+            });
+        } else {
+          this.searchMealsInStok = null;
+        }
       })
     );
     this.Sub$.add(
       this.recipiesSrv.getRandomMeal().subscribe((data) => {
         this.selectedMeal = data.meals[0];
+      })
+    );
+    this.Sub$.add(
+      this.searchForm.controls.searchMeal.valueChanges.subscribe((data) => {
+        this.recipiesSrv
+          .getSearchedById(data!)
+          .pipe(take(1))
+          .subscribe((data) => {
+            this.selectedMeal = data.meals[0];
+          });
       })
     );
     for (let index = 0; index < 9; index++) {

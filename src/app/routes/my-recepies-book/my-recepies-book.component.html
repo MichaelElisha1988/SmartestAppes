@@ -25,6 +25,17 @@
       formControlName="search"
       placeholder="What we cook today..."
     />
+    <select
+      name="searchMeals"
+      id="searchMeals"
+      class="searchMeals"
+      formControlName="searchMeal"
+      *ngIf="searchMealsInStok"
+    >
+      <option *ngFor="let meal of searchMealsInStok" [value]="meal.idMeal">
+        {{ meal.strMeal }}
+      </option>
+    </select>
   </form>
 
   <div class="favorite-list-wrapper" *ngIf="tenMealsInStok">
