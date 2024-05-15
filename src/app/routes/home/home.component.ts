@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
           if (action['desity']) {
             this.allDesityList.push({
               title: action['title'],
-              desity: [...action['desity']],
+              desity: [...action['desity']].sort(),
             });
           }
         });
