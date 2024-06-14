@@ -86,7 +86,7 @@ export class MeasurmentsPipe implements PipeTransform {
                   fixedNum
                 );
                 break;
-              case 'Oz':
+              case 'oz':
                 this.tmpValue = (
                   +(value ? value : 1) *
                   33.3816 *
@@ -163,7 +163,7 @@ export class MeasurmentsPipe implements PipeTransform {
                   fixedNum
                 );
                 break;
-              case 'Oz':
+              case 'oz':
                 this.tmpValue = Density
                   ? (+(value ? value : 1) * 0.1738625928 * +Density).toFixed(
                       fixedNum
@@ -240,7 +240,7 @@ export class MeasurmentsPipe implements PipeTransform {
                 );
                 break;
 
-              case 'Oz':
+              case 'oz':
                 this.tmpValue = Density
                   ? (+(value ? value : 1) * 133.5265 * +Density).toFixed(
                       fixedNum
@@ -319,7 +319,7 @@ export class MeasurmentsPipe implements PipeTransform {
                 );
                 break;
 
-              case 'Oz':
+              case 'oz':
                 this.tmpValue = Density
                   ? (+(value ? value : 1) * 16.6908 * +Density).toFixed(
                       fixedNum
@@ -399,7 +399,7 @@ export class MeasurmentsPipe implements PipeTransform {
                   fixedNum
                 );
                 break;
-              case 'Oz':
+              case 'oz':
                 this.tmpValue = Density
                   ? (+(value ? value : 1) * 8.345404451 * +Density).toFixed(
                       fixedNum
@@ -483,7 +483,7 @@ export class MeasurmentsPipe implements PipeTransform {
                   fixedNum
                 );
                 break;
-              case 'Oz':
+              case 'oz':
                 this.tmpValue = Density
                   ? (+(value ? value : 1) * 0.521587778 * +Density).toFixed(
                       fixedNum
@@ -571,7 +571,7 @@ export class MeasurmentsPipe implements PipeTransform {
                   ? ((+(value ? value : 1) / +Density) * 1).toFixed(fixedNum)
                   : 'Choose Density';
                 break;
-              case 'Oz':
+              case 'oz':
                 this.tmpValue = (+(value ? value : 1) * 0.035274).toFixed(
                   fixedNum
                 );
@@ -662,7 +662,7 @@ export class MeasurmentsPipe implements PipeTransform {
                     )
                   : 'Choose Density';
                 break;
-              case 'Oz':
+              case 'oz':
                 this.tmpValue = (+(value ? value : 1) * 0.000035274).toFixed(
                   fixedNum
                 );
@@ -746,7 +746,7 @@ export class MeasurmentsPipe implements PipeTransform {
                   ? ((+(value ? value : 1) / +Density) * 1000).toFixed(fixedNum)
                   : 'Choose Density';
                 break;
-              case 'Oz':
+              case 'oz':
                 this.tmpValue = (+(value ? value : 1) * 35.273962).toFixed(
                   fixedNum
                 );
@@ -835,7 +835,7 @@ export class MeasurmentsPipe implements PipeTransform {
                     )
                   : 'Choose Density';
                 break;
-              case 'Oz':
+              case 'oz':
                 this.tmpValue = (+(value ? value : 1) * 16).toFixed(fixedNum);
                 break;
               default:
@@ -902,7 +902,7 @@ export class MeasurmentsPipe implements PipeTransform {
                     )
                   : 'Choose Density';
                 break;
-              case 'Oz':
+              case 'oz':
                 this.tmpValue = Density
                   ? (+(value ? value : 1) * 0.0338140227 * +Density).toFixed(
                       fixedNum
@@ -973,7 +973,7 @@ export class MeasurmentsPipe implements PipeTransform {
                     )
                   : 'Choose Density';
                 break;
-              case 'Oz':
+              case 'oz':
                 this.tmpValue = Density
                   ? (+(value ? value : 1) * 33.8140227 * +Density).toFixed(
                       fixedNum
@@ -984,7 +984,7 @@ export class MeasurmentsPipe implements PipeTransform {
                 this.tmpValue = "Can't Measure";
             }
             break;
-          case 'Oz':
+          case 'oz':
             switch (measurmentTo) {
               case 'quart':
                 this.tmpValue = Density
