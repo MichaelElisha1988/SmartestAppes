@@ -1,0 +1,17 @@
+section{
+    display: flex;
+    background-color: var(--c-grey);
+    position: fixed;
+    bottom: 0;
+    width: -webkit-fill-available;
+    padding: 15px 50px;
+    max-width: 390px;
+    color: var(--c-dark-blue);
+    justify-content: space-around;
+
+    .tab{
+        width: 49%;
+        text-align: left;
+    }
+
+}

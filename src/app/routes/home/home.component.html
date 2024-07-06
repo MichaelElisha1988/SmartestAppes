@@ -18,7 +18,7 @@
 </div>
 <div
   class="last-measurement-result"
-  *ngIf="lastMeasurement[0]?.topic && !measureDataToShow"
+  *ngIf="lastMeasurement[0]?.topic && !measureDataToShow; else explaination"
 >
   <h2>last measurment:</h2>
   {{ lastMeasurement[0]?.topic }}, Measured from:
@@ -51,21 +51,21 @@
       <span (click)="exitToMenu()">< Return to Menu</span>
     </div>
     <div
-      class="action"
-      *ngFor="let homeAction of homeData?.actions; let i = index"
+    class="action"
+    *ngFor="let homeAction of homeData?.actions; let i = index"
     >
-      <div class="span-text">
-        <span>{{ homeAction["title"] }}</span>
-      </div>
-      <div class="measures">
-        <li
-          *ngFor="
+    <div class="span-text">
+      <span>{{ homeAction["title"] }}</span>
+    </div>
+    <div class="measures">
+      <li
+      *ngFor="
             let actionMeasure of homeAction['measurements'];
             let i = index
           "
           [class]="actionMeasure"
           (click)="addRemove($event, homeAction['title'], actionMeasure, i)"
-        >
+          >
           <span>{{ actionMeasure }}</span>
         </li>
       </div>
@@ -75,9 +75,31 @@
     </div>
   </div>
 </ng-template>
+<ng-template #explaination>
+  <div class="last-explaination" *ngIf="!measureDataToShow">
+    <figure class="explaination" >
+      <p>Once you've taken your last measurement, voila!</p>
+      <p>A window magically appears with your latest measurement like a digital crystal ball.</p>
+      <p>It's like having your very own measuring genie granting your accuracy wishes!</p>
+      <p>Need more guidance or just want to chat?</p>
+      <p>Don't hesitate to reach out—we're here to make your measuring experience as enchanting as possible!</p>
+    </figure>
+  </div>
+</ng-template>
+
 <app-measurements
-  *ngIf="measureDataToShow"
-  [measureData]="measureData"
-  [desityData]="selectedDesityList[0]?.desity"
+*ngIf="measureDataToShow"
+[measureData]="measureData"
+[desityData]="selectedDesityList[0]?.desity"
   (exitFromMeasure)="returnToMenu()"
 ></app-measurements>
+
+<div class="last-explaination" *ngIf="!measureDataToShow">
+  <figure  class="about-us">
+    <p>Welcome to the ultimate measurements app that's as essential as your morning coffee!</p>
+    <p>Our app transforms tricky conversions like liters to grams with the grace of a math wizard using nifty density tricks.</p>
+    <p>But wait, there's more! Stay on top of your day with our one-of-a-kind to-do list feature that keeps chaos at bay.</p>
+    <p>And when hunger strikes or creativity beckons, dive into our recipe book bursting with culinary delights and DIY inspirations.</p>
+    <p>Whether you're a kitchen superhero or a lab coat aficionado, our app is your trusty sidekick for nailing measurements and staying organized with a sprinkle of fun!</p>
+  </figure>
+</div>

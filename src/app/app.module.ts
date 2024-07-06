@@ -28,6 +28,7 @@ import { MainFooterComponent } from './routes/lists/main-footer/main-footer.comp
 import { AddTaskPopupComponent } from './routes/lists/popups/addd-task-popup/add-task-popup.component';
 import { MyRecepiesBookComponent } from './routes/my-recepies-book/my-recepies-book.component';
 import { SelectedRecipieInfoComponent } from './routes/my-recepies-book/selected-recipie-info/selected-recipie-info.component';
+import { FooterComponent } from './comp/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { SelectedRecipieInfoComponent } from './routes/my-recepies-book/selected
     AddTaskPopupComponent,
     MyRecepiesBookComponent,
     SelectedRecipieInfoComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

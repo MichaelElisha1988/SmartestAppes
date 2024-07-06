@@ -168,6 +168,26 @@
     }
   }
 }
+.last-explaination{
+  width: 90%;
+  margin: 15px auto;
+  .explaination {
+    border: 1px solid rgba(224, 46, 46, 0.526);
+    padding: 10px 15px;
+    border-radius: 30px;
+    box-shadow: 1px 1px 15px var(--c-blue);
+    line-height: 1.2;
+  }
+  .about-us{ 
+    width: 70%;
+    margin: 30px auto;
+    line-height: 1.2;
+    p{
+      margin: 5px 0;
+      text-shadow: 1px 1px 15px var(--c-blue);
+    }
+  }
+}
 ::-webkit-scrollbar {
   width: 5px;
 }
