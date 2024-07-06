@@ -1,18 +1,20 @@
 <section>
-    <div class="tab tab1">
-        <h2>Applications</h2>
-        <ul class="list1">
-            <li class="item1">...</li>
-            <li class="item3">...</li>
-            <li class="item2">...</li>
-        </ul>
-    </div>
-    <div class="tab tab2">
-        <h2>Policies</h2>
-        <ul class="list2">
-            <li class="item1">...</li>
-            <li class="item2">...</li>
-            <li class="item3">...</li>
-        </ul>
-    </div>
+  <div class="tab tab1" *ngIf="isLoggedin">
+    <h2>Applications</h2>
+    <ul class="list list1">
+      <li class="list-item item1">
+        <a href="/#/home">Measurements</a>
+      </li>
+      <li class="list-item item2">
+        <a href="/#/recipies">My Recipies Book</a>
+      </li>
+      <li class="list-item item3"><a href="/#/lists">Todo List</a></li>
+    </ul>
+  </div>
+  <div class="tab tab2">
+    <h2>Policies</h2>
+    <ul class="list list2">
+      <li class="list-item item1"><a href="/#/policy">Privacy Policy</a></li>
+    </ul>
+  </div>
 </section>

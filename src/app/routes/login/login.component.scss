@@ -8,14 +8,14 @@
 
   .wrap {
     position: relative;
-    width: 70%;
+    width: 80%;
     height: 60%;
     background-color: var(--c-grey);
     color: var(--c-dark-blue);
 
     box-shadow: 0em 0 1em var(--c-blue);
     overflow: hidden;
-    border-radius: 30px;
+    border-radius: 20px;
 
     .title {
       text-align: center;
@@ -58,9 +58,10 @@
       .i-name:focus + .l-name,
       .i-name:not(:placeholder-shown) + .l-name {
         top: 0px;
-        padding: 5px 5px;
+        padding: 1px 5px;
         background-color: var(--c-grey);
         font-size: 12px;
+        border-radius: 30px;
       }
       .i-pass:focus + .l-pass,
       .i-pass:not(:placeholder-shown) + .l-pass {
@@ -68,6 +69,7 @@
         padding: 5px 5px;
         background-color: var(--c-grey);
         font-size: 12px;
+        border-radius: 30px;
       }
       button {
         margin-top: 50px;
@@ -90,18 +92,30 @@
       width: 90%;
       font-size: 16px;
       font-weight: 500;
-
+      display: flex;
+      flex-direction: column;
       line-height: normal;
 
+      justify-content: center;
+      align-items: center;
       margin: 10px auto;
       text-align: center;
-
+      span {
+        color: rgba(247, 174, 174, 0.57);
+        width: 90%;
+        display: flex;
+        justify-content: center;
+        font-size: 14px;
+        flex-wrap: wrap;
+        margin-bottom: 15px;
+      }
       button {
         text-decoration: underline;
         cursor: pointer;
         border: 0 transparent;
         background-color: transparent;
         color: var(--c-dark-blue);
+        margin-bottom: 15px;
       }
     }
   }

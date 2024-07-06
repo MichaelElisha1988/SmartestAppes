@@ -36,7 +36,10 @@ export class LoginComponent implements OnInit, OnDestroy {
     );
     this.Sub$.add(
       this.loginSrv.loginError$.subscribe((data) => {
-        this.errorMsg = data != null ? 'Password or Email are Incorrect' : null;
+        this.errorMsg =
+          data != null
+            ? (data as string).split(':')[1].trim().toLowerCase()
+            : null;
       })
     );
   }

@@ -30,9 +30,9 @@
     </form>
 
     <div class="coming-soon">
-      {{ errorMsg }}<br />
+      <span>{{ errorMsg }}</span>
       <button [disabled]="loginForm.status == 'INVALID'" (click)="register()">
-        Register With this mail
+        Register With this Mail
       </button>
     </div>
   </div>
