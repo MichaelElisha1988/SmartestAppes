@@ -8,6 +8,16 @@
     transition: all 0.3 ease;
     overflow: hidden;
 
+    .tofavorite {
+      position: absolute;
+      z-index: 3;
+      top: 15px;
+      left: 15px;
+      img {
+        max-width: 35px;
+      }
+    }
+
     .back-img {
       position: absolute;
       height: -webkit-fill-available;
@@ -129,6 +139,44 @@
       color: var(--c-grey);
     }
     .favorite-list {
+      display: flex;
+      gap: 20px;
+      overflow: hidden;
+      overflow-x: scroll;
+      .recipie-item-small {
+        width: 150px;
+        height: 150px;
+        overflow: hidden;
+        border-radius: 30px;
+        margin: 12px 0;
+        flex-shrink: 0;
+        .msgNoFavorite {
+          font-size: 22px;
+          position: absolute;
+          transform: translate(-50%, -50%);
+          top: 50%;
+          left: 50%;
+        }
+        .back-img {
+          height: 150px;
+          width: auto;
+          z-index: 1;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  .random-list-wrapper {
+    width: 90%;
+    margin: 20px auto;
+
+    .random {
+      font-size: 22px;
+      padding: 0 30px;
+      font-weight: 600;
+      color: var(--c-grey);
+    }
+    .random-list {
       display: flex;
       gap: 20px;
       overflow: hidden;

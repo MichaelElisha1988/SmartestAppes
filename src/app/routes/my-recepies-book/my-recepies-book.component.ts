@@ -4,6 +4,7 @@ import { Subscriber, Subscription, take } from 'rxjs';
 import { RecipiesDataService } from './recipies-data.service';
 import { MealModel } from 'src/app/shared/models/meal.model';
 import { Router } from '@angular/router';
+import { DataService } from 'src/app/shared/services/data.service';
 
 @Component({
   selector: 'app-my-recepies-book',
@@ -21,10 +22,13 @@ export class MyRecepiesBookComponent implements OnInit, OnDestroy {
   selectedMeal: MealModel | undefined;
   tenMealsInStok: MealModel[] = [];
   searchMealsInStok: MealModel[] | null = null;
+  favoriteMealList: MealModel[] = [];
+  notFav: boolean = true;
 
   constructor(
     private recipiesSrv: RecipiesDataService,
-    private router: Router
+    private router: Router,
+    private DataSrv: DataService
   ) {
     this.Sub$.add(
       this.searchForm.controls.search.valueChanges.subscribe((value) => {
@@ -67,13 +71,38 @@ export class MyRecepiesBookComponent implements OnInit, OnDestroy {
           );
         });
     }
+    this.Sub$.add(
+      this.DataSrv.favoriteMealList$.subscribe((mealList) => {
+        this.favoriteMealList = [];
+        mealList.forEach((mealName) => {
+          this.recipiesSrv.getMealByName(mealName.name).subscribe((meal) => {
+            this.favoriteMealList.push(meal.meals[0] as MealModel);
+          });
+        });
+      })
+    );
+    this.DataSrv.getFavoriteMealList();
   }
 
   ViewuserDetail(user_id: any) {
     this.router.navigate(['/recipies', user_id]);
   }
 
+  addTofavorite(strMeal: string) {
+    this.DataSrv.updateFavoriteMeal(strMeal);
+    this.notFav = false;
+  }
+
   selectMeal(meal: MealModel) {
+    scroll({ top: 0, left: 0, behavior: 'smooth' });
+    this.notFav = true;
+    this.favoriteMealList.forEach((mealfav) => {
+      mealfav.strMeal == meal.strMeal
+        ? (this.notFav = false)
+        : this.notFav
+        ? (this.notFav = true)
+        : (this.notFav = false);
+    });
     this.selectedMeal = meal;
   }
 

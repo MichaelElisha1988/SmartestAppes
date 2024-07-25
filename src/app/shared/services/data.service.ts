@@ -16,6 +16,7 @@ import {
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { LoginService } from './login.service';
+import { MealModel } from '../models/meal.model';
 
 @Injectable({
   providedIn: 'root',
@@ -23,11 +24,13 @@ import { LoginService } from './login.service';
 export class DataService {
   taskList: TaskModel[] = [];
   listId: ListId[] = [];
+  favoriteMealList: { dbId?: string; id: number; name: string }[] = [];
   selectedId: number = 0;
   fbDataBase: FirebaseApp;
   DataBaseApp: any;
   listIdRef: CollectionReference;
   taskListRef: CollectionReference;
+  favoriteMealRef: CollectionReference;
   loginName: string = '';
   todayDate: string = '';
 
@@ -46,6 +49,11 @@ export class DataService {
 
   private readonly ListIdSubject = new BehaviorSubject<ListId[]>([]);
   readonly ListId$ = this.ListIdSubject.asObservable();
+
+  private readonly favoriteMealListSubject = new BehaviorSubject<
+    { dbId?: string; id: number; name: string }[]
+  >([]);
+  readonly favoriteMealList$ = this.favoriteMealListSubject.asObservable();
 
   private readonly ListIdChgSubject = new BehaviorSubject<number>(0);
   readonly ListIdChg$ = this.ListIdChgSubject.asObservable();
@@ -66,6 +74,12 @@ export class DataService {
     this.taskListRef = collection(
       this.DataBaseApp,
       `taskList${JSON.parse(sessionStorage.getItem('UserDataLogin')!).uid}`
+    );
+    this.favoriteMealRef = collection(
+      this.DataBaseApp,
+      `favoriteMealRef${
+        JSON.parse(sessionStorage.getItem('UserDataLogin')!).uid
+      }`
     );
     /////////////////////////////////////
 
@@ -112,6 +126,21 @@ export class DataService {
     );
     this.ListIdSubject.next(this.listId);
     this.getListId();
+  }
+
+  updateFavoriteMeal(name: string) {
+    const meal: { dbId?: string; id: number; name: string } = {
+      id: new Date().valueOf(),
+      name: name,
+    };
+    addDoc(this.favoriteMealRef!, meal);
+    this.favoriteMealList.push(meal);
+    sessionStorage.setItem(
+      `listId${JSON.parse(sessionStorage.getItem('UserDataLogin')!).uid}`,
+      JSON.stringify(this.favoriteMealList)
+    );
+    this.favoriteMealListSubject.next(this.favoriteMealList);
+    this.getFavoriteMealList();
   }
 
   updateTaskList(task: TaskModel) {
@@ -169,6 +198,23 @@ export class DataService {
         setTimeout(() => {
           this.ListIdChgSubject.next(this.selectedId);
         });
+      });
+  }
+  getFavoriteMealList() {
+    let tmpFavoriteMealList: { dbId?: string; id: number; name: string }[] = [];
+
+    getDocs(this.favoriteMealRef!)
+      .then((data) => {
+        data.docs.forEach((data) => {
+          tmpFavoriteMealList.push({
+            ...(data.data() as { dbId?: string; id: number; name: string }),
+            dbId: data.id,
+          });
+        });
+      })
+      .then(() => {
+        this.favoriteMealList = tmpFavoriteMealList;
+        this.favoriteMealListSubject.next(this.favoriteMealList);
       });
   }
   getTaskList() {
