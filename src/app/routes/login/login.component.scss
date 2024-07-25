@@ -53,6 +53,7 @@
           color: var(--c-blue);
           background-color: transparent;
           border: 3px solid var(--c-blue);
+          width: -webkit-fill-available;
         }
         .i:focus + .l,
         .i:not(:placeholder-shown) + .l {
