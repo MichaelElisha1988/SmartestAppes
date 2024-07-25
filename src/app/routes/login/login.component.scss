@@ -29,48 +29,41 @@
       flex-direction: column;
       width: 80%;
       margin: 20px auto;
+      .input-wrapper {
+        position: relative;
+        label {
+          font-size: 18px;
+          font-weight: 400;
+          position: absolute;
+          left: 15px;
+          transition: 0.5s all;
+          pointer-events: none;
+        }
 
-      label {
-        font-size: 18px;
-        font-weight: 400;
-        position: absolute;
-        left: 15px;
-        transition: 0.5s all;
-        pointer-events: none;
-      }
-      .l-name {
-        top: 23px;
-      }
-      .l-pass {
-        top: 102px;
+        .l {
+          top: 25px;
+        }
+
+        input {
+          font-size: 18px;
+          font-weight: 400;
+          margin: 10px 0 20px 0;
+          padding: 10px 15px;
+          border-radius: 30px;
+          color: var(--c-blue);
+          background-color: transparent;
+          border: 3px solid var(--c-blue);
+        }
+        .i:focus + .l,
+        .i:not(:placeholder-shown) + .l {
+          top: 0px;
+          padding: 1px 5px;
+          background-color: var(--c-grey);
+          font-size: 12px;
+          border-radius: 30px;
+        }
       }
 
-      input {
-        font-size: 18px;
-        font-weight: 400;
-        margin: 10px 0 20px 0;
-        padding: 10px 15px;
-        border-radius: 30px;
-        color: var(--c-blue);
-        background-color: transparent;
-        border: 3px solid var(--c-blue);
-      }
-      .i-name:focus + .l-name,
-      .i-name:not(:placeholder-shown) + .l-name {
-        top: 0px;
-        padding: 1px 5px;
-        background-color: var(--c-grey);
-        font-size: 12px;
-        border-radius: 30px;
-      }
-      .i-pass:focus + .l-pass,
-      .i-pass:not(:placeholder-shown) + .l-pass {
-        top: 77px;
-        padding: 5px 5px;
-        background-color: var(--c-grey);
-        font-size: 12px;
-        border-radius: 30px;
-      }
       button {
         margin-top: 50px;
         padding: 20px 0;

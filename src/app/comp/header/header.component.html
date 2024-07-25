@@ -45,7 +45,7 @@
 >
   <div class="options-list">
     <ul class="list">
-      <h1 class="list-title" *ngIf="isAfterLogin">Applications</h1>
+      <h2 class="list-title" *ngIf="isAfterLogin">Applications</h2>
       <li
         (click)="close('measurements')"
         class="list-item"
@@ -59,12 +59,15 @@
       <li (click)="close('lists')" class="list-item" *ngIf="isAfterLogin">
         Todo List
       </li>
-      <h1 class="list-title" *ngIf="isAfterLogin">General</h1>
+      <h2 class="list-title" *ngIf="isAfterLogin">General</h2>
       <li (click)="close('menu')" class="list-item" *ngIf="isAfterLogin">
         Add/Remove Measurements
       </li>
-      <h1 class="list-title">Policies</h1>
+      <h2 class="list-title">Policies</h2>
       <li (click)="close('policy')" class="list-item">Privacy Policy</li>
+
+      <h2 class="list-title" *ngIf="isAfterLogin">User</h2>
+      <li *ngIf="isAfterLogin" (click)="logout()" class="list-item">Log-Out</li>
     </ul>
   </div>
 </div>

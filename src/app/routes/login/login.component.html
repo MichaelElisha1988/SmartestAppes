@@ -3,36 +3,59 @@
     <div class="title">
       <h1>Login</h1>
     </div>
-    <form class="login" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <input
-        class="i-name"
-        id="usenName"
-        type="email"
-        formControlName="usenName"
-        placeholder=" "
-        autocomplete="current-password"
-      />
-      <label class="l-name" for="usenName">Email :</label>
+    <form
+      class="login"
+      [formGroup]="loginForm"
+      (ngSubmit)="onSubmit(isRegister)"
+    >
+      <div class="input-wrapper">
+        <input
+          class="i"
+          id="usenName"
+          type="email"
+          formControlName="usenName"
+          placeholder=" "
+          autocomplete="current-password"
+        />
+        <label class="l" for="usenName">Email :</label>
+      </div>
 
-      <input
-        class="i-pass"
-        id="password"
-        type="password"
-        formControlName="password"
-        placeholder=" "
-        autocomplete="current-password"
-      />
-      <label class="l-pass" for="password">Password: </label>
-
+      <div class="input-wrapper">
+        <input
+          class="i"
+          id="password"
+          type="password"
+          formControlName="password"
+          [ngClass]="isRegister ? 'seeThePass' : ''"
+          placeholder=" "
+          autocomplete="current-password"
+        />
+        <label class="l" for="password">Password: </label>
+      </div>
+      <div class="input-wrapper">
+        <input
+          *ngIf="isRegister"
+          class="i"
+          [ngClass]="isRegister ? 'seeThePass' : ''"
+          id="password"
+          type="password"
+          formControlName="passwordConfirm"
+          placeholder=" "
+          autocomplete="current-password"
+        />
+        <label class="l" *ngIf="isRegister" for="password"
+          >Confirm Password:
+        </label>
+      </div>
       <button type="submit" [disabled]="loginForm.status == 'INVALID'">
-        Enter
+        {{ isRegister ? "Register" : "Login" }}
       </button>
     </form>
 
     <div class="coming-soon">
       <span>{{ errorMsg }}</span>
-      <button [disabled]="loginForm.status == 'INVALID'" (click)="register()">
-        Register With this Mail
+      <button (click)="register()">
+        {{ isRegister ? "Click here to Log-in" : "Click here to Register" }}
       </button>
     </div>
   </div>

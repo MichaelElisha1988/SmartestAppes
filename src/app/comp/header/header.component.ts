@@ -136,6 +136,10 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   openAcc() {
     this.isOpenAcc = !this.isOpenAcc;
   }
+  logout() {
+    sessionStorage.removeItem('UserDataLogin');
+    window.location.reload();
+  }
 
   ngOnDestroy() {
     this.$Subs.unsubscribe();

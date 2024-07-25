@@ -19,9 +19,13 @@ export class LoginComponent implements OnInit, OnDestroy {
       updateOn: 'change',
       validators: [Validators.required],
     }),
+    passwordConfirm: new FormControl('', {
+      updateOn: 'change',
+      validators: [],
+    }),
   });
   errorMsg: string | null = null;
-
+  isRegister: boolean = false;
   constructor(private router: Router, private loginSrv: LoginService) {
     sessionStorage.getItem('UserDataLogin')
       ? this.router.navigate(['home'])
@@ -42,6 +46,7 @@ export class LoginComponent implements OnInit, OnDestroy {
             : null;
       })
     );
+    this.loginForm.updateValueAndValidity();
   }
 
   Sub$ = new Subscription();
@@ -53,22 +58,45 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   register() {
-    this.loginSrv.createAccount(
-      this.loginForm.controls.usenName.value!,
-      this.loginForm.controls.password.value!
-    );
-    setTimeout(() => {
+    this.isRegister = !this.isRegister;
+    this.errorMsg = '';
+    this.isRegister
+      ? this.loginForm.controls.passwordConfirm.addValidators(
+          Validators.required
+        )
+      : this.loginForm.controls.passwordConfirm.removeValidators(
+          Validators.required
+        );
+
+    this.loginForm.controls.passwordConfirm.updateValueAndValidity();
+  }
+
+  onSubmit(isRegister: boolean) {
+    this.errorMsg = '';
+    if (isRegister) {
+      if (
+        this.loginForm.controls.password.value ===
+        this.loginForm.controls.passwordConfirm.value
+      ) {
+        this.loginSrv.createAccount(
+          this.loginForm.controls.usenName.value!,
+          this.loginForm.controls.password.value!
+        ),
+          setTimeout(() => {
+            this.loginSrv.signIn(
+              this.loginForm.controls.usenName.value!,
+              this.loginForm.controls.password.value!
+            );
+          }, 1000);
+      } else {
+        this.errorMsg =
+          'Please make sure that the Email is currect and the password is eqal';
+      }
+    } else {
       this.loginSrv.signIn(
         this.loginForm.controls.usenName.value!,
         this.loginForm.controls.password.value!
       );
-    }, 1000);
-  }
-
-  onSubmit() {
-    this.loginSrv.signIn(
-      this.loginForm.controls.usenName.value!,
-      this.loginForm.controls.password.value!
-    );
+    }
   }
 }
