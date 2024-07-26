@@ -2,10 +2,16 @@
   <div class="recipie-item-big" *ngIf="selectedMeal">
     <div
       class="tofavorite"
-      *ngIf="notFav"
-      (click)="addTofavorite(selectedMeal.strMeal)"
+      (click)="
+        notFav
+          ? addTofavorite(selectedMeal.strMeal)
+          : deleteFromFavorite(selectedMeal)
+      "
     >
-      <img src="assets/favorite.png" alt="" />
+      <img
+        src="{{ notFav ? 'assets/favorite.png' : 'assets/delete.png' }}"
+        alt=""
+      />
     </div>
     <img class="back-img" src="{{ selectedMeal.strMealThumb }}" alt="steak" />
     <div class="blur-back-img"></div>

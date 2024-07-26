@@ -167,6 +167,21 @@ export class DataService {
     this.ListIdChgSubject.next(this.selectedId);
   }
 
+  deleteFavoriteMeal(mealName: string) {
+    let dbId = this.favoriteMealList.find(
+      (favMeal) => favMeal.name == mealName
+    )?.dbId;
+    const docRef = doc(
+      this.DataBaseApp,
+      `favoriteMealRef${
+        JSON.parse(sessionStorage.getItem('UserDataLogin')!).uid
+      }`,
+      '' + dbId
+    );
+    deleteDoc(docRef);
+    this.getFavoriteMealList();
+  }
+
   deleteList(id: number, taskIds: TaskModel[]) {
     taskIds.forEach((x) => this.deleteTask(x.id));
     const dbId = this.listId.find((x) => x.id == id)

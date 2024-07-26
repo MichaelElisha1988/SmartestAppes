@@ -93,6 +93,11 @@ export class MyRecepiesBookComponent implements OnInit, OnDestroy {
     this.notFav = false;
   }
 
+  deleteFromFavorite(meal: MealModel) {
+    this.DataSrv.deleteFavoriteMeal(meal.strMeal);
+    this.notFav = true;
+  }
+
   selectMeal(meal: MealModel) {
     scroll({ top: 0, left: 0, behavior: 'smooth' });
     this.notFav = true;
