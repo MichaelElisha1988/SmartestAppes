@@ -4,8 +4,8 @@
   justify-content: center;
   background-color: var(--c-grey);
   max-width: 490px;
-  position: fixed;
-  bottom: 150px;
+  position: sticky;
+  bottom: 160px;
   z-index: 99;
   width: -webkit-fill-available;
   pointer-events: none;

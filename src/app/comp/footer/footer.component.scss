@@ -1,7 +1,7 @@
 section {
   display: flex;
   background-color: var(--c-grey);
-  position: fixed;
+  position: sticky;
   bottom: 0;
   width: -webkit-fill-available;
   padding: 15px 25px;
