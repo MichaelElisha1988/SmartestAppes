@@ -24,7 +24,7 @@ export class LoginGuard implements CanActivate {
     if (sessionStorage.getItem('UserDataLogin') != null) {
       return true;
     }
-    this.router.navigate(['./']);
+    this.router.navigate(['./login']);
     return false;
   }
 }
