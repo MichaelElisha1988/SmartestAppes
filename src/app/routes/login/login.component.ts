@@ -97,6 +97,13 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.loginForm.controls.usenName.value!,
         this.loginForm.controls.password.value!
       );
+      setTimeout(() => {
+        if (sessionStorage.getItem('return')) {
+          this.router.navigate([sessionStorage.getItem('return')]);
+        } else {
+          this.router.navigate(['']);
+        }
+      }, 500);
     }
   }
 }
