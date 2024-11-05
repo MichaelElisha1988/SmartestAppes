@@ -103,7 +103,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         } else {
           this.router.navigate(['']);
         }
-      }, 500);
+      }, 1000);
     }
   }
 }
