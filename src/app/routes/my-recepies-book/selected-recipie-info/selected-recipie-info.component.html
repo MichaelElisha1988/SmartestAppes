@@ -1,24 +1,25 @@
 <section class="meal-deatails">
   <img src="{{ recipie?.strMealThumb }}" alt="meak-pic" />
   <div class="title">{{ recipie?.strMeal }}</div>
+  <!-- bodyAdUnit -->
+  <ins
+    class="adsbygoogle"
+    style="display: block"
+    data-ad-client="ca-pub-4086762240008321"
+    data-ad-slot="7397064355"
+    data-ad-format="auto"
+    data-full-width-responsive="true"
+  ></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  <!-- END bodyAdUnit -->
   <div class="meal-cook-wrapper">
     <div
       class="meal-instructors"
       [innerHTML]="recipie?.strInstructions | toOrder"
     ></div>
-    <!-- bodyAdUnit -->
-    <ins
-      class="adsbygoogle"
-      style="display: block"
-      data-ad-client="ca-pub-4086762240008321"
-      data-ad-slot="7397064355"
-      data-ad-format="auto"
-      data-full-width-responsive="true"
-    ></ins>
-    <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-    <!-- END bodyAdUnit -->
+
     <ul class="ingredients">
       <li class="ingredien" *ngIf="recipie?.strIngredient1">
         <div class="name">{{ recipie?.strIngredient1 }}</div>
@@ -102,4 +103,17 @@
       </li>
     </ul>
   </div>
+  <!-- bodyAdUnit -->
+  <ins
+    class="adsbygoogle"
+    style="display: block"
+    data-ad-client="ca-pub-4086762240008321"
+    data-ad-slot="7397064355"
+    data-ad-format="auto"
+    data-full-width-responsive="true"
+  ></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+  <!-- END bodyAdUnit -->
 </section>
