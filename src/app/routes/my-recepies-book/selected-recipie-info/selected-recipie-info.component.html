@@ -6,6 +6,19 @@
       class="meal-instructors"
       [innerHTML]="recipie?.strInstructions | toOrder"
     ></div>
+    <!-- bodyAdUnit -->
+    <ins
+      class="adsbygoogle"
+      style="display: block"
+      data-ad-client="ca-pub-4086762240008321"
+      data-ad-slot="7397064355"
+      data-ad-format="auto"
+      data-full-width-responsive="true"
+    ></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <!-- END bodyAdUnit -->
     <ul class="ingredients">
       <li class="ingredien" *ngIf="recipie?.strIngredient1">
         <div class="name">{{ recipie?.strIngredient1 }}</div>
