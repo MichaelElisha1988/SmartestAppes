@@ -55,7 +55,7 @@
       <li (click)="close('policy')" class="list-item">Privacy Policy</li>
 
       <h2 class="list-title" *ngIf="isAfterLogin">User</h2>
-      <li (click)="logout()" class="list-item">Log-Out</li>
+      <li (click)="logout()" class="list-item" *ngIf="isAfterLogin">Log-Out</li>
     </ul>
   </div>
 </div>
