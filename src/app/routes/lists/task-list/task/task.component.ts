@@ -69,6 +69,9 @@ export class TaskComponent implements OnInit {
     this.dataSrv.updateTaskData(task);
   }
   shownInfo(task: TaskModel) {
+    this.taskList.map((x) => {
+      x.seeInfo = false;
+    });
     if (!this.taskInfoSeen) {
       this.taskInfoSeen = task!;
       this.taskInfoSeen.seeInfo = true;
