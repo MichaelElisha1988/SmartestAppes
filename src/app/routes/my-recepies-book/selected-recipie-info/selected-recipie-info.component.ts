@@ -62,7 +62,6 @@ export class SelectedRecipieInfoComponent implements OnInit {
   }
 
   createTaskModel(ingInfo: string, addIng: string): TaskModel | null {
-    debugger;
     let task = this.dataSrv.taskList.find((x) => {
       return x.task == addIng;
     });
