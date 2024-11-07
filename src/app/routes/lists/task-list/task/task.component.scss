@@ -55,6 +55,7 @@
       font-size: 18px;
       padding: 10px 25px;
       letter-spacing: normal;
+      width: min-content;
       color: var(--c-dark-blue);
 
       .task-name {
@@ -92,6 +93,44 @@
           color: var(--c-silver);
         }
       }
+    }
+  }
+  .i-icon {
+    position: absolute;
+    color: var(--c-dark-blue);
+    transform: translateY(-50%);
+    top: 50%;
+    right: 13%;
+    font-size: 24px;
+  }
+  .i-icon:hover ~ .i-info {
+    opacity: 1;
+  }
+  .i-info {
+    opacity: 0;
+    transition: 0.3s opacity linear;
+    pointer-events: none;
+    position: fixed;
+    font-size: 4vw;
+    transform: translate(-50%, -50%);
+    top: 30%;
+    left: 50%;
+    width: max-content;
+    max-width: 60vw;
+    padding: 15px;
+    background-color: var(--c-silver);
+    border: 2px var(--c-dark-blue) solid;
+    color: var(--c-dark-blue);
+    box-shadow: 0 0 10px white;
+    z-index: 100;
+    border-radius: 15px;
+    font-weight: 600;
+    h2 {
+      text-align: center;
+      font-size: 6vw;
+    }
+    li {
+      padding: 10px 0;
     }
   }
 }

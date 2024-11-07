@@ -3,7 +3,6 @@
   class="task extend {{ task.id }}"
   [ngClass]="!task.isCheckBox ? '' : 'isCheckBox'"
 >
-  <!-- (click)="expand($event)" -->
   <div class="effect-section" *ngIf="!task.isCheckBox"></div>
   <div
     class="effect-section checkbox"
@@ -66,5 +65,15 @@
         >
       </div>
     </div>
+  </div>
+
+  <div class="i-icon" *ngIf="task.taskinfo">🛈</div>
+  <div class="i-info">
+    <h2>{{ task.task }}</h2>
+    <ul *ngIf="task.taskinfo">
+      <li *ngFor="let info of task.taskinfo.split(',')!; let i = index">
+        {{ info }}
+      </li>
+    </ul>
   </div>
 </section>

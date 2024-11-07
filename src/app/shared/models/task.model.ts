@@ -3,6 +3,7 @@ export interface TaskModel {
   dbId?: string;
   listID: number;
   task: string;
+  taskinfo?: string;
   date: string;
   author: string;
   status: string;

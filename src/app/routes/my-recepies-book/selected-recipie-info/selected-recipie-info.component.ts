@@ -28,14 +28,24 @@ export class SelectedRecipieInfoComponent implements OnInit {
         this.recipie = data.meals[0];
       });
   }
-  addIng(addIng?: string) {
+  addIng(ingInfo?: string, addIng?: string) {
     let tmpListId: ListId[] = this.dataSrv.getListId();
     let shoppingListId = tmpListId.find((x: ListId) => {
       return x.name == 'shopping list';
     });
+
+    this.dataSrv.favoriteMealList.find((x) => {
+      return x.name == this.recipie!.strMeal;
+    })
+      ? ''
+      : this.dataSrv.updateFavoriteMeal(this.recipie!.strMeal);
     if (shoppingListId) {
       this.dataSrv.selectedId = shoppingListId!.id;
-      this.dataSrv.updateTaskList(this.createTaskModel(addIng ? addIng : ''));
+      this.createTaskModel(ingInfo ? ingInfo : '', addIng ? addIng : '')
+        ? this.dataSrv.updateTaskList(
+            this.createTaskModel(ingInfo ? ingInfo : '', addIng ? addIng : '')!
+          )
+        : '';
     } else {
       this.dataSrv.updateListId('shopping list');
       tmpListId = this.dataSrv.getListId();
@@ -43,24 +53,39 @@ export class SelectedRecipieInfoComponent implements OnInit {
         return x.name == 'shopping list';
       });
       this.dataSrv.selectedId = shoppingListId!.id;
-      this.dataSrv.updateTaskList(this.createTaskModel(addIng ? addIng : ''));
+      this.createTaskModel(ingInfo ? ingInfo : '', addIng ? addIng : '')
+        ? this.dataSrv.updateTaskList(
+            this.createTaskModel(ingInfo ? ingInfo : '', addIng ? addIng : '')!
+          )
+        : '';
     }
   }
 
-  createTaskModel(addIng: string): TaskModel {
-    return {
-      listID: 0,
-      id: 0,
-      task: addIng ? addIng : '',
-      author: this.loginName,
-      date: new Date().getDate().toString(),
-      status: 'false',
-      currentStatus: 1,
-      editMode: false,
-      color: Math.floor(Math.random() * 16777215).toString(16),
-      isCheckBox: true,
-      didIt: false,
-    };
+  createTaskModel(ingInfo: string, addIng: string): TaskModel | null {
+    let task = this.dataSrv.taskList.find((x) => {
+      return x.task == addIng;
+    });
+    if (task) {
+      task.taskinfo =
+        task.taskinfo + ',' + this.recipie!.strMeal + ' - ' + ingInfo;
+      this.dataSrv.updateTaskData(task);
+      return null;
+    } else {
+      return {
+        listID: 0,
+        id: 0,
+        task: addIng ? addIng : '',
+        taskinfo: this.recipie!.strMeal + ' - ' + ingInfo,
+        author: this.loginName,
+        date: new Date().getDate().toString(),
+        status: 'false',
+        currentStatus: 1,
+        editMode: false,
+        color: Math.floor(Math.random() * 16777215).toString(16),
+        isCheckBox: true,
+        didIt: false,
+      };
+    }
   }
 
   ngOnInit(): void {}
