@@ -198,7 +198,7 @@ export class DataService {
     this.ListIdChgSubject.next(this.selectedId);
   }
 
-  getListId() {
+  getListId(): ListId[] {
     let tmpListId: ListId[] = [];
 
     getDocs(this.listIdRef!)
@@ -214,6 +214,8 @@ export class DataService {
           this.ListIdChgSubject.next(this.selectedId);
         });
       });
+
+    return this.listId;
   }
   getFavoriteMealList() {
     let tmpFavoriteMealList: { dbId?: string; id: number; name: string }[] = [];

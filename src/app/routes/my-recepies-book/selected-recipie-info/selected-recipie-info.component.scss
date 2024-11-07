@@ -29,8 +29,10 @@
         color: var(--c-grey);
         font-size: 14px;
         position: relative;
-        &::after {
-          content: "+";
+        .ingredien-info {
+        }
+        .ingredien-add {
+          cursor: pointer;
           font-size: 22px;
           position: absolute;
           display: flex;
