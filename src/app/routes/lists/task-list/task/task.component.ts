@@ -15,6 +15,8 @@ export class TaskComponent implements OnInit {
   editTaskMode: boolean = false;
   isCheckBox: boolean = false;
   lastexpandTask: any = null;
+  seeInfo: boolean = false;
+  taskInfoSeen: TaskModel | null = null;
 
   taskNameEdit = new FormGroup({
     taskEdit: new FormControl('', {
@@ -65,6 +67,24 @@ export class TaskComponent implements OnInit {
       : '';
 
     this.dataSrv.updateTaskData(task);
+  }
+  shownInfo(task: TaskModel) {
+    if (!this.taskInfoSeen) {
+      this.taskInfoSeen = task!;
+      this.taskInfoSeen.seeInfo = true;
+    } else if (this.taskInfoSeen.id === task.id) {
+      this.taskInfoSeen.seeInfo = false;
+      this.taskInfoSeen = null;
+    } else {
+      this.taskInfoSeen.seeInfo = false;
+      this.taskInfoSeen = task!;
+      this.taskInfoSeen.seeInfo = true;
+    }
+  }
+  closeTaskInfo(ev: any) {
+    this.taskInfoSeen && !ev.target.classList.contains('i-icon-img')
+      ? (this.taskInfoSeen.seeInfo = false)
+      : '';
   }
 
   deleteTask(event: any) {

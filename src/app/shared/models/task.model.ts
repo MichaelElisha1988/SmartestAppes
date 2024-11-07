@@ -11,5 +11,6 @@ export interface TaskModel {
   editMode: boolean;
   color: string;
   isCheckBox: boolean;
+  seeInfo: boolean;
   didIt: boolean;
 }

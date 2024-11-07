@@ -71,6 +71,7 @@ export class AddTaskPopupComponent implements OnInit {
       status: this.taskform.value.status!,
       currentStatus: 1,
       editMode: false,
+      seeInfo: false,
       color: Math.floor(Math.random() * 16777215).toString(16),
       isCheckBox: this.taskform.value.isCheckBox!,
       didIt: false,

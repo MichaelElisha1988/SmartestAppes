@@ -15,10 +15,7 @@
   </script>
   <!-- END bodyAdUnit -->
   <div class="meal-cook-wrapper">
-    <div
-      class="meal-instructors"
-      [innerHTML]="recipie?.strInstructions | toOrder"
-    ></div>
+    <div class="meal-instructors" [innerHTML]="recipie?.strInstructions"></div>
 
     <ul class="ingredients">
       <li class="ingredien" *ngIf="recipie?.strIngredient1">

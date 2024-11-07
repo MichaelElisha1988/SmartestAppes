@@ -59,6 +59,9 @@ export class TaskListComponent implements OnInit, AfterViewInit {
   }
 
   selectListId(event: any, list: ListId) {
+    this.dataSrv.taskList.map((x) => {
+      x.seeInfo = false;
+    });
     let listParent: any = event;
     if (event.target.classList.contains('list-name')) {
       listParent = event.target.parentElement;

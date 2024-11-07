@@ -62,6 +62,7 @@ export class SelectedRecipieInfoComponent implements OnInit {
   }
 
   createTaskModel(ingInfo: string, addIng: string): TaskModel | null {
+    debugger;
     let task = this.dataSrv.taskList.find((x) => {
       return x.task == addIng;
     });
@@ -81,6 +82,7 @@ export class SelectedRecipieInfoComponent implements OnInit {
         status: 'false',
         currentStatus: 1,
         editMode: false,
+        seeInfo: false,
         color: Math.floor(Math.random() * 16777215).toString(16),
         isCheckBox: true,
         didIt: false,

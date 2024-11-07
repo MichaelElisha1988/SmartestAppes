@@ -2,6 +2,7 @@
   *ngFor="let task of shownList; let i = index"
   class="task extend {{ task.id }}"
   [ngClass]="!task.isCheckBox ? '' : 'isCheckBox'"
+  (click)="closeTaskInfo($event)"
 >
   <div class="effect-section" *ngIf="!task.isCheckBox"></div>
   <div
@@ -67,8 +68,10 @@
     </div>
   </div>
 
-  <div class="i-icon" *ngIf="task.taskinfo">🛈</div>
-  <div class="i-info">
+  <div class="i-icon" *ngIf="task.taskinfo" (click)="shownInfo(task)">
+    <img class="i-icon-img" src="assets/icons8-info.svg" alt="" />
+  </div>
+  <div class="i-info" [ngClass]="task.seeInfo ? 'i-eye' : ''">
     <h2>{{ task.task }}</h2>
     <ul *ngIf="task.taskinfo">
       <li *ngFor="let info of task.taskinfo.split(',')!; let i = index">

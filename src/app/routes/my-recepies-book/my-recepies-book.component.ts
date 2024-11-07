@@ -35,7 +35,7 @@ export class MyRecepiesBookComponent implements OnInit, OnDestroy {
         if ((value as string)?.length >= 2) {
           this.recipiesSrv
             .getMealByName(value as string)
-            .pipe(take(1))
+            .pipe(take(2))
             .subscribe((data) => {
               this.searchMealsInStok = data.meals;
             });
@@ -64,11 +64,13 @@ export class MyRecepiesBookComponent implements OnInit, OnDestroy {
       let r = alphabet[Math.floor(Math.random() * alphabet.length)];
       this.recipiesSrv
         .getSearchedByFirstLetter(r)
-        .pipe(take(1))
+        .pipe(take(2))
         .subscribe((data) => {
-          this.tenMealsInStok?.push(
-            data.meals[Math.floor(Math.random() * (data.meals.length - 1))]
-          );
+          let tmpMeal =
+            data?.meals?.[Math.floor(Math.random() * (data.meals?.length - 1))];
+          if (tmpMeal) {
+            this.tenMealsInStok?.push(tmpMeal);
+          }
         });
     }
     this.Sub$.add(
