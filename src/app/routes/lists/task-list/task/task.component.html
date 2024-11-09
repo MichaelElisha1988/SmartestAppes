@@ -72,7 +72,6 @@
     <img class="i-icon-img" src="assets/icons8-info.svg" alt="" />
   </div>
   <div class="i-info" [ngClass]="task.seeInfo ? 'i-eye' : ''">
-    <h2>{{ task.task }}</h2>
     <ul *ngIf="task.taskinfo">
       <li *ngFor="let info of task.taskinfo.split(',')!; let i = index">
         {{ info }}

@@ -139,6 +139,7 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   logout() {
     sessionStorage.removeItem('UserDataLogin');
     window.location.reload();
+    this.loginService.logOut();
   }
 
   ngOnDestroy() {

@@ -12,6 +12,7 @@
   animation: appear 0.3s;
   background-color: var(--c-grey);
 
+  overflow: hidden;
   &.extend {
     height: max-content;
   }
@@ -110,30 +111,21 @@
   .i-eye {
     &.i-info {
       opacity: 1;
+      position: sticky;
     }
   }
   .i-info {
     opacity: 0;
+    position: absolute;
     transition: 0.3s opacity linear;
     pointer-events: none;
-    position: fixed;
     font-size: 4vw;
-    transform: translateX(-50%);
-    left: 50%;
     width: max-content;
-    bottom: 205px;
-    padding: 15px 15px 55px 15px;
-    background-color: var(--c-silver);
-    border: 2px var(--c-dark-blue) solid;
     color: var(--c-dark-blue);
-    box-shadow: 0 0 10px white;
+    margin-left: 30px;
     z-index: 10;
-    border-radius: 15px;
     font-weight: 600;
-    h2 {
-      text-align: center;
-      font-size: 6vw;
-    }
+
     li {
       padding: 15px 0;
     }

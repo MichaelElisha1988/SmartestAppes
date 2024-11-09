@@ -36,7 +36,7 @@
     <div (click)="addListId($event)" class="add-list">
       {{ addActive ? "Ok" : "Add List" }}
     </div>
-    <div (click)="deleteList($event)" class="add-list">
+    <div (click)="deleteList()" class="add-list">
       {{ "Remove List" }}
     </div>
   </div>
@@ -46,5 +46,20 @@
       {{ "→" }}
     </button>
   </div> -->
+  <div class="share-list box" *ngIf="showSharedList">
+    <input
+      [formControl]="shareWithEmail"
+      type="email"
+      placeholder="To share with in Email"
+    />
+    <button
+      _ngcontent-xpv-c28=""
+      class="share-list"
+      [disabled]="!shareWithEmail.valid"
+      (click)="shareList()"
+    >
+      Share Selected Task List
+    </button>
+  </div>
 </div>
 <task class="tasks"></task>

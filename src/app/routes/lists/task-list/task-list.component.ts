@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { ListId } from '../../../shared/models/list-id.model';
 import { DataService } from '../../../shared/services/data.service';
+import { EmailValidator, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'task-list',
@@ -19,6 +20,12 @@ export class TaskListComponent implements OnInit, AfterViewInit {
   addActive: boolean = false;
   listEdit: boolean = false;
   movearound: number = 0;
+  showSharedList: boolean = false;
+  shareWithEmail = new FormControl<string>('', [
+    Validators.required,
+    Validators.email,
+  ]);
+
   @ViewChild('addInput') addInput: ElementRef | undefined;
   @ViewChild('ListId') ListId: ElementRef | undefined;
 
@@ -39,7 +46,7 @@ export class TaskListComponent implements OnInit, AfterViewInit {
             ?.children[0]?.attributes.getNamedItem('listid')?.value
         )
       );
-    }, 1000);
+    }, 2000);
   }
 
   addListId(event: any) {
@@ -62,6 +69,7 @@ export class TaskListComponent implements OnInit, AfterViewInit {
     this.dataSrv.taskList.map((x) => {
       x.seeInfo = false;
     });
+    this.showSharedList = list.showSharedList;
     let listParent: any = event;
     if (event.target.classList.contains('list-name')) {
       listParent = event.target.parentElement;
@@ -102,10 +110,22 @@ export class TaskListComponent implements OnInit, AfterViewInit {
     }
   }
 
-  deleteList(event: any) {
+  deleteList() {
     let listId = this.getSelectedListId();
     let taskIds = this.dataSrv.taskList.filter((x) => x.listID == listId);
-    this.dataSrv.deleteList(listId, taskIds);
+    confirm(
+      'You about to DELETE List named: ' +
+        this.dataSrv.listId.find((x) => x.id == listId)?.name +
+        ', Please Comfirm'
+    )
+      ? this.dataSrv.deleteList(listId, taskIds)
+      : '';
+  }
+
+  shareList() {
+    let listId = this.getSelectedListId();
+    this.showSharedList = false;
+    this.dataSrv.createSharedList(listId, this.shareWithEmail.value!);
   }
 
   moveAround(moveNum: number) {

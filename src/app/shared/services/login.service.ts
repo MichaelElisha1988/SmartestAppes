@@ -6,6 +6,7 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signOut,
 } from 'firebase/auth';
 import { FirebaseApp, initializeApp } from 'firebase/app';
 import { environment } from 'src/environments/environment';
@@ -83,6 +84,7 @@ export class LoginService {
       .then((userCredential: any) => {
         // Signed up
         this.LoginSubject.next(userCredential?.user);
+        console.log(userCredential?.user);
         this.setAfterLogin();
 
         // ...
@@ -92,5 +94,10 @@ export class LoginService {
         this.LoginErrorSubject.next(error.message);
         // ..
       });
+  }
+
+  logOut() {
+    const auth = getAuth();
+    signOut(auth);
   }
 }

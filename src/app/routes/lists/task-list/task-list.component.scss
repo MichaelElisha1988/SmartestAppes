@@ -105,6 +105,53 @@
       right: 0;
     }
   }
+  .share-list {
+    &.box {
+      border: 1px solid var(--c-dark-blue);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 15px;
+      gap: 15px;
+    }
+    button {
+      opacity: 1;
+      position: unset;
+      pointer-events: unset;
+      text-align: center;
+      transition: 0.3s all linear;
+      background-color: var(--c-grey);
+      width: fit-content;
+      padding: 5px 15px;
+      justify-self: center;
+      border-radius: 15px;
+      border: 1px solid var(--c-dark-blue);
+      color: var(--c-dark-blue);
+      font-size: 18px;
+      z-index: 2;
+      &:disabled {
+        opacity: 0;
+        position: absolute;
+        pointer-events: none;
+      }
+    }
+    input {
+      width: 90%;
+      font-size: 18px;
+      color: var(--c-blue);
+      background-color: var(--c-grey);
+      position: relative;
+      z-index: 3;
+      border: none;
+      &::placeholder {
+        color: var(--c-dark-blue);
+      }
+    }
+    cursor: pointer;
+  }
 }
 
 ::-webkit-scrollbar {
