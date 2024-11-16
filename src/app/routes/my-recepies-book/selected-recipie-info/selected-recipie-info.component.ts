@@ -40,7 +40,7 @@ export class SelectedRecipieInfoComponent implements OnInit {
       ? ''
       : this.dataSrv.updateFavoriteMeal(this.recipie!.strMeal);
     if (shoppingListId) {
-      this.dataSrv.selectedId = shoppingListId!.id;
+      this.dataSrv.setSelectedListId(shoppingListId!.id);
       this.createTaskModel(ingInfo ? ingInfo : '', addIng ? addIng : '')
         ? this.dataSrv.updateTaskList(
             this.createTaskModel(ingInfo ? ingInfo : '', addIng ? addIng : '')!
@@ -52,7 +52,7 @@ export class SelectedRecipieInfoComponent implements OnInit {
       shoppingListId = tmpListId.find((x: ListId) => {
         return x.name == 'shopping list';
       });
-      this.dataSrv.selectedId = shoppingListId!.id;
+      this.dataSrv.setSelectedListId(shoppingListId!.id);
       this.createTaskModel(ingInfo ? ingInfo : '', addIng ? addIng : '')
         ? this.dataSrv.updateTaskList(
             this.createTaskModel(ingInfo ? ingInfo : '', addIng ? addIng : '')!

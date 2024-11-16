@@ -27,14 +27,12 @@ export class LoginComponent implements OnInit, OnDestroy {
   errorMsg: string | null = null;
   isRegister: boolean = false;
   constructor(private router: Router, private loginSrv: LoginService) {
-    sessionStorage.getItem('UserDataLogin')
-      ? this.router.navigate(['home'])
-      : '';
+    sessionStorage.getItem('UserDataLogin') ? this.router.navigate(['/']) : '';
     this.Sub$.add(
       this.loginSrv.login$.subscribe((data) => {
         data != null
           ? (sessionStorage.setItem('UserDataLogin', JSON.stringify(data)),
-            this.router.navigate(['/home']))
+            this.router.navigate(['/']))
           : '';
       })
     );

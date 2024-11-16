@@ -18,8 +18,8 @@ export class MainFooterComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.Sub$.add(
-      this.dataSrv.ListId$.subscribe((listId) => {
-        listId.length > 0 ? (this.listIdIsEmpty = true) : '';
+      this.dataSrv.ListIdChg$.subscribe((listId) => {
+        listId ? (this.listIdIsEmpty = true) : '';
       })
     );
   }
