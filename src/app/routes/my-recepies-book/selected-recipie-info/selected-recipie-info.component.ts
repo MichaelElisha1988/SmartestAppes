@@ -5,7 +5,6 @@ import { MealModel } from 'src/app/shared/models/meal.model';
 import { take } from 'rxjs';
 import { DataService } from 'src/app/shared/services/data.service';
 import { TaskModel } from 'src/app/shared/models/task.model';
-import { LoginService } from 'src/app/shared/services/login.service';
 import { ListId } from 'src/app/shared/models/list-id.model';
 
 @Component({

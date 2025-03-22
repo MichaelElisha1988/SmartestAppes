@@ -99,10 +99,6 @@ export class DataService {
     this.getSharedEmails();
     this.getListId();
     this.getTaskList();
-    console.log(this.sharedEmails);
-    console.log(this.sharingEmails);
-    console.log(this.listId);
-    console.log(this.taskList);
   }
 
   getLoginName(): string {
@@ -487,6 +483,40 @@ export class DataService {
       );
       deleteDoc(docRef);
     } else {
+      let tmpAllowedEmails: SharingEmail;
+      let tmpOldAllowedEmails: SharingEmail | undefined | null =
+        this.sharingEmails.find((x) => {
+          return x.allowedEmail == tmpListIdItem?.sharedWith;
+        });
+
+      if (tmpOldAllowedEmails) {
+        const dbIdSharingEmail = this.sharingEmails.find((x) => {
+          return x.allowedEmail == tmpListIdItem?.sharedWith;
+        })
+          ? this.sharingEmails.find(
+              (x) => x.allowedEmail == tmpListIdItem?.sharedWith
+            )?.dbId
+          : '';
+
+        const docSharingRef = doc(
+          this.DataBaseApp,
+          `sharingEmails${
+            JSON.parse(sessionStorage.getItem('UserDataLogin')!).uid
+          }`,
+          '' + dbIdSharingEmail
+        );
+
+        tmpOldAllowedEmails.nameSharedLists.filter(
+          (sharedLists) => sharedLists != tmpListIdItem!.name
+        );
+
+        tmpAllowedEmails = {
+          allowedEmail: tmpListIdItem.sharedWith,
+          nameSharedLists: tmpOldAllowedEmails.nameSharedLists,
+        };
+        updateDoc(docSharingRef, { ...tmpAllowedEmails });
+      }
+
       const docRef = doc(
         this.DataBaseApp,
         `sharedListId${shajs('sha256')
@@ -494,6 +524,7 @@ export class DataService {
           .digest('hex')}`,
         '' + dbId
       );
+
       deleteDoc(docRef);
     }
     this.listId = this.listId.filter((x) => x.id != id);
@@ -506,8 +537,6 @@ export class DataService {
     const allListTasks = this.taskList.filter((x) => {
       return x.listID == listId;
     });
-
-    this.deleteList(listId, allListTasks);
 
     shareListItem
       ? ((shareListItem!.showSharedList = false),
@@ -525,6 +554,7 @@ export class DataService {
         return x.allowedEmail == sheredWithEmail;
       });
 
+    this.deleteList(listId, allListTasks);
     if (tmpOldAllowedEmails) {
       const dbIdSharingEmail = this.sharingEmails.find((x) => {
         return x.allowedEmail == sheredWithEmail;
