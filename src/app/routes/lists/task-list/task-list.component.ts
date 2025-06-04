@@ -8,12 +8,16 @@ import {
 } from '@angular/core';
 import { ListId } from '../../../shared/models/list-id.model';
 import { DataService } from '../../../shared/services/data.service';
-import { EmailValidator, FormControl, Validators } from '@angular/forms';
+import { EmailValidator, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { TaskComponent } from "./task/task.component";
 
 @Component({
   selector: 'task-list',
   templateUrl: './task-list.component.html',
   styleUrls: ['./task-list.component.scss'],
+    standalone: true,
+    imports: [CommonModule, ReactiveFormsModule, TaskComponent],
 })
 export class TaskListComponent implements OnInit, AfterViewInit {
   listId: ListId[] = [];

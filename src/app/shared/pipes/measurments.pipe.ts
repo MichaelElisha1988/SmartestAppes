@@ -1,16 +1,17 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Gtag } from 'angular-gtag';
 import { DataSavingService } from '../services/dataSaving.service';
+import { Ga4Service } from '../services/ga4.service';
 
 @Pipe({
   name: 'measurments',
+  standalone: true,
 })
 export class MeasurmentsPipe implements PipeTransform {
   tmpValue: any = '';
   maxAmout: any = 10000;
   lastmeasurement: any = [];
 
-  constructor(private gtag: Gtag, private dataSavingSrv: DataSavingService) {}
+  constructor(private ga4: Ga4Service, private dataSavingSrv: DataSavingService) {}
   transform(
     value: string | null | undefined,
     topic: string,
@@ -20,7 +21,7 @@ export class MeasurmentsPipe implements PipeTransform {
   ): unknown {
     if (!(topic && measureFrom && measurmentTo)) return null;
     let fixedNum = 2;
-    this.gtag.event('measureEvent', {
+    this.ga4.event('measureEvent', {
       app_name: 'SmartestAppes',
       screen_name: 'Measurments Page',
       topic: topic,

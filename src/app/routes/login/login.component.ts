@@ -1,5 +1,6 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription, take } from 'rxjs';
 import { LoginService } from 'src/app/shared/services/login.service';
@@ -8,6 +9,8 @@ import { LoginService } from 'src/app/shared/services/login.service';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
 })
 export class LoginComponent implements OnInit, OnDestroy {
   loginForm = new FormGroup({

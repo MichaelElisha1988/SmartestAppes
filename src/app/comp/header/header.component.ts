@@ -4,11 +4,14 @@ import { Subscription, debounce, debounceTime, first, take } from 'rxjs';
 import { Header } from 'src/app/shared/models/header.model';
 import { DataSavingService } from 'src/app/shared/services/dataSaving.service';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
+  standalone: true,
+  imports: [CommonModule],
 })
 export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   isOpenTrans: boolean = false;

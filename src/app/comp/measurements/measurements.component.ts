@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   Component,
   EventEmitter,
@@ -6,14 +7,17 @@ import {
   Output,
   AfterViewInit,
 } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Action } from 'rxjs/internal/scheduler/Action';
 import { Home } from 'src/app/shared/models/home.model';
+import { MeasurmentsPipe } from 'src/app/shared/pipes/measurments.pipe';
 
 @Component({
   selector: 'app-measurements',
   templateUrl: './measurements.component.html',
   styleUrls: ['./measurements.component.scss'],
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule, MeasurmentsPipe],
 })
 export class MeasurementsComponent implements OnInit, AfterViewInit {
   @Input() measureData: any = null;

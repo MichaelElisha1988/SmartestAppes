@@ -13,7 +13,7 @@ import { environment } from 'src/environments/environment';
 import { getFirestore } from 'firebase/firestore';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class LoginService {
   private readonly firebaseConfig = {

@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PopUpService } from '../../../../shared/services/popups.service';
 import { DataService } from '../../../../shared/services/data.service';
 import { TaskModel } from '../../../../shared/models/task.model';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-add-task-popup',
   templateUrl: './add-task-popup.component.html',
   styleUrls: ['./add-task-popup.component.scss'],
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
 })
 export class AddTaskPopupComponent implements OnInit {
   taskform = new FormGroup({

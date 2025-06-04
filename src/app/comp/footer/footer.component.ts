@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/shared/services/login.service';
 
@@ -5,6 +6,8 @@ import { LoginService } from 'src/app/shared/services/login.service';
   selector: 'app-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss'],
+  standalone: true,
+  imports: [CommonModule],
 })
 export class FooterComponent implements OnInit {
   isLoggedin: boolean = false;

@@ -2,11 +2,14 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { PopUpService } from '../../../shared/services/popups.service';
 import { DataService } from '../../../shared/services/data.service';
 import { Subscription } from 'rxjs';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'main-footer',
   templateUrl: './main-footer.component.html',
   styleUrls: ['./main-footer.component.scss'],
+  standalone: true,
+  imports: [CommonModule],
 })
 export class MainFooterComponent implements OnInit, OnDestroy {
   constructor(

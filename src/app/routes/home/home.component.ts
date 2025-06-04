@@ -1,15 +1,19 @@
+import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Gtag } from 'angular-gtag';
 import { Subscription, debounce, take } from 'rxjs';
+import { MeasurementsComponent } from 'src/app/comp/measurements/measurements.component';
 import { Actions, Home } from 'src/app/shared/models/home.model';
 import { DataSavingService } from 'src/app/shared/services/dataSaving.service';
+import { Ga4Service } from 'src/app/shared/services/ga4.service';
 import { GeneralDataService } from 'src/app/shared/services/generalData.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
+  standalone: true,
+  imports: [CommonModule, MeasurementsComponent],
 })
 export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   menuAfterInitDone: boolean = false;
@@ -21,7 +25,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     private generalDataSrvice: GeneralDataService,
     private dataSavingSrv: DataSavingService,
     private router: Router,
-    private gtag: Gtag
+    private ga4: Ga4Service
   ) {}
 
   $Subs = new Subscription();

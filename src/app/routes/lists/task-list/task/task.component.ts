@@ -2,11 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { TaskModel } from '../../../../shared/models/task.model';
 import { DataService } from '../../../../shared/services/data.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'task',
   templateUrl: './task.component.html',
   styleUrls: ['./task.component.scss'],
+  standalone: true,
+  imports: [CommonModule],
 })
 export class TaskComponent implements OnInit {
   taskList: TaskModel[] = [];

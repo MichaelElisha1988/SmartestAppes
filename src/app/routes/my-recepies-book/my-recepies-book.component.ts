@@ -5,10 +5,14 @@ import { RecipiesDataService } from './recipies-data.service';
 import { MealModel } from 'src/app/shared/models/meal.model';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/shared/services/data.service';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-my-recepies-book',
   templateUrl: './my-recepies-book.component.html',
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
   styleUrls: ['./my-recepies-book.component.scss'],
 })
 export class MyRecepiesBookComponent implements OnInit, OnDestroy {

@@ -29,10 +29,10 @@ const routes: Routes = [
     component: SelectedRecipieInfoComponent,
     canActivate: [LoginGuard],
   },
-  // {
-  //   path: '**',
-  //   redirectTo: '',
-  // },
+  {
+    path: '**',
+    redirectTo: '',
+  },
 ];
 
 @NgModule({
